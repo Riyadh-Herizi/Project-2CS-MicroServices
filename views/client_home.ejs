@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link href="/stylesheets/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+        * {
+            font-family :Bahnschrift;
+        }
+        .content {
+            margin-top: 50px;
+            height: 465px;
+            overflow: scroll;
+
+        }
+        .service {
+            margin: 10px;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="">
+
+
+
+
+<div class="container-fluid ">
+    <h2 style="padding-top: 30px">Client dashboard</h2>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#services"> Access to services </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#accounts">Accounts manager</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#statistics">Statistics</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+        </li>
+
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="services" class="container-fluid tab-pane  active"><br>
+            <div class="container p-5">
+         <div class="row">
+                <div class="card service" style="width:250px">
+                    <div class="card-body">
+                      <img src="/planning.png" width="200px" height="150px">
+                    </div>
+                    <div class="card-footer text-center text-primary"> <a href="/client/planning_service">Planning generator</a></div>
+                </div>
+
+                <div class="card service" style="width:250px">
+                  <div class="card-body">
+                  <img src="/list.png" width="200px" height="150px">
+                  </div>
+                    <div class="card-footer text-center text-primary"> <a href="/client/attendance_service">Attendance Recorder</a></div>
+                </div>
+                  <div class="card service" style="width:250px">
+                  <div class="card-body">
+                      <img src="/task.png" width="200px" height="150px">
+                    </div>
+                    <div class="card-footer text-center text-primary"> <a href="/client/task_service">Employees tasks</a></div>
+                 </div>
+            </div>
+
+            </div>
+        </div>
+        <div id="accounts" class="container-fluid tab-pane fade"><br>
+            <div class="container">
+                <div class="d-flex justify-content-between"><h4>Accounts list</h4>
+
+                    <button title="Create new account" type="button"  data-toggle="modal" data-target="#add" style="margin-right:40px ;margin-bottom: 2px " class="btn btn-primary btn-sm">
+                        <i class="fa fa-fw fa-plus-circle"></i></button>
+
+
+                   </div>
+                <div style="overflow: scroll; height: 500px">
+                <table class="table table-striped">
+                    <thead class="">
+                    <tr>
+                        <th scope="col" class="text-primary">Picture</th>
+                        <th scope="col" class="text-primary">First name</th>
+                        <th scope="col" class="text-primary">Last name</th>
+                        <th scope="col" class="text-primary">Email</th>
+                        <th scope="col" class="text-primary">Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <% for (var i = 0; i < users.length ; i++) { %>
+
+                        <tr>
+                            <th class="user_row">
+                                <img src="/def.png" class="rounded-circle" height="40px" width="40px" alt="image">
+                            </th>
+                            <td>  <%= users[i].firstName %> </td>
+                            <td> <%= users[i].lastName %></td>
+                            <td> <%= users[i].email %></td>
+                            <td>
+                                <button type="button" title="Edit account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i></button>
+                                <button type="button" title="Delete account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                            </td>
+                        </tr>
+
+
+
+
+                    <% } %>
+
+
+                    </tbody>
+                </table>
+            </div> </div>
+        </div>
+        <div id="profile" class="container-fluid tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="statistics" class="container-fluid tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal fade" id="add">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Create new account</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="firstNameInput">First Name</label>
+                        <input name="firstName" type="text" class="form-control" id="firstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastNameInput">Last Name</label>
+                        <input name="lastName" type="text" class="form-control" id="lastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailInput">Email address</label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordInput">Password</label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPasswordInput">Confirm Password</label>
+                        <input name="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                               placeholder="Re-enter your password here">
+                    </div>
+
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" onclick="create()" >Create</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function create() {
+        $.ajax({
+            url: '/client/add',
+            type: 'POST',
+            cache: false,
+            data: { email:document.getElementById("email").value,
+                firstName:document.getElementById("firstName").value,
+                lastName : document.getElementById("lastName").value,
+                password :document.getElementById("password").value,
+                confirmPassword:document.getElementById("confirmPassword").value },
+            success: function(data){
+                alert(data)
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('text status '+textStatus+', err '+err)
+            }
+        })
+    }
+</script>
+</body>
+</html>

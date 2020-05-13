@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link href="/stylesheets/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+    * {
+        font-family :Bahnschrift;
+    }
+    .content {
+        margin-top: 50px;
+        height: 465px;
+        overflow: scroll;
+
+    }
+
+
+    </style>
+</head>
+<body class="">
+
+
+
+
+<div class="container-fluid ">
+    <h2 style="padding-top: 30px">Planning manager</h2>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#Dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#entities">Define entities</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#plannings">All plannings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#statistics">Statistics</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#planning_generator">Planning generator</a>
+        </li>
+
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="Dashboard" class="container-fluid tab-pane  active"><br>
+            <p></p>
+        </div>
+        <div id="entities" class="container-fluid tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="planning_generator" class="container-fluid tab-pane fade"><br>
+            <div class="container-fluid">
+                <div class="row " style="">
+                    <div class="col-md-4 ">
+                        <div class="row "> <h4 class="text-white"> Progress </h4></div>
+                        <br>
+                        <ul style=" list-style-type:none" class="p-4">
+                            <li>
+                                <h5 class="text-primary"> <i class="fa fa-fw fa-cog"></i> &nbsp;&nbsp;Planning global parameters</h5> <br>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">  <i class="fa fa-fw fa-sign-in-alt"></i> &nbsp;&nbsp;Include employees</h5><br>
+                            </li>
+                            <li>
+                                <h5 class="text-primary">  <i class="fa fa-fw fa-sign-in-alt"></i> &nbsp;&nbsp;Include entities</h5><br>
+                            </li>
+                            <li>
+                                <h5 class="text-primary"><i class="fa fa-fw fa-clock"></i> &nbsp;&nbsp;Define the time domain</h5><br>
+                            </li>
+                            <li>
+                                <h5 class="text-primary"><i class="fa fa-fw fa-random"></i> &nbsp;&nbsp;Define the constraints</h5><br>
+                            </li>
+                            <li>
+                                <h5 class="text-primary"><i class="fa fa-fw fa-check-circle"></i> &nbsp;&nbsp;Automatic generation</h5><br>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div id="content_global" class="col-md-7 " >
+                        <div id="panel">
+                            <div class="row content bg-white ">
+                                <div class="col">
+                                    <form  class="was-validated">
+                                        <br>
+                                        <div class="form-group">
+                                            <input  type="text" class="form-control" id="planning_name" placeholder="Planning name" name="planning_name" required>
+                                            <div class="valid-feedback">Valid</div>
+                                            <div class="invalid-feedback">Please provide the planning name</div>
+                                        </div>
+                                        <hr>
+                                        <div>Planning type : </div>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input id="ed" type="radio" class="form-check-input" name="planning_type" checked>Educational institutions
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input id="mp" type="radio" class="form-check-input" name="planning_type">Multiple Planning ( Multiple services )
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline disabled">
+                                            <label class="form-check-label">
+                                                <input id="sp" type="radio" class="form-check-input" name="planning_type">Simple Planning ( position / person )
+                                            </label>
+                                        </div>
+                                        <hr>
+
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input id="use_accounts" class="form-check-input" type="checkbox" name="use_accounts" > Use the employee's wish form ( if exists )
+                                            </label>
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input id="allow_change" class="form-check-input" type="checkbox" name="allow_change" > Allow position changes
+                                            </label>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input id="employees_other" class="form-check-input" type="checkbox" name="employees_other" checked> Consider employee time on other plannings
+                                            </label>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" name="remember" required> I agree on this service terms and conditions
+                                                <div class="valid-feedback">Valid.</div>
+                                                <div class="invalid-feedback">Check this checkbox to continue.</div>
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                <button type="button" class="btn btn-secondary">Back</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="content_employees" class="col-md-7 d-none" >
+                        <div id="panel">
+                            <div class="row content bg-white ">
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Full name</th>
+                                            <th>Email</th>
+                                            <th>Grade</th>
+                                            <th>Include in planning</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="emp_list">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                <button type="button" class="btn btn-secondary">Back</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content_entities" class="col-md-7 d-none" >
+                        <div id="panel">
+                            <div class="row content bg-white ">
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Grade</th>
+                                            <th>Include in planning</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>John</td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                            <td>Doe</td>   <td>Doe</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                <button type="button" class="btn btn-secondary">Back</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content_time" class="col-md-7 d-none" >
+                        <div id="panel">
+                            <div class="row content bg-white ">
+                                <div class="col">
+
+
+                                </div>
+                            </div>
+
+                            <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                <button type="button" class="btn btn-secondary">Back</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="content_constraints" class="col-md-7 d-none" >
+                        <div id="panel">
+                            <div class="row content bg-white ">
+                                <div class="col">
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                <button type="button" class="btn btn-secondary">Back</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="wait" class="col-md-7 d-none" >
+                        <div class="row content justify-content-center  bg-white">
+                            <div style="margin: 200px">
+                                <div class="spinner-border text-primary" style="margin-right: 30px"></div> Validating information, Please wait
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="plannings" class="container-fluid tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="statistics" class="container-fluid tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/javascripts/riyadh_main.js">
+</script>
+</body>
+</html>
