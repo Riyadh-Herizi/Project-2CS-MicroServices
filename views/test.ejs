@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
     <style>
-.card {
-    width: 100px;
-    height: 100px;
-
-}
 
     </style>
     <meta charset="UTF-8">
@@ -14,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body style="margin: 10px">
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
@@ -25,19 +21,9 @@
             </thead>
             <tbody>
             <tr>
-                <td ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div id="card1" class="card shadow" draggable="true" ondragstart="drag(event)" >
-                    Algo <br> Riyadh Herizi 2h
-                    </div>
-                    <div id="card2" class="card shadow" draggable="true" ondragstart="drag(event)">
-                        Analyse <br> Abdellatif 2h
-                    </div>
-                    <div id="card3" class="card shadow" draggable="true" ondragstart="drag(event)">
-                        walo <br> karim 2h
-                    </div>
-                    <div id="card4" class="card shadow" draggable="true" ondragstart="drag(event)">
-                        ma3raf <br> othmane 2h
-                    </div>
+                <td id="entities" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+
                 </td>
             </tr>
             </tbody>
@@ -45,7 +31,7 @@
     </div>
       <div class="col-md-8">
 
-          <table class="table">
+          <table class="table text-center">
               <thead>
               <tr>
                   <th scope="col">Sunday</th>
@@ -60,35 +46,35 @@
               <tbody>
               <tr>
                   <td >
-                      <div id="list"
+                      <div id="sun"
                             ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
-                      <div id="list"
+                      <div id="mon"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div></td>
                   <td>
-                      <div id="list"
+                      <div id="the"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
-                      <div id="list"
+                      <div id="wen"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
-                      <div id="list"
+                      <div id="thu"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
-                      <div id="list"
+                      <div id="fri"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div></td>
                   <td>
-                      <div id="list"
+                      <div id="sat"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
@@ -106,6 +92,8 @@
 
 </body>
 <script>
+    var start = 7;
+    var end = 17;
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -117,17 +105,75 @@
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
+        console.log(document.getElementById(data));
+        var x = document.getElementById(data)
+        ev.target.appendChild(x);
+        //if(ev.target.id === "list" ) {}
+
+        update_time();
+
     }
 </script>
 <script>
 
-   console.log("hello")
-    function init_view(element) {
+
+var events = [
+    {
+       name: "algo",
+       employee : "riyadh" ,
+        length : {  hour: 2, min:0 } ,
+        start : {
+           hour: 0, min:0
+        },
+        end : {
+            hour: 0, min:0
+        }
+    },
+    {
+        name: "analyse",
+        employee : "latif" ,
+        length : {  hour: 2, min:0 } ,
+        start : {
+            hour: 0, min:0
+        },
+        end : {
+            hour: 0, min:0
+        }
+    },
+    {
+        name: "proba",
+        employee : "brahim" ,
+        length : {  hour: 2, min:0 } ,
+        start : {
+            hour: 0, min:0
+        },
+        end : {
+            hour: 0, min:0
+        }
+    },
+];
+init_view();
+
+    function init_view() {
+        events.forEach(put_in_list)
     }
-    
-    
-    
+    function put_in_list(item,index) {
+        var cards_list = document.getElementById("entities");
+        cards_list.innerHTML = cards_list.innerHTML+ " <div id=\""+index+"\" class=\"card shadow text-center \" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
+            "                        <div class=\"card-body \" style=\"padding: 3px\" >\n" +
+            "                            <h5 class=\"card-title\" style=\"font-size: 10px\"></h5>\n" +
+            "                            <h5 class=\"card-title\" style=\"font-size: 15px\">"+item.name+"</h5>\n" +
+            "                            <h6 class=\"card-subtitle mb-2 text-muted\" style=\"font-size: 9px\">"+item.employee+"</h6>\n" +
+            "                            <h5 class=\"card-title\" style=\"font-size: 12px\">"+item.length.hour+"h &nbsp;"+ item.length.min+"min</h5>\n" +
+            "\n" +
+            "                        </div>\n" +
+            "                    </div>";
+    }
+    function update_time() {
+
+
+
+    }
 </script>
 </html>
 
