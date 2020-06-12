@@ -28,14 +28,16 @@ module.exports = function (passport) {
                 email:username ,password : hashedPassword
             }});
 
+        console.log(client);
         if(client) {
-            console.log(client);
+
+
             done( null,
                 {username:client.email ,
                     password:client.password }
             );
             console.log(client.email);
-        } else {
+        } else {  console.log("rani malgitouch  ");
             done(null,false);
         }
 

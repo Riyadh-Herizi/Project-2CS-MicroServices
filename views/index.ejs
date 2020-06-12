@@ -1,63 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Home</title>
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-  <style>
-    .big-text {
-      font-size: 2rem;
-      line-height: 68px;
-      margin-bottom: 16px
-    }
-    .navbar {
-      padding: 0px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      width: auto\9; /* ie8 */
-    }
-    * {
-      font-family: "Calibri Light";
-    }
-  </style>
+  <meta charset="utf-8">
+  <title>Pro Planner</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link rel="icon" type="image/png" href="images/Logo1.png"/>
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+
 </head>
-<body>
-<!--navbar -->
-<nav class="navbar navbar-expand-md bg-white navbar-light shadow-sm">
-  <a class="navbar-brand text-primary" href="#">Entreprise </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav  ml-auto">
 
-      <li class="nav-item">
-         <a class="nav-link text-dark" href="/login">Login</a>
-      </li>
+<body id="body">
 
-    </ul>
-  </div>
-</nav>
-<div class="container-fluid shadow-sm">
-  <div class="row justify-content-md-center" style="margin-top: 100px">
-
-    <div class="col-md-4 "> <br><br>
-      <div class="text-dark big-text ">Solve more and Meet your business challenges head on with us.</div>
+<section id="topbar" class="d-none d-lg-block">
+  <div class="container clearfix">
+    <div class="contact-info float-left">
+      <i class="fa fa-envelope-o"></i> <a href="mailto:contact@pro_planner.com">contact@pro_planner.com</a>
+      <i class="fa fa-phone"></i> +213 674 945 912
     </div>
-
-    <div class="col-md-6">
-
-       <img  src="/entreprise.png" alt="entreprise">
-
+    <div class="social-links float-right">
+      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+      <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+      <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+      <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
     </div>
   </div>
-</div>
+</section>
+
+<header id="header">
+  <div class="container">
+
+    <div id="logo" class="pull-left">
+      <h1><a href="#body" class="scrollto">Pro<span>Planning</span></a></h1>
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><a href="#body">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section id="intro">
+
+  <div class="intro-content">
+    <h2>Time planning   <span>made</span><br>easier!</h2>
+    <div>
+      <a href="/login" class="btn-get-started scrollto">Login</a>
+      <a href="#contact" class="btn-projects scrollto">Contact us</a>
+    </div>
+  </div>
+
+  <div id="intro-carousel" class="owl-carousel" >
+    <div class="item" style="background-image: url('img/intro-carousel/1.jpg');"></div>
+    <div class="item" style="background-image: url('img/intro-carousel/2.jpg');"></div>
+    <div class="item" style="background-image: url('img/intro-carousel/3.jpg');"></div>
+    <div class="item" style="background-image: url('img/intro-carousel/4.jpg');"></div>
+    <div class="item" style="background-image: url('img/intro-carousel/5.jpg');"></div>
+  </div>
+
+</section>
+
+<main id="main">
+
+
+  <section id="about" class="wow fadeInUp">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 about-img">
+          <img src="/logo.png" alt="">
+        </div>
+
+        <div class="col-lg-6 content">
+          <h2>who are we ?</h2>
+          <h3>We are a group of developers providing you with efficient planning service.</h3>
+
+          <ul>
+            <li><i class="ion-android-checkmark-circle"></i> Fast service.</li>
+            <li><i class="ion-android-checkmark-circle"></i> Easy to use.</li>
+            <li><i class="ion-android-checkmark-circle"></i> Available technical support 24/24.</li>
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Services</h2>
+        <p>Pro   <span>Planning</span> is not just a planning service , we provide many extensions for you : </p>
+      </div>
+
+      <div class="row">
+
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft" data-wow-delay="0.2s">
+            <div class="icon"><i class="fa fa-edit"></i></div>
+            <h4 class="title"><a  >2 ways plannings</a></h4>
+            <p class="description">You can create planning with our automatic algorithm or create it manually.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight" data-wow-delay="0.2s">
+            <div class="icon"><i class="fa fa-tasks"></i></div>
+            <h4 class="title"><a >Attendance record </a></h4>
+            <p class="description">You can know the attendees and absentees from the workers at any time with statistics during all periods </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft">
+            <div class="icon"><i class="fa fa-bar-chart"></i></div>
+            <h4 class="title"><a >Statistic and full control </a></h4>
+            <p class="description">You can control all that schedule with continuous stats.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight">
+            <div class="icon"><i class="fa fa-users"></i></div>
+            <h4 class="title"><a >Employees interactions </a></h4>
+            <p class="description">We consider your employees' desires With the possibility of creating 400 employee accounts.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section id="contact" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+      </div>
+
+      <div class="row contact-info">
+
+        <div class="col-md-4">
+          <div class="contact-address">
+            <i class="ion-ios-location-outline"></i>
+            <h3>Address</h3>
+            <address>El Wiam , Sidi El djilali, Algeria</address>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-phone">
+            <i class="ion-ios-telephone-outline"></i>
+            <h3>Phone Number</h3>
+            <p><a href="tel:+213674945912">+213 674 945 912</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-email">
+            <i class="ion-ios-email-outline"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:contact@pro_planning.com">contact@pro_planning.com</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="form">
+        <div id="sendmessage">Your message has been sent. Thank you!</div>
+        <div id="errormessage"></div>
+        <form action="" method="post" role="form" class="contactForm">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+              <div class="validation"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validation"></div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form>
+      </div>
+
+    </div>
+  </section><!-- #contact -->
+
+</main>
+
+
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/superfish/hoverIntent.js"></script>
+<script src="lib/superfish/superfish.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/magnific-popup/magnific-popup.min.js"></script>
+<script src="lib/sticky/sticky.js"></script>
+
+
+<script src="contactform/contactform.js"></script>
+
+<script src="js/main2.js"></script>
 
 </body>
 </html>

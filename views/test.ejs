@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+.card {
+    width: 100px;
+    height: 100px;
+
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>planning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="margin: 10px">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Entities</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="card1" class="card shadow" draggable="true" ondragstart="drag(event)" >
+                    Algo <br> Riyadh Herizi 2h
+                    </div>
+                    <div id="card2" class="card shadow" draggable="true" ondragstart="drag(event)">
+                        Analyse <br> Abdellatif 2h
+                    </div>
+                    <div id="card3" class="card shadow" draggable="true" ondragstart="drag(event)">
+                        walo <br> karim 2h
+                    </div>
+                    <div id="card4" class="card shadow" draggable="true" ondragstart="drag(event)">
+                        ma3raf <br> othmane 2h
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+      <div class="col-md-8">
+
+          <table class="table">
+              <thead>
+              <tr>
+                  <th scope="col">Sunday</th>
+                  <th scope="col">Monday</th>
+                  <th scope="col">Tuesday</th>
+                  <th scope="col">Wednesday</th>
+                  <th scope="col">Thursday</th>
+                  <th scope="col">Friday</th>
+                  <th scope="col">Saturday</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td >
+                      <div id="list"
+                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div>
+                  </td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div></td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div>
+                  </td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div>
+                  </td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div>
+                  </td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div></td>
+                  <td>
+                      <div id="list"
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                      </div>
+                  </td>
+
+              </tr>
+              </tbody>
+          </table>
+
+      </div>
+  </div>
+
+
+</div>
+
+
+</body>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+<script>
+
+   console.log("hello")
+    function init_view(element) {
+    }
+    
+    
+    
+</script>
+</html>
+
+
+
