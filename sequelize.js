@@ -3,6 +3,8 @@ const Sequelize = require('sequelize');
 const AdminModel = require('./models/Admin');
 const UserModel  = require('./models/User');
 const ClientModel  = require('./models/Client');
+const EntityModel  = require('./models/Entities');
+const SubEntityModel  = require('./models/Sub_Entities');
 const crypto = require('crypto');
 const sequelize = new Sequelize('project', 'root', '', {
     host: 'localhost',
@@ -24,6 +26,8 @@ const getHashedPassword = (password) => {
 const Admins = AdminModel(sequelize, Sequelize);
 const Users = UserModel(sequelize,Sequelize);
 const Clients = ClientModel(sequelize,Sequelize);
+const Entities = EntityModel(sequelize,Sequelize);
+const SubEntities = SubEntityModel(sequelize,Sequelize) ;
 Users.belongsTo(Clients);
 
 

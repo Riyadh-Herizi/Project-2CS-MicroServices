@@ -6,11 +6,11 @@ module.exports = (sequelize, type) => {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },
+        }
+        ,
         name :type.STRING,
         complex :type.INTEGER,
-        color :type.STRING,
-        hours_number:type.INTEGER
+
 
     })
 };
