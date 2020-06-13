@@ -9,6 +9,8 @@ module.exports = (sequelize, type) => {
         },
         name :type.STRING,
         hours_number:type.INTEGER,
-        repetetion:type.INTEGER
+        repetetion:type.INTEGER,
+        complex :type.INTEGER,
+
     })
 };
