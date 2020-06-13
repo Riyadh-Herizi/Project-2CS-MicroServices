@@ -29,7 +29,7 @@ const Clients = ClientModel(sequelize,Sequelize);
 const Entities = EntityModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
 Users.belongsTo(Clients);
-
+SubEntities.belongsTo(Entities);
 
 sequelize.sync({ force: false })
     .then(() => {

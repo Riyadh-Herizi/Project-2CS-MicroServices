@@ -6,8 +6,8 @@ module.exports = (sequelize, type) => {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        }
-        ,
+        },
+        group : type.STRING,
         name :type.STRING,
         complex :type.INTEGER,
 
