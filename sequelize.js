@@ -4,6 +4,7 @@ const AdminModel = require('./models/Admin');
 const UserModel  = require('./models/User');
 const ClientModel  = require('./models/Client');
 const EntityModel  = require('./models/Entities');
+const GroupsModel  = require('./models/Group');
 const SubEntityModel  = require('./models/Sub_Entities');
 const crypto = require('crypto');
 const sequelize = new Sequelize('project', 'root', '', {
@@ -28,8 +29,11 @@ const Users = UserModel(sequelize,Sequelize);
 const Clients = ClientModel(sequelize,Sequelize);
 const Entities = EntityModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
+const Groups = GroupsModel(sequelize,Sequelize) ;
 Users.belongsTo(Clients);
 SubEntities.belongsTo(Entities);
+Entities.belongsTo(Clients);
+Groups.belongsTo(Clients);
 
 sequelize.sync({ force: false })
     .then(() => {
@@ -61,5 +65,5 @@ async function check() {
 }
 
 module.exports = {
- Admins,Users,Clients
+ Admins,Users,Clients,Entities,SubEntities,Groups
 };
