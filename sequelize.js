@@ -33,6 +33,7 @@ const Groups = GroupsModel(sequelize,Sequelize) ;
 Users.belongsTo(Clients);
 SubEntities.belongsTo(Entities);
 Entities.belongsTo(Clients);
+Entities.belongsTo(Groups);
 Groups.belongsTo(Clients);
 
 sequelize.sync({ force: false })
