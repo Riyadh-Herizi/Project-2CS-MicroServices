@@ -31,10 +31,6 @@
     </style>
 </head>
 <body class="">
-
-
-
-
 <div class="container-fluid ">
     <h2 style="padding-top: 30px">Planning manager</h2>
 
@@ -66,59 +62,43 @@
         </div>
         <div id="entities" class="container-fluid tab-pane fade"><br>
 
+
             <div class="container-fluid" >
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 p-2 shadow">
                  <table class="table text-center">
                      <thead>
                      <tr><th class="bg-primary text-white font-weight-bold">Groups</th></tr>
                      </thead>
-                     <tbody>
-                     <tr>
-                         <td class="group text-primary font-weight-bold"> 1 CPI </td>
-                     </tr>
-                     <tr>
-                         <td class="group text-primary font-weight-bold" > 2 CPI </td>
-                     </tr>
-                     <tr>
-                         <td class="group text-primary font-weight-bold" > 1 CS </td>
-                     </tr>
+                     <tbody id="groups">
+                     <% for (var i = 0; i < groups.length ; i++) { %>
+                         <tr>
+                             <td class="text-center"> <button class="btn btn-sm btn-light text-primary bg-white" onclick="show_group(<%= groups[i].id %>)">
+                                 <%= groups[i].group_name %>
+                                 </button>  </td>
+                         </tr>
+                     <% } %>
+
+
                      </tbody>
-
-
-
                  </table>
                     <button class="btn btn-primary btn-sm text-center text-white" data-toggle="modal" data-target="#add_group" >Add group</button>
 
                 </div>
-                  <div class="col-md-9">
-                      <table class="table text-center">
-                          <thead>
-                          <tr><th class="bg-primary text-white font-weight-bold">#ID</th>
-                              <th class="bg-primary text-white font-weight-bold">Entity name</th>
-                              <th class="bg-primary text-white font-weight-bold">Complexity</th>
+                  <div id="view" class="col-md-8 shadow p-1 m-4">
+                      <div class="container-fluid text-center " style="height: 500px ;display: flex;
+  justify-content: center;
+  align-items: center;">
 
-                              <th class="bg-primary text-white font-weight-bold">Options</th></tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                              <td class="group text-black font-weight-bold"> 2165 </td>
-                              <td class="group text-black font-weight-bold"> Algorithm </td>
-                              <td class="group text-black font-weight-bold"> 5 </td>
-                              <td class="group text-black font-weight-bold">
-                             <button onclick="" class="btn btn-primary btn-sm text-center text-white" data-toggle="modal" data-target="#sub_entity" >Add sub-entity</button>
-                              </td>
+                          <h3 class="text-primary">Select a group to see entities</h3>
 
-                          </tr>
+                      </div>
 
-                          </tbody>
-                      </table>
-                      <button data-toggle="modal" data-target="#add_entity" class="btn btn-primary btn-sm text-center text-white" >Add entity</button>
+
+
                   </div>
               </div>
             </div>
-
-
         </div>
         <div id="planning_generator" class="container-fluid tab-pane fade"><br>
             <div class="container-fluid">
@@ -347,22 +327,129 @@
             </div>
         </div>
         <div id="plannings" class="container-fluid tab-pane fade"><br>
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3>plannings</h3>
         </div>
         <div id="statistics" class="container-fluid tab-pane fade"><br>
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3>statistics</h3>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 <script src="/javascripts/riyadh_main.js">
+</script>
+
+<script>
+    var current_group;
+    function create_group() {
+        $.ajax({
+            url: '/client/add_group',
+            type: 'POST',
+            cache: false,
+            data: {
+                group_name:document.getElementById("group_name").value,
+                },
+            success: function(data){
+                update_groups();
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
+    function create_entity() {
+        $.ajax({
+            url: '/client/add_entity',
+            type: 'POST',
+            cache: false,
+            data: {
+                group : current_group,
+                entity_name:document.getElementById("entity_name").value,
+                complexity:document.getElementById("complexity").value,
+            },
+            success: function(data){
+
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
+    function update_groups() {
+        $.ajax({
+            url: '/client/get_group',
+            type: 'POST',
+            cache: false,
+            data: {
+            },
+            success: function(data){
+                var x ="";
+               for (var i = 0; i < data.groups.length ; i++) {
+                x = x + "<tr>\n" +
+                    "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"show_group(data.groups[i].id)\">\n" +
+                    "                    "+  data.groups[i].group_name+ "\n" +
+                    "                    </button>  </td>\n" +
+                    "                </tr>"
+
+                 }
+
+               document.getElementById("groups").innerHTML = x;
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
+    function show_group(id) {
+
+        $.ajax({
+            url: '/client/show_group',
+            type: 'POST',
+            cache: false,
+            data: {
+                id_group:id,
+            },
+            success: function(data){
+                var x ="";
+                var empty = true;
+                for (var i = 0; i < data.entities.length ; i++) {
+                    empty=false;
+                    x = x +" <tr>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\">\n"+
+                        "                        <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button>\n" +
+                        "                        <button onclick=\"\" class=\"btn btn-primary btn-sm text-center text-white\" >Edit</button>\n" +
+                        "                    </td>\n" +
+                        "                </tr>";
+                }
+
+                if(!empty)
+                document.getElementById("view").innerHTML = "\n" +
+                    "            <table class=\"table text-center\">\n" +
+                    "                <thead>\n" +
+                    "                <tr>\n" +
+                    "                    <th class=\"bg-primary text-white font-weight-bold\">Entity name</th>\n" +
+                    "                    <th class=\"bg-primary text-white font-weight-bold\">Complexity</th>\n" +
+                    "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th></tr>\n" +
+                    "                </thead>\n" +
+                    "                <tbody>\n" +x+"\n" +
+                    "                </tbody>\n" +
+                    "            </table>\n"+"  <button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>";
+            else
+                    document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 500px ;" +
+                        "  justify-content: center;\n" +
+                        "  align-items: center;\">\n" +
+                        "\n" +
+                        "                <br><br><br><br><br><br>   <br>          <h4 class=\"text-primary\">This group is empty add new entities</h4>\n" +
+                        "\n" +"<button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>"+
+                        "                      </div>";
+                }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+
+        
+    }
 </script>
 </body>
 <div class="modal fade" id="add_group">
@@ -389,7 +476,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="alert('created')" >Create</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_group()" >Create</button>
             </div>
 
         </div>
@@ -410,11 +497,11 @@
                 <form method="POST" action="">
                     <div class="form-group">
                         <label for="group_name">Entity Name</label>
-                        <input name="group_name" type="text" class="form-control" id="group_name" required>
+                        <input name="group_name" type="text" class="form-control" id="entity_name" required>
                     </div>
                     <div class="form-group">
                         <label for="group_name">Complexity</label>
-                        <input name="group_name" type="text" class="form-control" id="group_name" required>
+                        <input name="group_name" type="number" class="form-control" id="complexity" required>
                     </div>
                 </form>
             </div>

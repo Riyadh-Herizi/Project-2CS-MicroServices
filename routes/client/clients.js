@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
-const { Clients,Users,Groups } = require('../../sequelize');
+const { Clients,Users,Groups ,Entities} = require('../../sequelize');
 var loggedin = function(req,res,next) {
    if(req.isAuthenticated()) {
         next()
@@ -28,6 +28,19 @@ router.get('/planning_service',loggedin ,async function(req, res, next) {
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
     res.render('planning',{groups :groups });
 });
+
+router.post('/get_group',loggedin ,async function(req, res, next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
+    res.send({groups :groups });
+});
+
+router.post('/show_group',loggedin ,async function(req, res, next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const entities = await  Entities.findAll( { where:{clientId :client_id.id,groupId : req.body.id_group} } );
+    res.send({entities :entities });
+});
+
 router.get('/logout',function (req,res) {
     req.logout();
     res.redirect('/');
