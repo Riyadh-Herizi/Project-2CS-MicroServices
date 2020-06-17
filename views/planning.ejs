@@ -336,7 +336,6 @@
 </div>
 <script src="/javascripts/riyadh_main.js">
 </script>
-
 <script>
     var current_group;
     function create_group() {
@@ -366,7 +365,7 @@
                 complexity:document.getElementById("complexity").value,
             },
             success: function(data){
-
+                update_entities(current_group);
             }
             , error: function(jqXHR, textStatus, err){
                 alert('status '+textStatus+', err '+err)
@@ -384,7 +383,7 @@
                 var x ="";
                for (var i = 0; i < data.groups.length ; i++) {
                 x = x + "<tr>\n" +
-                    "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"show_group(data.groups[i].id)\">\n" +
+                    "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"show_group("+data.groups[i].id+")\">\n" +
                     "                    "+  data.groups[i].group_name+ "\n" +
                     "                    </button>  </td>\n" +
                     "                </tr>"
@@ -398,8 +397,57 @@
             }
         })
     }
-    function show_group(id) {
+    function update_entities(id) {
+        $.ajax({
+            url: '/client/get_entities',
+            type: 'POST',
+            cache: false,
+            data: {
+                id_group: id
+            },
+            success: function(data){
+                var x ="";
+                var empty = true;
+                for (var i = 0; i < data.entities.length ; i++) {
+                    empty=false;
+                    x = x +" <tr>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\">\n"+
+                        "                        <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button>\n" +
+                        "                        <button onclick=\"\" class=\"btn btn-primary btn-sm text-center text-white\" >Edit</button>\n" +
+                        "                    </td>\n" +
+                        "                </tr>";
+                }
 
+                if(!empty)
+                    document.getElementById("view").innerHTML = "\n" +
+                        "            <table class=\"table text-center\">\n" +
+                        "                <thead>\n" +
+                        "                <tr>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Entity name</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Complexity</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th></tr>\n" +
+                        "                </thead>\n" +
+                        "                <tbody>\n" +x+"\n" +
+                        "                </tbody>\n" +
+                        "            </table>\n"+"  <button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>";
+                else
+                    document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 500px ;" +
+                        "  justify-content: center;\n" +
+                        "  align-items: center;\">\n" +
+                        "\n" +
+                        "                <br><br><br><br><br><br>   <br>          <h4 class=\"text-primary\">This group is empty add new entities</h4>\n" +
+                        "\n" +"<button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>"+
+                        "                      </div>";
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
+    function show_group(id) {
+       current_group = id;
         $.ajax({
             url: '/client/show_group',
             type: 'POST',
@@ -497,11 +545,11 @@
                 <form method="POST" action="">
                     <div class="form-group">
                         <label for="group_name">Entity Name</label>
-                        <input name="group_name" type="text" class="form-control" id="entity_name" required>
+                        <input name="entity_name" type="text" class="form-control" id="entity_name" required>
                     </div>
                     <div class="form-group">
                         <label for="group_name">Complexity</label>
-                        <input name="group_name" type="number" class="form-control" id="complexity" required>
+                        <input name="complexity" type="number" class="form-control" id="complexity" required>
                     </div>
                 </form>
             </div>
@@ -509,7 +557,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" onclick="alert('created')" >Create</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_entity(current_group)" >Create</button>
             </div>
 
         </div>
