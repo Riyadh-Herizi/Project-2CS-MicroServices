@@ -338,6 +338,28 @@
 </script>
 <script>
     var current_group;
+    var current_entity;
+    function create_sub_entity(){
+      $.ajax({
+          url: '/client/add_sub_entity',
+          type: 'POST',
+          cache: false,
+          data: {
+              id_entity:current_entity,
+              sub_entity_name:document.getElementById("sub_entity_name").value,
+              nb_hours:document.getElementById("nb_hours").value,
+              complexity:document.getElementById("complexity").value,
+              repetetion:document.getElementById("repetition").value,
+              },
+          success: function(data){
+              get_sub_entities(current_entity);
+          }
+          , error: function(jqXHR, textStatus, err){
+              alert('status '+textStatus+', err '+err)
+          }
+      })
+    }
+
     function create_group() {
         $.ajax({
             url: '/client/add_group',
@@ -414,6 +436,7 @@
                         "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
                         "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
                         "                    <td class=\"group text-black font-weight-bold\">\n"+
+                        "                    <button data-toggle=\"modal\" data-target=\"#sub_entity\" onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >SubEntities</button>\n" +
                         "                        <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button>\n" +
                         "                        <button onclick=\"\" class=\"btn btn-primary btn-sm text-center text-white\" >Edit</button>\n" +
                         "                    </td>\n" +
@@ -445,6 +468,22 @@
                 alert('status '+textStatus+', err '+err)
             }
         })
+    }
+    function delete_entity(id){
+      $.ajax({
+        url: '/client/delete_entity',
+        type: 'POST',
+        cache: false,
+        data: {
+            id_entity:id,
+        },
+        success: function(data){
+          show_group(current_group);
+            }
+        , error: function(jqXHR, textStatus, err){
+            alert('status '+textStatus+', err '+err)
+        }
+      })
     }
     function show_group(id) {
        current_group = id;
@@ -499,6 +538,7 @@
     }
 
     function get_sub_entities(id) {
+      current_entity=id;
         $.ajax({
             url: '/client/get_sub_entities',
             type: 'POST',
@@ -615,23 +655,24 @@
                     </tbody>
 
                 </table>
-                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add</button>
+                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add Sub-Entity</button>
 
                <br> <div id="add_new_sub" class="collapse">
                     <form method="POST" action="">
                         <div class="form-group">
-                            <label for="group_name">Entity Name</label>
-                            <input name="entity_name" type="text" class="form-control" id="group_name" required>
-                            <label for="entity_name">Entity Name</label>
-                            <input name="entity_name" type="text" class="form-control" id="entity_name" required>
+                            <label for="group_name">Sub-Entity Name</label>
+                            <input name="entity_name" type="text" class="form-control" id="sub_entity_name" required>
+                            <label for="entity_name">number of hours</label>
+                            <input name="entity_name" type="text" class="form-control" id="nb_hours" required>
                         </div>
                         <div class="form-group">
                             <label for="complexity">Complexity</label>
-                            <input name="complexity" type="number" class="form-control" id="complexity" required>
-                            <label for="group_name2">Entity Name</label>
-                            <input name="entity_name" type="text" class="form-control" id="entity_name" required>
+                            <input name="complexity" type="text" class="form-control" id="complexity" required>
+                            <label for="group_name2">Repetition</label>
+                            <input name="entity_name" type="text" class="form-control" id="repetition" required>
                         </div>
                     </form>
+                    <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_sub_entity()">Confirm</button>
                 </div>
 
             </div>
