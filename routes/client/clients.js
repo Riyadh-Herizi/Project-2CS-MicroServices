@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
-const { Clients,Users,Groups ,Entities} = require('../../sequelize');
+const { Clients,Users,Groups ,Entities,SubEntities} = require('../../sequelize');
 var loggedin = function(req,res,next) {
    if(req.isAuthenticated()) {
         next()
@@ -33,6 +33,12 @@ router.post('/get_group',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
     res.send({groups :groups });
+});
+router.post('/get_sub_entities',loggedin ,async function(req, res, next) {
+    const id_entity = req.body.id_entity;
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const sub_entities = await  SubEntities.findAll( { where:{entityId :id_entity} } );
+    res.send({sub_entities :sub_entities });
 });
 
 
