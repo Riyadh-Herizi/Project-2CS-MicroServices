@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d257c690-a3ed-4d60-9764-999aed040da9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Sub_Entities.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Sub_Entities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/client/clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/client/clients.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/planning.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/planning.ejs" afterDir="false" />
     </list>
@@ -14,35 +15,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/planning.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="350" column="64" selection-start-line="350" selection-start-column="64" selection-end-line="350" selection-end-column="64" />
+            <state relative-caret-position="180">
+              <caret line="665" column="90" selection-start-line="665" selection-start-column="90" selection-end-line="665" selection-end-column="90" />
               <folding>
-                <element signature="e#16519#16965#0#HTML" />
-                <element signature="e#16995#17566#0#HTML" />
-                <element signature="e#17596#18506#0#HTML" />
-                <element signature="e#17613#18499#0#HTML" />
-                <element signature="e#18540#21850#0#HTML" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#21881#22245#0#HTML" />
-                <element signature="e#22274#25611#0#HTML" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#25647#26870#0#HTML" />
-                <element signature="e#27214#27221#1#HTML" expanded="true" />
-                <element signature="e#28337#28344#1#HTML" expanded="true" />
-                <element signature="e#29720#29727#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/Sub_Entities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/client/clients.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="120" column="116" selection-start-line="120" selection-start-column="116" selection-end-line="120" selection-end-column="116" />
+            <state relative-caret-position="477">
+              <caret line="119" column="62" selection-start-line="119" selection-start-column="62" selection-end-line="119" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -68,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sequelize.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="517">
+              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -102,6 +101,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Riyadh-Herizi &lt;riyadh.herizi1998@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -130,12 +134,12 @@
         <option value="$PROJECT_DIR$/views/test.ejs" />
         <option value="$PROJECT_DIR$/routes/client/clients_auth.js" />
         <option value="$PROJECT_DIR$/models/Entities" />
-        <option value="$PROJECT_DIR$/models/Sub_Entities.js" />
         <option value="$PROJECT_DIR$/models/Group.js" />
         <option value="$PROJECT_DIR$/models/Entities.js" />
+        <option value="$PROJECT_DIR$/models/Sub_Entities.js" />
         <option value="$PROJECT_DIR$/sequelize.js" />
-        <option value="$PROJECT_DIR$/views/planning.ejs" />
         <option value="$PROJECT_DIR$/routes/client/clients.js" />
+        <option value="$PROJECT_DIR$/views/planning.ejs" />
       </list>
     </option>
   </component>
@@ -228,7 +232,8 @@
       <workItem from="1592392581591" duration="7167000" />
       <workItem from="1592430355157" duration="4497000" />
       <workItem from="1592572217934" duration="1330000" />
-      <workItem from="1592646320788" duration="940000" />
+      <workItem from="1592646320788" duration="1666000" />
+      <workItem from="1592656787739" duration="1239000" />
     </task>
     <task id="LOCAL-00001" summary="planning test">
       <created>1591995092466</created>
@@ -328,17 +333,24 @@
       <option name="project" value="LOCAL" />
       <updated>1592572373887</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixing bug in 'add sub-entity' function">
+      <created>1592647353352</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1592647353352</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74451000" />
+    <option name="totallyTimeSpent" value="76416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16018766" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15951742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -350,10 +362,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.18688981" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.34030685" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.37064344" side_tool="true" weight="0.6889819" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" weight="0.29707113" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" visible="true" weight="0.1324965" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32914925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -380,7 +392,8 @@
     <MESSAGE value="Adding foreign key between groups and entities" />
     <MESSAGE value="Controlling entities for client" />
     <MESSAGE value="Manage sub-entities module + interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Manage sub-entities module + interface" />
+    <MESSAGE value="Fixing bug in 'add sub-entity' function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing bug in 'add sub-entity' function" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Windows/System32/drivers/etc/hosts">
@@ -566,17 +579,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/Entities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/client_home.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2240">
           <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sequelize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
@@ -587,46 +600,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Entities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Sub_Entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        <state relative-caret-position="200">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/planning.ejs">
+    <entry file="file://$PROJECT_DIR$/sequelize.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="350" column="64" selection-start-line="350" selection-start-column="64" selection-end-line="350" selection-end-column="64" />
-          <folding>
-            <element signature="e#16519#16965#0#HTML" />
-            <element signature="e#16995#17566#0#HTML" />
-            <element signature="e#17596#18506#0#HTML" />
-            <element signature="e#17613#18499#0#HTML" />
-            <element signature="e#18540#21850#0#HTML" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#21881#22245#0#HTML" />
-            <element signature="e#22274#25611#0#HTML" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#25647#26870#0#HTML" />
-            <element signature="e#27214#27221#1#HTML" expanded="true" />
-            <element signature="e#28337#28344#1#HTML" expanded="true" />
-            <element signature="e#29720#29727#1#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="517">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/client/clients.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="120" column="116" selection-start-line="120" selection-start-column="116" selection-end-line="120" selection-end-column="116" />
+        <state relative-caret-position="477">
+          <caret line="119" column="62" selection-start-line="119" selection-start-column="62" selection-end-line="119" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/planning.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="665" column="90" selection-start-line="665" selection-start-column="90" selection-end-line="665" selection-end-column="90" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

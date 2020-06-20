@@ -95,7 +95,6 @@ router.post('/add_entity',async  function (req,res)  {
         res.send("Entity created successfully");
     });
     }
-
 });
 router.post('/get_emp',async  function (req,res)  {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
@@ -104,23 +103,23 @@ router.post('/get_emp',async  function (req,res)  {
     res.send(users);
 
 });
-
 router.post('/delete_entity',async function (req,res){
   const client_id = await Clients.findOne( { where:{email :req.user.username} } );
   SubEntities.destroy({where : {entityId:req.body.id_entity}});
   Entities.destroy({where : {id:req.body.id_entity}});
   res.send("Entity deleted successfully");
 });
-
 router.post('/add_sub_entity',async  function (req,res)  {
   console.log(req.body.complexity);
     const { id_entity,sub_entity_name,nb_hours,complexity,repetetion } = req.body;console.log(req.body);
     const sub_entity =  await  SubEntities.findOne( { where:{entityId:id_entity,name:sub_entity_name} } );
-
     console.log(complexity);
-    if(sub_entity === null ) {   SubEntities.create({ name :sub_entity_name, complex :complexity,entityId :id_entity,repetetion:repetetion,hours_number:nb_hours} ).then(()=> {
+    if(sub_entity === null ) {
+
+        for( let i=1 ; i< complexity ; i++) {
+           await SubEntities.create({ name :sub_entity_name+" "+i, complex :complexity,entityId :id_entity,hours_number:nb_hours} )
+        }
         res.send("Sub-Entity created successfully");
-    });
     }
 
 });
