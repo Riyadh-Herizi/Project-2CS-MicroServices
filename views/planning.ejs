@@ -485,6 +485,22 @@
         }
       })
     }
+    function delete_sub_entity(id){
+      $.ajax({
+        url: '/client/delete_sub_entity',
+        type: 'POST',
+        cache: false,
+        data: {
+            id_sub_entity:id,
+        },
+        success: function(data){
+          get_sub_entities(current_entity);
+            }
+        , error: function(jqXHR, textStatus, err){
+            alert('status '+textStatus+', err '+err)
+        }
+      })
+    }
     function show_group(id) {
        current_group = id;
         $.ajax({
@@ -555,6 +571,7 @@
                         "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].hours_number+"</td>\n" +
                         "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].complex+"</td>\n" +
                         "                                <td class=\"font-weight-bold\">"+data.sub_entities[i].repetetion+"</td>\n" +
+                        "                                <td> <button onclick=\"delete_sub_entity("+data.sub_entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button></td>"+
                         "                            </tr>\n"
 
                 }

@@ -125,4 +125,9 @@ router.post('/add_sub_entity',async  function (req,res)  {
 
 });
 
+router.post('/delete_sub_entity',async function (req,res){
+  SubEntities.destroy({where : {id:req.body.id_sub_entity}});
+  res.send("Sub-Entity deleted successfully");
+});
+
 module.exports = router;
