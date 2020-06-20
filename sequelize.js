@@ -31,10 +31,15 @@ const Entities = EntityModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
 const Groups = GroupsModel(sequelize,Sequelize) ;
 Users.belongsTo(Clients);
+Clients.hasMany(Users);
 SubEntities.belongsTo(Entities);
+Entities.hasMany(SubEntities);
 Entities.belongsTo(Clients);
+Clients.hasMany(Entities);
 Entities.belongsTo(Groups);
+Groups.hasMany(Entities);
 Groups.belongsTo(Clients);
+Clients.hasMany(Groups);
 
 sequelize.sync({ force: false })
     .then(() => {

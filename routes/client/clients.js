@@ -51,8 +51,8 @@ router.post('/get_sub_entities',loggedin ,async function(req, res, next) {
 
 router.post('/group_sub_entities',loggedin ,async function(req, res, next) {
     const id_group = req.body.id_group;
-
-    const sub_entities = await Groups.findAll( { include:[{model:SubEntities,required:true},{model:Entities,required:true}],where:{id:id_group} } );
+    console.log('in function');
+    const sub_entities = await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : id_group}}] } );
     res.send({sub_entities :sub_entities });
 });
 
@@ -127,17 +127,14 @@ router.post('/add_sub_entity',async  function (req,res)  {
   console.log(req.body.complexity);
     const { id_entity,sub_entity_name,nb_hours,complexity,repetetion } = req.body;console.log(req.body);
     const sub_entity =  await  SubEntities.findOne( { where:{entityId:id_entity,name:sub_entity_name} } );
-    console.log(complexity);
+    console.log(repetetion);
     if(sub_entity === null ) {
-
-        for( let i=1 ; i< complexity ; i++) {
+        for( let i=1 ;  i<= repetetion ; i++) {
            await SubEntities.create({ name :sub_entity_name+" "+i, complex :complexity,entityId :id_entity,hours_number:nb_hours} )
         }
         res.send("Sub-Entity created successfully");
     }
-
 });
-
 router.post('/delete_sub_entity',async function (req,res){
   SubEntities.destroy({where : {id:req.body.id_sub_entity}});
   res.send("Sub-Entity deleted successfully");

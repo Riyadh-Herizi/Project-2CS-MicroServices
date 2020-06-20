@@ -17,9 +17,9 @@
       <div class="form-group">
     <label for="groups">Select group</label>
     <select onchange="show_sub_entities()" class="form-control" id="groups">
-
+       <option value="0"> Select group </option>
       <% for (var i = 0; i < groups.length ; i++) { %>
-           <option  value="<%= groups[i].id %>">
+           <option value="<%= groups[i].id %>">
                   <%= groups[i].group_name %>
             </option>
       <% } %>
@@ -128,6 +128,7 @@
 
     function show_sub_entities() {
       var id=document.getElementById("groups").options[document.getElementById("groups").selectedIndex].value;
+      if(id !== 0)
       $.ajax({
           url: '/client/group_sub_entities',
           type: 'POST',
@@ -139,7 +140,7 @@
               console.log("executed")
               var x ="";
               for (var i = 0; i < data.sub_entities.length ; i++) {
-                  x=x+ " <div id=\""+index+"\" class=\"card shadow text-center \" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
+                  x=x+ " <div id=\""+data.sub_entities[i].id+"\" class=\"card shadow text-center \" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
                       "                        <div class=\"card-body \" style=\"padding: 3px\" >\n" +
                       "                            <h5 class=\"card-title\" style=\"font-size: 10px\"></h5>\n" +
                       "                            <h5 class=\"card-title\" style=\"font-size: 15px\">"+data.sub_entities[i].name+"</h5>\n" +
