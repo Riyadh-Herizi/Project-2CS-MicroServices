@@ -125,12 +125,12 @@ router.post('/delete_entity',async function (req,res){
 });
 router.post('/add_sub_entity',async  function (req,res)  {
   console.log(req.body.complexity);
-    const { id_entity,sub_entity_name,nb_hours,complexity,repetetion } = req.body;console.log(req.body);
+    const { id_entity,sub_entity_name,hours,min,complexity,repetetion,nb_emp } = req.body;console.log(req.body);
     const sub_entity =  await  SubEntities.findOne( { where:{entityId:id_entity,name:sub_entity_name} } );
     console.log(repetetion);
     if(sub_entity === null ) {
         for( let i=1 ;  i<= repetetion ; i++) {
-           await SubEntities.create({ name :sub_entity_name+" "+i, complex :complexity,entityId :id_entity,hours_number:nb_hours} )
+           await SubEntities.create({ name :sub_entity_name+" "+i, complex :complexity,entityId :id_entity,hours:hours,min:min,nb_emp:nb_emp} )
         }
         res.send("Sub-Entity created successfully");
     }

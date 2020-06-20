@@ -26,7 +26,9 @@
         overflow: scroll;
 
     }
-
+    .without::-webkit-datetime-edit-ampm-field {
+        display: none;
+          }
 
     </style>
 </head>
@@ -340,6 +342,10 @@
     var current_group;
     var current_entity;
     function create_sub_entity(){
+
+      var time=document.getElementById("hours").value.split(":");
+      console.log(time);
+
       $.ajax({
           url: '/client/add_sub_entity',
           type: 'POST',
@@ -347,9 +353,11 @@
           data: {
               id_entity:current_entity,
               sub_entity_name:document.getElementById("sub_entity_name").value,
-              nb_hours:document.getElementById("nb_hours").value,
+              hours:time[0],
+              min:time[1],
               complexity:document.getElementById("complexity_sub").value,
               repetetion:document.getElementById("repetition").value,
+              nb_emp:document.getElementById("nb_emp").value,
               },
           success: function(data){
               get_sub_entities(current_entity);
@@ -568,8 +576,9 @@
                 for (var i = 0; i < data.sub_entities.length ; i++) {
                     x = x + "   <tr>\n" +
                         "                                <td class=\"font-weight-bold\">"+ data.sub_entities[i].name+"</td>\n" +
-                        "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].hours_number+"</td>\n" +
+                        "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].hours+":"+data.sub_entities[i].min+"</td>\n" +
                         "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].complex+"</td>\n" +
+                        "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].nb_emp+"</td>\n" +
                         "                                <td> <button onclick=\"delete_sub_entity("+data.sub_entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button></td>"+
                         "                            </tr>\n"
 
@@ -662,8 +671,9 @@
                     <thead>
                     <tr>
                         <th class="bg-primary text-white font-weight-bold">Sub-Entity name</th>
-                        <th class="bg-primary text-white font-weight-bold">nb_hours</th>
+                        <th class="bg-primary text-white font-weight-bold">Duration</th>
                         <th class="bg-primary text-white font-weight-bold">Complexity</th>
+                        <th class="bg-primary text-white font-weight-bold">Number of employees</th>
                         <th class="bg-primary text-white font-weight-bold">Options</th></tr>
                     </thead>
                     <tbody id="sub_entities_table">
@@ -676,16 +686,22 @@
                <br> <div id="add_new_sub" class="collapse">
                     <form method="POST" action="">
                         <div class="form-group">
-                            <label for="group_name">Sub-Entity Name</label>
+                            <label for="entity_name">Sub-Entity Name</label>
                             <input name="entity_name" type="text" class="form-control" id="sub_entity_name" required>
-                            <label for="entity_name">number of hours</label>
-                            <input name="entity_name" type="text" class="form-control" id="nb_hours" required>
+
+
+
+                            <label for="hours">number of hours</label>
+                            <input class="without form-control" max="12:00" min="00:01" type="time" ng-model="endTime" name="hours"  id="hours" required>
+
                         </div>
                         <div class="form-group">
                             <label for="complexity">Complexity</label>
-                            <input name="complexity" type="text" class="form-control" id="complexity_sub" required>
-                            <label for="group_name2">Repetition</label>
-                            <input name="entity_name" type="text" class="form-control" id="repetition" required>
+                            <input name="complexity" min="1" type="number" class="form-control" id="complexity_sub" required>
+                            <label for="repetition">Repetition</label>
+                            <input name="repetition" min="1" type="number" class="form-control" id="repetition" required>
+                            <label for="nb_emp">Number of employees</label>
+                            <input name="nb_emp" min="1" type="number" class="form-control" id="nb_emp" required>
                         </div>
                     </form>
                     <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_sub_entity()">Confirm</button>
