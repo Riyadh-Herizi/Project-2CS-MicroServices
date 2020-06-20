@@ -7,12 +7,24 @@
     <meta charset="UTF-8">
     <title>planning</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body style="margin: 10px">
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
+      <div class="form-group">
+    <label for="groups">Select group</label>
+    <select onchange="show_sub_entities()" class="form-control" id="groups">
+
+      <% for (var i = 0; i < groups.length ; i++) { %>
+           <option  value="<%= groups[i].id %>">
+                  <%= groups[i].group_name %>
+            </option>
+      <% } %>
+    </select>
+  </div>
         <table class="table">
             <thead>
             <tr>
@@ -90,6 +102,8 @@
 </div>
 
 
+
+
 </body>
 <script>
     var start = 7;
@@ -111,6 +125,36 @@
         //if(ev.target.id === "list" ) {}
         update_time();
     }
+
+    function show_sub_entities() {
+      var id=document.getElementById("groups").options[document.getElementById("groups").selectedIndex].value;
+      $.ajax({
+          url: '/client/group_sub_entities',
+          type: 'POST',
+          cache: false,
+          data: {
+              id_group :id
+          },
+          success: function(data){
+              console.log("executed")
+              var x ="";
+              for (var i = 0; i < data.sub_entities.length ; i++) {
+                  x=x+ " <div id=\""+index+"\" class=\"card shadow text-center \" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
+                      "                        <div class=\"card-body \" style=\"padding: 3px\" >\n" +
+                      "                            <h5 class=\"card-title\" style=\"font-size: 10px\"></h5>\n" +
+                      "                            <h5 class=\"card-title\" style=\"font-size: 15px\">"+data.sub_entities[i].name+"</h5>\n" +
+                      "                        </div>\n" +
+                      "                    </div>";
+              }
+              document.getElementById("entities").innerHTML=x;
+          }
+          , error: function(jqXHR, textStatus, err){
+              alert('status '+textStatus+', err '+err)
+          }
+      })
+    }
+
+
 </script>
 <script>
 
@@ -150,30 +194,6 @@ var events = [
         }
     },
 ];
-init_view();
 
-    function init_view() {
-        events.forEach(put_in_list)
-    }
-    function put_in_list(item,index) {
-        var cards_list = document.getElementById("entities");
-        cards_list.innerHTML = cards_list.innerHTML+ " <div id=\""+index+"\" class=\"card shadow text-center \" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
-            "                        <div class=\"card-body \" style=\"padding: 3px\" >\n" +
-            "                            <h5 class=\"card-title\" style=\"font-size: 10px\"></h5>\n" +
-            "                            <h5 class=\"card-title\" style=\"font-size: 15px\">"+item.name+"</h5>\n" +
-            "                            <h6 class=\"card-subtitle mb-2 text-muted\" style=\"font-size: 9px\">"+item.employee+"</h6>\n" +
-            "                            <h5 class=\"card-title\" style=\"font-size: 12px\">"+item.length.hour+"h &nbsp;"+ item.length.min+"min</h5>\n" +
-            "\n" +
-            "                        </div>\n" +
-            "                    </div>";
-    }
-    function update_time() {
-
-
-
-    }
 </script>
 </html>
-
-
-

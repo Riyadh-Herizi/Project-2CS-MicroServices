@@ -29,6 +29,14 @@ router.get('/planning_service',loggedin ,async function(req, res, next) {
     res.render('planning',{groups :groups });
 });
 
+router.get('/test',loggedin ,async function(req, res, next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
+    res.render('test',{groups :groups });
+});
+
+
+
 router.post('/get_group',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
@@ -41,6 +49,12 @@ router.post('/get_sub_entities',loggedin ,async function(req, res, next) {
     res.send({sub_entities :sub_entities });
 });
 
+router.post('/group_sub_entities',loggedin ,async function(req, res, next) {
+    const id_group = req.body.id_group;
+
+    const sub_entities = await Groups.findAll( { include:[{model:SubEntities,required:true},{model:Entities,required:true}],where:{id:id_group} } );
+    res.send({sub_entities :sub_entities });
+});
 
 router.post('/get_entities',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
