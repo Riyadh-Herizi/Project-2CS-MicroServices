@@ -8,8 +8,10 @@ module.exports = (sequelize, type) => {
             autoIncrement: true
         },
         name :type.STRING,
-        hours_number:type.INTEGER,
+        hours:type.STRING,
+        min:type.STRING,
         complex :type.INTEGER,
+        nb_emp:type.INTEGER,
 
     })
 };
