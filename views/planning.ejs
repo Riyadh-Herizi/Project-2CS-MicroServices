@@ -348,7 +348,7 @@
               id_entity:current_entity,
               sub_entity_name:document.getElementById("sub_entity_name").value,
               nb_hours:document.getElementById("nb_hours").value,
-              complexity:document.getElementById("complexity").value,
+              complexity:document.getElementById("complexity_sub").value,
               repetetion:document.getElementById("repetition").value,
               },
           success: function(data){
@@ -547,6 +547,7 @@
                 id_entity :id
             },
             success: function(data){
+                console.log("executed")
                 var x ="";
                 for (var i = 0; i < data.sub_entities.length ; i++) {
                     x = x + "   <tr>\n" +
@@ -667,7 +668,7 @@
                         </div>
                         <div class="form-group">
                             <label for="complexity">Complexity</label>
-                            <input name="complexity" type="text" class="form-control" id="complexity" required>
+                            <input name="complexity" type="text" class="form-control" id="complexity_sub" required>
                             <label for="group_name2">Repetition</label>
                             <input name="entity_name" type="text" class="form-control" id="repetition" required>
                         </div>
