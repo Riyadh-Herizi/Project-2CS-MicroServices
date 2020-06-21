@@ -26,9 +26,7 @@
         overflow: scroll;
 
     }
-    .without::-webkit-datetime-edit-ampm-field {
-        display: none;
-          }
+
 
     </style>
 </head>
@@ -343,7 +341,8 @@
     var current_entity;
     function create_sub_entity(){
 
-      var time=document.getElementById("hours").value.split(":");
+      var hour=document.getElementById("hour").value;
+      var min=document.getElementById("min").value;
       console.log(time);
 
       $.ajax({
@@ -353,8 +352,8 @@
           data: {
               id_entity:current_entity,
               sub_entity_name:document.getElementById("sub_entity_name").value,
-              hours:time[0],
-              min:time[1],
+              hours:hour,
+              min:min,
               complexity:document.getElementById("complexity_sub").value,
               repetetion:document.getElementById("repetition").value,
               nb_emp:document.getElementById("nb_emp").value,
@@ -573,7 +572,10 @@
             success: function(data){
                 console.log("executed")
                 var x ="";
+                var empty = true;
+
                 for (var i = 0; i < data.sub_entities.length ; i++) {
+                    empty=false;
                     x = x + "   <tr>\n" +
                         "                                <td class=\"font-weight-bold\">"+ data.sub_entities[i].name+"</td>\n" +
                         "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].hours+":"+data.sub_entities[i].min+"</td>\n" +
@@ -583,7 +585,19 @@
                         "                            </tr>\n"
 
                 }
-             document.getElementById("sub_entities_table").innerHTML=x;
+                if(empty) {
+                    document.getElementById("table").style.display = "none";
+                    document.getElementById("model_body").innerHTML= "<div id= \"empty\" class=\"container-fluid text-center \" >" +
+
+                        "                  <h5 class=\"text-primary\">This entity is empty add new sub-entities</h5>\n" +
+                        "                      </div>";
+                }
+                else {
+                    document.getElementById("sub_entities_table").innerHTML=x;
+                    document.getElementById("table").style.display = "table";
+                    document.getElementById("empty").style.display = "none";
+                }
+
             }
             , error: function(jqXHR, textStatus, err){
                 alert('status '+textStatus+', err '+err)
@@ -667,7 +681,8 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <table class="table text-center">
+                <div id="model_body"></div>
+                <table id="table" class="table text-center">
                     <thead>
                     <tr>
                         <th class="bg-primary text-white font-weight-bold">Sub-Entity name</th>
@@ -681,6 +696,7 @@
                     </tbody>
 
                 </table>
+
                 <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add Sub-Entity</button>
 
                <br> <div id="add_new_sub" class="collapse">
@@ -688,12 +704,12 @@
                         <div class="form-group">
                             <label for="entity_name">Sub-Entity Name</label>
                             <input name="entity_name" type="text" class="form-control" id="sub_entity_name" required>
-
-
-
-                            <label for="hours">number of hours</label>
-                            <input class="without form-control" max="12:00" min="00:01" type="time" ng-model="endTime" name="hours"  id="hours" required>
-
+                        </div>
+                        <label for="time">Duration</label>
+                        <div id="time" class=" d-flex">
+                            <input name="hour" min="0" value="00" max="12" type="number" class="form-control" id="hour" required>
+                            <p> &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; </p>
+                            <input name="min" min="1" value="00" max="59" type="number" class="form-control" id="min" required>
                         </div>
                         <div class="form-group">
                             <label for="complexity">Complexity</label>

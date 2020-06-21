@@ -124,7 +124,7 @@ router.post('/delete_entity',async function (req,res){
   res.send("Entity deleted successfully");
 });
 router.post('/add_sub_entity',async  function (req,res)  {
-  console.log(req.body.complexity);
+  console.log(req.body);
     const { id_entity,sub_entity_name,hours,min,complexity,repetetion,nb_emp } = req.body;console.log(req.body);
     const sub_entity =  await  SubEntities.findOne( { where:{entityId:id_entity,name:sub_entity_name} } );
     console.log(repetetion);
