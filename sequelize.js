@@ -2,6 +2,8 @@ const Sequelize = require('sequelize');
 
 const AdminModel = require('./models/Admin');
 const UserModel  = require('./models/User');
+const PlanningModel  = require('./models/plannings');
+const PositionModel  = require('./models/position');
 const ClientModel  = require('./models/Client');
 const EntityModel  = require('./models/Entities');
 const GroupsModel  = require('./models/Group');
@@ -26,6 +28,8 @@ const getHashedPassword = (password) => {
 
 const Admins = AdminModel(sequelize, Sequelize);
 const Users = UserModel(sequelize,Sequelize);
+const Plannings = PlanningModel(sequelize,Sequelize);
+const Positions = PositionModel(sequelize,Sequelize);
 const Clients = ClientModel(sequelize,Sequelize);
 const Entities = EntityModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
@@ -40,6 +44,14 @@ Entities.belongsTo(Groups);
 Groups.hasMany(Entities);
 Groups.belongsTo(Clients);
 Clients.hasMany(Groups);
+Plannings.belongsTo(Clients);
+Clients.hasMany(Plannings);
+Plannings.belongsTo(Groups);
+Groups.hasMany(Plannings);
+Positions.belongsTo(Plannings);
+Positions.belongsTo(SubEntities);
+//Positions.hasMany(Users);
+
 
 sequelize.sync({ force: false })
     .then(() => {
@@ -71,5 +83,5 @@ async function check() {
 }
 
 module.exports = {
- Admins,Users,Clients,Entities,SubEntities,Groups
+ Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions
 };
