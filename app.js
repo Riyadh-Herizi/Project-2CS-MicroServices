@@ -8,6 +8,7 @@ var indexRouter = require('./routes/admin/admin');
 var usersRouter = require('./routes/user/users');
 var clientRouter = require('./routes/client/clients');
 var generalRouter = require('./routes/general');
+var PlanningRouter = require('./routes/Client/planning');
 
 
 var Passport = require('passport').Passport,
@@ -70,6 +71,9 @@ app.use('/',  generalRouter);
 app.use('/admin',authRoutes);
 app.use('/client',ClientauthRoutes);
 app.use('/client',clientRouter);
+
+app.use('/planning_control',PlanningRouter);
+
 const port = 3000;
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
