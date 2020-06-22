@@ -57,10 +57,10 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div id="Dashboard" class="container-fluid tab-pane  fade"><br>
+        <div id="Dashboard" class="container-fluid tab-pane  active"><br>
             <p></p>
         </div>
-        <div id="entities" class="container-fluid tab-pane active"><br>
+        <div id="entities" class="container-fluid tab-pane fade"><br>
 
 
             <div class="container-fluid" >
@@ -327,7 +327,44 @@
             </div>
         </div>
         <div id="plannings" class="container-fluid tab-pane fade"><br>
-            <h3>plannings</h3>
+
+
+                      <div class="container-fluid" >
+                        <div class="row">
+                          <div class="col-md-3 p-2 shadow text-center">
+                           <table class="table text-center">
+                               <thead>
+                               <tr><th class="bg-primary text-white font-weight-bold">Plannings</th></tr>
+                               </thead>
+                               <tbody id="plannings">
+                               <% for (var i = 0; i < plannings.length ; i++) { %>
+                                   <tr>
+                                       <td class="text-center"> <button class="btn btn-sm btn-light text-primary bg-white" onclick="show_planning(<%= plannings[i].id %>)">
+                                           <%= plannings[i].planning_name %>
+                                           </button>  </td>
+                                   </tr>
+                               <% } %>
+
+
+                               </tbody>
+                           </table>
+                              <button class="btn btn-primary btn-sm text-center text-white" onclick="window.location.replace('/planning_control/create')" >Add new planning</button>
+
+                          </div>
+                            <div id="view" class="col-md-8 shadow p-1 m-4">
+                                <div class="container-fluid text-center " style="height: 500px ;display: flex;
+            justify-content: center;
+            align-items: center;">
+
+                                    <h3 class="text-primary">Select a planning to see it</h3>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                      </div>
         </div>
         <div id="statistics" class="container-fluid tab-pane fade"><br>
             <h3>statistics</h3>
