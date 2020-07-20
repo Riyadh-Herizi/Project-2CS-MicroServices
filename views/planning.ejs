@@ -463,6 +463,31 @@
             }
         })
     }
+    function update_users() {
+        $.ajax({
+            url: '/client/get_emp',
+            type: 'POST',
+            cache: false,
+            data: {
+            },
+            success: function(data){
+                var x ="";
+               for (var i = 0; i < data.users.length ; i++) {
+                x = x + "<tr>\n" +
+                    "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"\">\n" +
+                    "                    "+  data.users[i].firstName+ "\n" +
+                    "                    </button>  </td>\n" +
+                    "                </tr>"
+
+                 }
+
+               document.getElementById("users").innerHTML = x;
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
     function update_entities(id) {
         $.ajax({
             url: '/client/get_entities',
@@ -563,9 +588,12 @@
                         "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
                         "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
                         "                    <td class=\"group text-black font-weight-bold\">\n"+
-                        "                         <button data-toggle=\"modal\" data-target=\"#sub_entity\" onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Sub-Entities</button>" +
-                        "                         <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button>\n" +
-                        "                        <button onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Edit</button>\n" +
+                        "                         <button data-toggle=\"modal\" data-target=\"#sub_entity\" onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-info btn-sm text-center text-white\" >Sub-Entities</button>" +
+                        "                         <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-danger btn-sm text-center text-white\" ><i class=\"fa fa-trash\"></i></button>\n" +
+                        "                        <button onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-warning btn-sm text-center text-white\" ><i class=\"fa fa-pen\"></i></button>\n" +
+                        "                    </td>\n" +
+                        "                    <td class=\"group text-black font-weight-bold\">\n"+
+                        "                         <button data-toggle=\"modal\" data-target=\"#responsibles\" onclick=\"\" class=\"btn btn-primary btn-sm text-center text-white\" >Show</button>" +
                         "                    </td>\n" +
                         "                </tr>";
                 }
@@ -577,7 +605,8 @@
                     "                <tr>\n" +
                     "                    <th class=\"bg-primary text-white font-weight-bold\">Entity name</th>\n" +
                     "                    <th class=\"bg-primary text-white font-weight-bold\">Complexity</th>\n" +
-                    "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th></tr>\n" +
+                    "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th>\n" +
+                    "                    <th class=\"bg-primary text-white font-weight-bold\">Responsibles</th></tr>\n" +
                     "                </thead>\n" +
                     "                <tbody>\n" +x+"\n" +
                     "                </tbody>\n" +
@@ -770,4 +799,61 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="responsibles">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Responsibles</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="model_body"></div>
+                <table id="table" class="table text-center">
+                    <thead>
+                    <tr>
+                        <th class="bg-primary text-white font-weight-bold">FirstName</th>
+                        <th class="bg-primary text-white font-weight-bold">LastName</th>
+                        <th class="bg-primary text-white font-weight-bold">Degree</th>
+                        <th class="bg-primary text-white font-weight-bold">Hours</th>
+                        <th class="bg-primary text-white font-weight-bold">Options</th></tr>
+                    </thead>
+                    <tbody id="sub_entities_table">
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add responsible</button>
+
+               <br> <div id="add_new_sub" class="collapse">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="select">Choose a employee</label>
+                            <select class="custom-select" name="" id="select">
+                                <option selected>Select one</option>
+                                <option value="">Abdelhamid Malki</option>
+                                <option value="">Abdelkarim Righi</option>
+                                <option value="">Look to the second choice haha</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="">Confirm</button>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" >Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </html>

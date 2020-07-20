@@ -27,7 +27,8 @@ router.get('/planning_service',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
     const plannings = await  Plannings.findAll( { where:{clientId :client_id.id} } );
-    res.render('planning',{groups :groups,plannings:plannings });
+    const users = await  Users.findAll( { where:{clientId :client_id.id} } );
+    res.render('planning',{groups :groups,plannings:plannings,users:users });
 });
 
 
@@ -109,10 +110,8 @@ router.post('/add_entity',async  function (req,res)  {
 });
 router.post('/get_emp',async  function (req,res)  {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
-    console.log(client_id);
     const users = await  Users.findAll( { where:{clientId :client_id.id} } );
     res.send(users);
-
 });
 router.post('/delete_entity',async function (req,res){
   const client_id = await Clients.findOne( { where:{email :req.user.username} } );
