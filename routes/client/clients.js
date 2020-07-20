@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
-const { Clients,Users,Groups ,Entities,SubEntities,Plannings,Positions} = require('../../sequelize');
+const { Clients,Users,Groups ,Entities,SubEntities,Plannings,Positions,Responsible} = require('../../sequelize');
 var loggedin = function(req,res,next) {
    if(req.isAuthenticated()) {
         next()
@@ -33,6 +33,18 @@ router.get('/planning_service',loggedin ,async function(req, res, next) {
 
 
 
+
+router.post('/get_responsible' ,async function(req, res, next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const users = await  Users.findAll( { where:{clientId :client_id.id},include:[{ model:Responsible,required:true,where: {entityId :req.body.id_entity}}] });
+    res.send({users :users });
+});
+router.post('/create_respo' ,async function(req, res, next) {
+    await Responsible.create({ entityId :req.body.id_entity,userId :req.body.id_emp} ).then(()=> {
+        res.send("respo created successfully");
+    });
+
+});
 
 
 router.post('/get_group',loggedin ,async function(req, res, next) {

@@ -6,6 +6,7 @@ const PlanningModel  = require('./models/plannings');
 const PositionModel  = require('./models/position');
 const ClientModel  = require('./models/Client');
 const EntityModel  = require('./models/Entities');
+const ResponsibleModel  = require('./models/Responsible');
 const GroupsModel  = require('./models/Group');
 const SubEntityModel  = require('./models/Sub_Entities');
 const crypto = require('crypto');
@@ -32,8 +33,12 @@ const Plannings = PlanningModel(sequelize,Sequelize);
 const Positions = PositionModel(sequelize,Sequelize);
 const Clients = ClientModel(sequelize,Sequelize);
 const Entities = EntityModel(sequelize,Sequelize);
+const Responsible = ResponsibleModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
 const Groups = GroupsModel(sequelize,Sequelize) ;
+Responsible.belongsTo(Entities);
+Users.hasMany(Responsible)
+Responsible.belongsTo(Users);
 Users.belongsTo(Clients);
 Clients.hasMany(Users);
 SubEntities.belongsTo(Entities);
@@ -83,5 +88,5 @@ async function check() {
 }
 
 module.exports = {
- Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions
+ Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions,Responsible
 };

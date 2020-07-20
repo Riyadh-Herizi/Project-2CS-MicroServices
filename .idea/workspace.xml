@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d257c690-a3ed-4d60-9764-999aed040da9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/Responsible.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/client/clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/client/clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sequelize.js" beforeDir="false" afterPath="$PROJECT_DIR$/sequelize.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/planning.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/planning.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/client/clients.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+            <state relative-caret-position="209">
+              <caret line="40" column="3" lean-forward="true" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -26,35 +28,42 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/Sub_Entities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="200">
+              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/Responsible.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sequelize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/planning.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="711" column="63" selection-start-line="711" selection-start-column="63" selection-end-line="711" selection-end-column="63" />
+            <state relative-caret-position="180">
+              <caret line="723" column="25" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="25" />
               <folding>
-                <element signature="e#16768#17190#0#HTML" />
-                <element signature="e#17227#17798#0#HTML" />
-                <element signature="e#17828#18738#0#HTML" />
-                <element signature="e#18772#22082#0#HTML" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#22113#22477#0#HTML" />
-                <element signature="e#22512#22891#0#HTML" />
-                <element signature="e#22812#22876#0#HTML" />
-                <element signature="e#22920#26257#0#HTML" />
-                <element signature="e#22964#26250#0#HTML" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#32117#32123#0#HTML" expanded="true" />
-                <element signature="e#32123#32129#0#HTML" expanded="true" />
-                <element signature="e#32129#32135#0#HTML" expanded="true" />
-                <element signature="e#32136#32142#0#HTML" expanded="true" />
-                <element signature="e#32142#32148#0#HTML" expanded="true" />
-                <element signature="e#32148#32154#0#HTML" expanded="true" />
+                <element signature="n#div#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#html#0;n#!!top" />
+                <element signature="e#39188#39194#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,40 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/Client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="36" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/test.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-158">
-              <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sequelize.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/Entities.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="200">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -118,6 +95,10 @@
       <find>portfolio</find>
       <find>id=&quot;call-to-action&quot;</find>
       <find>group_su</find>
+      <find>users</find>
+      <find>users.</find>
+      <find>sub_e</find>
+      <find>plann</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,10 +137,11 @@
         <option value="$PROJECT_DIR$/models/Group.js" />
         <option value="$PROJECT_DIR$/models/Entities.js" />
         <option value="$PROJECT_DIR$/models/Sub_Entities.js" />
-        <option value="$PROJECT_DIR$/sequelize.js" />
         <option value="$PROJECT_DIR$/views/test.ejs" />
-        <option value="$PROJECT_DIR$/routes/client/clients.js" />
         <option value="$PROJECT_DIR$/views/planning.ejs" />
+        <option value="$PROJECT_DIR$/models/Responsible.js" />
+        <option value="$PROJECT_DIR$/sequelize.js" />
+        <option value="$PROJECT_DIR$/routes/client/clients.js" />
       </list>
     </option>
   </component>
@@ -179,28 +161,28 @@
         <subPane>
           <expand>
             <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Project-2CS-MicroServices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-2CS-MicroServices" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Project-2CS-MicroServices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-2CS-MicroServices" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Project-2CS-MicroServices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-2CS-MicroServices" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Project-2CS-MicroServices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-2CS-MicroServices" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="Project-2CS-MicroServices" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-2CS-MicroServices" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -214,6 +196,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -256,6 +239,7 @@
       <workItem from="1592656787739" duration="4826000" />
       <workItem from="1592699490479" duration="34000" />
       <workItem from="1592749871461" duration="3344000" />
+      <workItem from="1595278225624" duration="4102000" />
     </task>
     <task id="LOCAL-00001" summary="planning test">
       <created>1591995092466</created>
@@ -373,19 +357,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83431000" />
+    <option name="totallyTimeSpent" value="87533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16554959" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16756032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.32914925" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32914925" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -394,7 +378,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.34030685" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.37064344" side_tool="true" weight="0.6889819" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" visible="true" weight="0.06555091" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" visible="true" weight="0.27894002" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32914925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -478,13 +462,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/connection-manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="122" column="18" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/sequelize/lib/dialects/mysql/connection-manager.js" />
     <entry file="file://$PROJECT_DIR$/routes/user/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -609,20 +587,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sequelize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/views/test.ejs" />
     <entry file="file://$PROJECT_DIR$/models/Entities.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -630,10 +595,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/test.ejs">
+    <entry file="file://$PROJECT_DIR$/models/Client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-158">
-          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+        <state relative-caret-position="200">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/creation.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="129" column="13" lean-forward="true" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="110" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -642,43 +614,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/client/clients.js">
+    <entry file="file://$PROJECT_DIR$/models/Sub_Entities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+        <state relative-caret-position="200">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Sub_Entities.js">
+    <entry file="file://$PROJECT_DIR$/models/Responsible.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        <state relative-caret-position="180">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/planning.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="711" column="63" selection-start-line="711" selection-start-column="63" selection-end-line="711" selection-end-column="63" />
+        <state relative-caret-position="180">
+          <caret line="723" column="25" selection-start-line="723" selection-start-column="16" selection-end-line="723" selection-end-column="25" />
           <folding>
-            <element signature="e#16768#17190#0#HTML" />
-            <element signature="e#17227#17798#0#HTML" />
-            <element signature="e#17828#18738#0#HTML" />
-            <element signature="e#18772#22082#0#HTML" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#22113#22477#0#HTML" />
-            <element signature="e#22512#22891#0#HTML" />
-            <element signature="e#22812#22876#0#HTML" />
-            <element signature="e#22920#26257#0#HTML" />
-            <element signature="e#22964#26250#0#HTML" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#32117#32123#0#HTML" expanded="true" />
-            <element signature="e#32123#32129#0#HTML" expanded="true" />
-            <element signature="e#32129#32135#0#HTML" expanded="true" />
-            <element signature="e#32136#32142#0#HTML" expanded="true" />
-            <element signature="e#32142#32148#0#HTML" expanded="true" />
-            <element signature="e#32148#32154#0#HTML" expanded="true" />
+            <element signature="n#div#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#html#0;n#!!top" />
+            <element signature="e#39188#39194#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sequelize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/client/clients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="40" column="3" lean-forward="true" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
         </state>
       </provider>
     </entry>
