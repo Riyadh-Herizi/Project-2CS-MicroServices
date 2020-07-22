@@ -52,7 +52,38 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="/login">Login</a></li>
+        <li>
+          <%if(type ==="no") {%>
+
+             <li  class="menu-active"><a href="/user/login" ><i class="fa fa-lock"></i>&nbsp;&nbsp; Login&nbsp;&nbsp;&nbsp;</a></li>
+
+
+  <%}%>
+  <%if(type ==="user") {%>
+
+    <li  class="menu-active"><a href="/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+      <li  class="menu-active"><a href="/user/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
+
+  <%}%>
+  <%if(type ==="client") {%>
+
+      <li class="menu-active"><a href="/client/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="menu-active"><a href="/client/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
+
+  <%}%>
+
+  <%if(type ==="admin") {%>
+
+ <li  class="menu-active"><a href="/admin/dashboard" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+    <li class="menu-active"><a href="/admin/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
+
+  <%}%>
+
+
+
+
+
+  </li>
       </ul>
     </nav>
   </div>

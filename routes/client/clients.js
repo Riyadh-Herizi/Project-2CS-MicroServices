@@ -10,6 +10,21 @@ var loggedin = function(req,res,next) {
        res.redirect('/client/login');
      }
 };
+async function check_if_client(req) {
+    const clients = await  Clients.findOne({where: {email:req.user.username}});
+    if (clients) return true;
+    else return false;
+}
+async function check_if_user(req) {
+    const User = await  Users.findOne({where: {email:req.user.username}});
+    if (User) return true;
+    else return false;
+}
+async function check_if_admin(req) {
+    const admin = await  Admins.findOne({where: {email:req.user.username}});
+    if (admin) return true;
+    else return false;
+}
 const getHashedPassword = (password) => {
     const sha256 = crypto.createHash('sha256');
     const hash = sha256.update(password).digest('base64');

@@ -13,12 +13,13 @@ router.get('/create',async function(req, res, next) {
   res.render('creation',{groups :groups });
 });
 
-router.get('/create_planning',async function(req, res, next) {
-  var date=new Date();
+router.post('/create_planning',async function(req, res, next) {
+  var utc = new Date().toJSON().slice(0,10);
   const client_id = await Clients.findOne( { where:{email :req.user.username} } );
-  await Plannings.create({planning_name: req.body.planning_name, clientId: req.body.clientId,start:"",end:"",
-  date:date.getFullYear+"-"+date.getMonth+"-"+date.getDate}).then((planning)=> {
-    res.redirect("/planning_control/"+planning.id)
+  await Plannings.create({planning_name: req.body.name,groupId:req.body.id_group, clientId: client_id.id,start:req.body.start
+    ,end:req.body.end,
+  date:utc}).then((planning)=> {
+  //  res.redirect("/planning_control/"+planning.id)
   })
 });
 module.exports = router;

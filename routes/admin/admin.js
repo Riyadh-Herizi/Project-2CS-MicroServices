@@ -10,6 +10,21 @@ var loggedin = function(req,res,next) {
 
   }
 };
+async function check_if_client(req) {
+  const clients = await  Clients.findOne({where: {email:req.user.username}});
+  if (clients) return true;
+  else return false;
+}
+async function check_if_user(req) {
+  const User = await  Users.findOne({where: {email:req.user.username}});
+  if (User) return true;
+  else return false;
+}
+async function check_if_admin(req) {
+  const admin = await  Admins.findOne({where: {email:req.user.username}});
+  if (admin) return true;
+  else return false;
+}
 /* GET home page. */
 router.get('/login', function(req, res, next) {
   res.render('login');
