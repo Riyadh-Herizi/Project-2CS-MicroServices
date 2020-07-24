@@ -61,20 +61,20 @@
   <%}%>
   <%if(type ==="user") {%>
 
-    <li  class="menu-active"><a href="/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+    <li  class="menu-active"><a href="/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Dashboard&nbsp;&nbsp;&nbsp;</a></li>
       <li  class="menu-active"><a href="/user/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
 
   <%}%>
   <%if(type ==="client") {%>
 
-      <li class="menu-active"><a href="/client/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="menu-active"><a href="/client/" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Dashboard&nbsp;&nbsp;&nbsp;</a></li>
       <li class="menu-active"><a href="/client/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
 
   <%}%>
 
   <%if(type ==="admin") {%>
 
- <li  class="menu-active"><a href="/admin/dashboard" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Home&nbsp;&nbsp;&nbsp;</a></li>
+ <li  class="menu-active"><a href="/admin/dashboard" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Dashboard&nbsp;&nbsp;&nbsp;</a></li>
     <li class="menu-active"><a href="/admin/logout" ><i class="fa fa-door-open"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a></li>
 
   <%}%>
@@ -95,7 +95,19 @@
   <div class="intro-content">
     <h2>Time planning   <span>made</span><br>easier!</h2>
     <div>
-      <a href="/login" class="btn-get-started scrollto">Login</a>
+        <%if(type ==="no") {%>
+            <a href="/user/login" class="btn-get-started scrollto">Login</a>
+        <%}%>
+        <%if(type ==="user") {%>
+            <a href="/user/home" class="btn-get-started scrollto">Home</a>
+        <%}%>
+        <%if(type ==="client") {%>
+            <a href="/client/" class="btn-get-started scrollto">Client Home</a>
+        <%}%>
+
+        <%if(type ==="admin") {%>
+            <a href="/admin/dashboard" class="btn-get-started scrollto">Admin DASHBOARD</a>
+        <%}%>
       <a href="#contact" class="btn-projects scrollto">Contact us</a>
     </div>
   </div>

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+const { Admins } = require('../../sequelize');
 var loggedin = function(req,res,next) {
   if(req.isAuthenticated()) {
   next()
@@ -26,9 +26,13 @@ async function check_if_admin(req) {
   else return false;
 }
 /* GET home page. */
-router.get('/login', function(req, res, next) {
-  res.render('login');
-});
+router.get('/login', async function(req, res, next) {
+  var check;
+  if(typeof req.user === 'undefined')
+    check = false;
+  else  check = await check_if_admin(req);
+
+  res.render('login',{check:check});});
 router.get('/register', function(req, res, next) {
   res.render('register');
 });

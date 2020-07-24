@@ -740,7 +740,7 @@
     function create_planning(){
         
         var id_group=document.getElementById("groups_select").options[document.getElementById("groups_select").selectedIndex].value;
-        console.log("exuctuted")
+
         $.ajax({
             url: '/planning_control/create_planning',
             type: 'POST',
@@ -752,7 +752,7 @@
                 end:document.getElementById("end").value
             },
             success: function(data){
-                alert("haha work")
+                   window.location.replace("/planning_control/"+data.id)
             }
             , error: function(jqXHR, textStatus, err){
                 alert('status '+textStatus+', err '+err)

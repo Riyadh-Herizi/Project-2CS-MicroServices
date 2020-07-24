@@ -1,42 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="logo.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+    <style media="screen">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="row justify-content-md-center" style="margin-top: 100px">
-        <div class="col-md-6">
+<div class="limiter" >
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic" data-tilt>
+                <img src="/logo.png" alt="IMG"><br><br><br>
+                <a href="/client/login"><button class="btn btn-primary" type="button">Authority LOGIN</button></a>
+                <a href="/user/login"><button class="btn btn-primary" type="button">Citizen LOGIN</button></a>
+            </div>
 
-            <% if (locals.message ) { %>  <div class="alert  <%=locals.messageClass%>" role="alert">
-                <%=locals.message%>
-            </div>      <%} %>
+
+            <form id="login" action="/admin/login" method="post" class="login100-form validate-form text-center justify-content-center">
 
 
-            <form method="POST" action="/admin/login">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input name="username" type="email" class="form-control"  placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control"  placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <% if(check ===true) {%>
+                    <br><br>
+                    <h4> You're already logged in </h4><br><br><br><br>
+                    <button type="button" class="btn btn-warning"><li>
+                            <a href="/client/home" style="color:white"><i class="fa fa-dashboard"></i>&nbsp;&nbsp; Dashboard&nbsp;&nbsp;&nbsp;</a>
+                        </li>
+                    </button>
+                    <button type="button" class="btn btn-warning"><li>
+
+                            <a href="/client/logout" style="color:white"><i class="fa fa-circle-notch"></i>&nbsp;&nbsp; Logout&nbsp;&nbsp;&nbsp;</a>
+                        </li></button>
+                <%} else {%>
+                    <span class="login100-form-title">
+					Admin LOGIN
+					</span>
+
+                    <br><br>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="username" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+                        <a class="txt2" href="#">
+                            Username / Password?
+                        </a>
+                    </div>
+                    <br><br>   <br><br>
+                <%} %>
             </form>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+<!--===============================================================================================-->
+<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/vendor/bootstrap/js/popper.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script>
+
+
+
+    function change_action() {
+        console.log("clicked")
+        var radios = document.getElementsByName('options');
+        if(radios[0].checked === true) {
+            document.getElementById("login").action = "/client/login";
+            console.log("client")
+        }
+        else{ document.getElementById("login").action = "/user/login";
+            console.log("employee")
+        }
+
+    }
+</script>
+
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
 </body>
 </html>
+s

@@ -19,7 +19,19 @@ router.post('/create_planning',async function(req, res, next) {
   await Plannings.create({planning_name: req.body.name,groupId:req.body.id_group, clientId: client_id.id,start:req.body.start
     ,end:req.body.end,
   date:utc}).then((planning)=> {
-  //  res.redirect("/planning_control/"+planning.id)
+
+      res.send({id:planning.id})
   })
 });
+router.get('/:id_planning',async function(req, res, next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    await Plannings.findOne({where :{id:req.params.id_planning}}).then(async (planning)=>{
+       const sub_entities =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}}] } );
+      res.render('creation',{sub_entities :sub_entities });
+
+    });
+
+});
+
+
 module.exports = router;

@@ -14,24 +14,27 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
-      <div class="form-group">
-    <label for="groups">Select group</label>
-    <select onchange="show_sub_entities()" class="form-control" id="groups">
-       <option value="0"> Select group </option>
-      <% for (var i = 0; i < groups.length ; i++) { %>
-           <option value="<%= groups[i].id %>">
-                  <%= groups[i].group_name %>
-            </option>
-      <% } %>
-    </select>
+
+
+
   </div>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Entities.js</th>
+                <th scope="col">Sub-Entities</th>
             </tr>
             </thead>
             <tbody>
+            <% for (var i = 0; i < sub_entities.length ; i++) { %>
+
+               <div id="<%= sub_entities[i].id %>" class="card shadow text-center " draggable="true" ondragstart="drag(event)">
+                                       <div class="card-body " style="padding: 3px">
+                                           <h5 class="card-title" style="font-size: 10px"><%= sub_entities[i].name %></h5>
+                                           <h5 class="card-title" style="font-size: 15px"><%= sub_entities[i].hours %></h5>
+                                       </div>
+                       </div>
+
+            <% } %>
             <tr>
                 <td id="entities" ondrop="drop(event)" ondragover="allowDrop(event)">
 

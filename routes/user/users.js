@@ -35,8 +35,14 @@ var loggedin = function(req,res,next) {
   }
 };
 
-router.get('/login', function(req, res, next) {
-  res.render('user_login');
+router.get('/login', async function(req, res, next) {
+  var check;
+  if(typeof req.user === 'undefined')
+    check = false;
+  else
+    check = await check_if_user(req);
+
+  res.render('user_login',{check:check});
 });
 
 router.get('/home',loggedin, function (req,res,next) {

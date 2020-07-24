@@ -30,8 +30,13 @@ const getHashedPassword = (password) => {
     const hash = sha256.update(password).digest('base64');
     return hash;
 };
-router.get('/login', function(req, res, next) {
-    res.render('client_login');
+router.get('/login', async function(req, res, next) {
+    var check;
+    if(typeof req.user === 'undefined')
+        check = false;
+    else  check = await check_if_client(req);
+
+    res.render('client_login',{check:check});
 });
 router.get('/',loggedin, async function (req,res,next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
