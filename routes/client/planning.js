@@ -27,7 +27,8 @@ router.get('/:id_planning',async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     await Plannings.findOne({where :{id:req.params.id_planning}}).then(async (planning)=>{
        const sub_entities =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}}] } );
-      res.render('creation',{sub_entities :sub_entities });
+      console.log(sub_entities[0].entity.name)
+       res.render('creation',{sub_entities :sub_entities });
 
     });
 
