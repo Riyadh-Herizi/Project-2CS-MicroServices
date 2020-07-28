@@ -16,6 +16,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
+        .cont {
+            position: relative;
+            width: 100%;
+            }
+
+            .card-over {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+            }
+
+            .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display:flex;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+            
+            }
+
+            .cont:hover .card-over {
+            opacity: 0.3;
+            }
+
+            .cont:hover .middle {
+            opacity: 1;
+            }
 
     </style>
 </head>
@@ -46,7 +80,7 @@
       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 display-inline-block" style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
 
-
+        <div class="table-responsive">
           <table class="table text-center">
               <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
 
@@ -59,7 +93,7 @@
                           <div class="form-group row">
                               <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                               <div class="col-10">
-                                  <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                  <input onchange="update_empty(this,0)" class="form-control" type="time" value="08:00" id="time-empty-0">
                               </div>
                           </div>
                           <div class="form-group row">
@@ -76,7 +110,7 @@
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,1)" class="form-control" type="time" value="08:00" id="time-empty-1">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -93,7 +127,7 @@
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,2)" class="form-control" type="time" value="08:00" id="time-empty-2">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -110,7 +144,7 @@
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,3)" class="form-control" type="time" value="08:00" id="time-empty-3">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -127,7 +161,7 @@
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,4)" class="form-control" type="time" value="08:00" id="time-empty-4">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -144,7 +178,7 @@
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,5)" class="form-control" type="time" value="08:00" id="time-empty-5">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -161,7 +195,7 @@
                              <div class="form-group row ">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
-                                     <input class="form-control" type="time" value="08:00" id="example-time-input">
+                                     <input onchange="update_empty(this,6)" class="form-control" type="time" value="08:00" id="time-empty-6">
                                  </div>
                              </div>
                              <div class="form-group row">
@@ -191,42 +225,57 @@
               <tbody >
               <tr>
                   <td >
+                    <div class="card bg-primary" id="empty-0" style="margin-bottom: 5px;"></div>
+
                       <div id="0"
                             ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
+                    <div class="card bg-primary" id="empty-1" style="margin-bottom: 5px;"></div>
+
                       <div id="1"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                      </div></td>
+                        </div></td>
 
                   <td>
+                    <div class="card bg-primary" id="empty-2" style="margin-bottom: 5px;"></div>
+
                       <div id="2"
                            ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 120px; height: 800px ;" >
-                      </div>
+                        </div>
                   </td>
                   <td>
+                    <div class="card bg-primary" id="empty-3" style="margin-bottom: 5px;"></div>
+
                       <div id="3"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                      </div>
+                        </div>
                   </td>
                   <td>
+                    <div class="card bg-primary" id="empty-4" style="margin-bottom: 5px;"></div>
+
                       <div id="4"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                      </div></td>
+                        </div></td>
                   <td>
+                    <div class="card bg-primary" id="empty-5" style="margin-bottom: 5px;"></div>
+
                       <div id="5"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                      </div>
+                        </div>
                   </td>
                   <td>
+                    <div class="card bg-primary" id="empty-6" style="margin-bottom: 5px;"></div>
+
                       <div id="6"
                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                      </div>
+                        </div>
                   </td>
               </tr>
               </tbody>
           </table>
+        </div>
 
       </div>
   </div>
@@ -253,9 +302,16 @@
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var x = document.getElementById(data)
-
+        
         var sub_entity_id= x.id;
         var day_id= ev.target.id;
+        var card= get(sub_entity_id.substring(5, sub_entity_id.length));
+        console.log(card)
+        var height= ((card.hours*60)+card.min)*1.1;
+        document.getElementById("card-"+sub_entity_id.substring(5, sub_entity_id.length)).style.height =height+"px";
+        
+        document.getElementById("duration-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display="none"      
+
         ev.target.appendChild(x);
         document.getElementById("restore-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
         document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
@@ -297,10 +353,12 @@
       ]
 
     $(function() {
-        $( "#0" ).sortable(); $( "#1" ).sortable();
+        $( "#0" ).sortable(); 
+        $( "#1" ).sortable();
         $( "#2" ).sortable();
         $( "#3" ).sortable();
-        $( "#4" ).sortable(); $( "#6" ).sortable();
+        $( "#4" ).sortable(); 
+        $( "#6" ).sortable();
         $( "#5" ).sortable();
     });
 
@@ -309,20 +367,21 @@
     var x ="";
     for (var i = 0; i < sub_entities.length ; i++) {
         x=x+"  <tr ><td>\n" +
-            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center\" style=\"margin-bottom:15px;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
-            "                                       <div class=\"card-body \" style=\"padding: 3px; \">\n" +
+            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" margin-bottom:5px;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+            "                                       <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
             "                                           <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
-            "                                                <h5 class=\"card-title text-primary\" style=\"font-size: 15px\">"+ sub_entities[i].hours+"h"+sub_entities[i].min+"min</h5>\n" +
+            "                                                <h5 class=\"card-title text-primary\" id='duration-"+sub_entities[i].id+"' style=\"font-size: 15px\">"+ sub_entities[i].hours+"h"+sub_entities[i].min+"min</h5>\n" +
+            "                                                <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>"+
             "                                            </div>\n" +
-            "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px; padding: 2px;margin-bottom:5px\">"+ sub_entities[i].entity_name+" </h5>\n" +
+            "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px;\">"+ sub_entities[i].entity_name+" </h5>\n" +
 
             "                                          " +
             " </div>\n" +
-            "<div class='d-flex justify-content-around'> " +
+            "<div class=' justify-content-around middle'> " +
             "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
             " <button id='emp-"+sub_entities[i].id+"'  style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
-            "    </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title p-1 ' ></h6>  " +
+            "    </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>  " +
             "   </div>\n" +
             "                    </td>\n" +
             "                </tr>";
@@ -336,10 +395,10 @@ function affecte_day(id,day) {
         }
     }
 }
-    function get(id) {
+function get(id) {
         for(var i=0; i<sub_entities.length; i++) {
             if(sub_entities[i].id==id) {
-                console.log(sub_entities[i])
+                return sub_entities[i]
             }
         }
     }
@@ -372,9 +431,38 @@ function affecte_day(id,day) {
       document.getElementById("restore-"+id).style.display="none"
       document.getElementById("emp-"+id).style.display="none"
       document.getElementById("entities").appendChild(restore)
+      document.getElementById("card-"+id).style.height="auto"
+      console.log(document.getElementById("duration-"+id).style.display)
+      document.getElementById("duration-"+id).style.display="block"   
+      console.log(document.getElementById("duration-"+id).style.display)
+         
+
   }
-  function update_time() {
-      
+  function update_empty(e,id) {
+    times[id].start.hour=document.getElementById("time-empty-"+id).value.split(":")[0];
+    times[id].start.min=document.getElementById("time-empty-"+id).value.split(":")[1];
+    console.log(times[id])
+    var empty=document.getElementById("time-empty-0").value;
+      for(let i=1;i<7;i++){
+          var temp=document.getElementById("time-empty-"+i).value;
+        if(temp.split(":")[0]<empty.split(":")[0]){
+            empty=temp;
+        }else if(temp.split(":")[0]==empty.split(":")[0]){
+            if(temp.split(":")[1]<empty.split(":")[1]){
+                empty=temp;
+            }
+        }
+      }
+      for(let i=0;i<7;i++){
+          var card = document.getElementById("empty-"+i); //li beghyin nbdlo sa taille
+          var time = document.getElementById("time-empty-"+i).value; //input te3 lwkt
+            
+          card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
+      }
   }
+  function update_time_day(){
+
+  }
+  
 </script>
 </html>
