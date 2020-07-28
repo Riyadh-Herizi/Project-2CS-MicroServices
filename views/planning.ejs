@@ -339,9 +339,9 @@
                                <tbody id="plannings">
                                <% for (var i = 0; i < plannings.length ; i++) { %>
                                    <tr>
-                                       <td class="text-center"> <button class="btn btn-sm btn-light text-primary bg-white" onclick="show_planning(<%= plannings[i].id %>)">
+                                       <td class="text-center"> <a class="btn btn-sm btn-light text-primary bg-white" href="/planning_control/<%=plannings[i].id%>">
                                            <%= plannings[i].planning_name %>
-                                           </button>  </td>
+                                           </a>  </td>
                                    </tr>
                                <% } %>
 

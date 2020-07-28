@@ -6,27 +6,38 @@
     </style>
     <meta charset="UTF-8">
     <title>planning</title>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 <body style="margin: 10px">
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display-inline-block">
-        <table class="table">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display-inline-block " style="height: 100px;" >
+        <table  class="table">
             <thead>
             <tr>
-                <th scope="col" class="text-center">Sub-entities</th>
+                <th scope="col" class="text-center text-primary">Sub-entities</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody >
 
-            <tr>
-                <td id="entities" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <tr >
+                <td >
+                 <div style="height:600px; overflow:scroll; padding: 10px"  id="entities"  class="bg-primary" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+
+                 </div>
                 </td>
             </tr>
             </tbody>
@@ -147,7 +158,7 @@
                              <label class="form-check-label">
                                  <input class="form-check-input" type="checkbox" checked> Work day
                              </label>
-                             <div class="form-group row">
+                             <div class="form-group row ">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
                                  <div class="col-10">
                                      <input class="form-control" type="time" value="08:00" id="example-time-input">
@@ -177,11 +188,11 @@
                   <th scope="col">Saturday</th>
               </tr>
               </thead>
-              <tbody>
+              <tbody >
               <tr>
                   <td >
                       <div id="0"
-                            ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                            ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
@@ -191,7 +202,7 @@
 
                   <td>
                       <div id="2"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 120px; height: 800px ;" >
                       </div>
                   </td>
                   <td>
@@ -229,8 +240,9 @@
 </body>
 <script>
 
-    function allowDrop(ev) {
+    function allowDrop(ev,e) {
         ev.preventDefault();
+
     }
 
     function drag(ev) {
@@ -241,11 +253,15 @@
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var x = document.getElementById(data)
+
         var sub_entity_id= x.id;
         var day_id= ev.target.id;
         ev.target.appendChild(x);
-        affecte_day(sub_entity_id,day_id)
-        affecte_time(sub_entity_id,day_id)
+        document.getElementById("restore-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
+        document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
+
+        affecte_day(sub_entity_id.substring(5, sub_entity_id.length),day_id)
+        affecte_time(sub_entity_id.substring(5, sub_entity_id.length),day_id)
 
     }
       var times =
@@ -280,23 +296,34 @@
 
       ]
 
-
+    $(function() {
+        $( "#0" ).sortable(); $( "#1" ).sortable();
+        $( "#2" ).sortable();
+        $( "#3" ).sortable();
+        $( "#4" ).sortable(); $( "#6" ).sortable();
+        $( "#5" ).sortable();
+    });
 
 </script>
 <script>
     var x ="";
     for (var i = 0; i < sub_entities.length ; i++) {
-        x=x+"  <tr><td>\n" +
-            "               <div id=\""+sub_entities[i].id +"\" class=\"card shadow text-center\" style=\"background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\">\n" +
+        x=x+"  <tr ><td>\n" +
+            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center\" style=\"margin-bottom:15px;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
             "                                       <div class=\"card-body \" style=\"padding: 3px; \">\n" +
             "                                           <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
-            "                                                <h5 class=\"card-title text-primary\" style=\"font-size: 15px\">"+ sub_entities[i].hours+" h</h5>\n" +
+            "                                                <h5 class=\"card-title text-primary\" style=\"font-size: 15px\">"+ sub_entities[i].hours+"h"+sub_entities[i].min+"min</h5>\n" +
             "                                            </div>\n" +
             "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px; padding: 2px;margin-bottom:5px\">"+ sub_entities[i].entity_name+" </h5>\n" +
-            "                                       </div>\n" +
-            "                      <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title ' ></h6>  " +
-            "    </div>\n" +
+
+            "                                          " +
+            " </div>\n" +
+            "<div class='d-flex justify-content-around'> " +
+            "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
+            " <button id='emp-"+sub_entities[i].id+"'  style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
+            "    </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title p-1 ' ></h6>  " +
+            "   </div>\n" +
             "                    </td>\n" +
             "                </tr>";
     }
@@ -316,6 +343,7 @@ function affecte_day(id,day) {
             }
         }
     }
+
     function affecte_time(id,day) {
         for(var i=0; i<sub_entities.length; i++) {
             if(sub_entities[i].id==id) {
@@ -331,12 +359,22 @@ function affecte_day(id,day) {
                 sub_entities[i].end.min = min;
                 times[day].current.hour=hour;
                 times[day].current.min=min;
-                document.getElementById("time-"+id).innerText=sub_entities[i].start.hour+":"+sub_entities[i].start.min+"--"+
+                document.getElementById("time-"+id).innerText=sub_entities[i].start.hour+":"+sub_entities[i].start.min+" - "+
                     sub_entities[i].end.hour+":"+sub_entities[i].end.min;
                 console.log(times[day])
                 console.log(sub_entities[i])
             }
         }
     }
+  function restore(id) {
+    var restore = document.getElementById("card-"+id)
+      document.getElementById("time-"+id).innerText=""
+      document.getElementById("restore-"+id).style.display="none"
+      document.getElementById("emp-"+id).style.display="none"
+      document.getElementById("entities").appendChild(restore)
+  }
+  function update_time() {
+      
+  }
 </script>
 </html>
