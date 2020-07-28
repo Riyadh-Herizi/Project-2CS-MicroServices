@@ -509,7 +509,7 @@ function get(id) {
 
         document.getElementById(day).classList.remove("bg-secondary");
         document.getElementById("time-empty-"+day).disabled=false;
-        document.getElementById(day).style.height="0px";
+        document.getElementById(day).style.height="auto";
         document.getElementById("gap-"+day).style.display="block";
         document.getElementById(day).classList.add("bg-white");
         update_empty(null,day);

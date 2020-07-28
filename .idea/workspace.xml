@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d257c690-a3ed-4d60-9764-999aed040da9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/creation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/creation.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/creation.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="512" column="64" selection-start-line="512" selection-start-column="64" selection-end-line="512" selection-end-column="64" />
+            <state relative-caret-position="256">
+              <caret line="511" column="55" selection-start-line="511" selection-start-column="55" selection-end-line="511" selection-end-column="55" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -293,7 +292,7 @@
       <workItem from="1595858233238" duration="1947000" />
       <workItem from="1595868285638" duration="4317000" />
       <workItem from="1595935694745" duration="9137000" />
-      <workItem from="1595959039569" duration="10418000" />
+      <workItem from="1595959039569" duration="10920000" />
     </task>
     <task id="LOCAL-00001" summary="planning test">
       <created>1591995092466</created>
@@ -442,11 +441,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595941058999</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="idk 2">
+      <created>1595970836355</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1595970836356</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139570000" />
+    <option name="totallyTimeSpent" value="140072000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -476,7 +482,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.49511856" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.37064344" side_tool="true" weight="0.6889819" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" visible="true" weight="0.14923291" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.62935656" visible="true" weight="0.38493723" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32914925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -510,7 +516,8 @@
     <MESSAGE value="Already logged in + create planning + redirect" />
     <MESSAGE value="Manuel generation (Drag and drop + time)" />
     <MESSAGE value="idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="idk" />
+    <MESSAGE value="idk 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk 2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Windows/System32/drivers/etc/hosts">
@@ -768,8 +775,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/creation.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="512" column="64" selection-start-line="512" selection-start-column="64" selection-end-line="512" selection-end-column="64" />
+        <state relative-caret-position="256">
+          <caret line="511" column="55" selection-start-line="511" selection-start-column="55" selection-end-line="511" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
