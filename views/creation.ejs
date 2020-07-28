@@ -79,7 +79,6 @@
     </div>
       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 display-inline-block" style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
-
         <div class="table-responsive">
           <table class="table text-center">
               <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
@@ -88,7 +87,7 @@
                      <div>
                          <td>
                           <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked> Work day
+                              <input class="form-check-input" id="check_box-0" onclick="switch_day(0)" type="checkbox" checked> Work day
                           </label>
                           <div class="form-group row">
                               <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -96,16 +95,11 @@
                                   <input onchange="update_empty(this,0)" class="form-control" type="time" value="08:00" id="time-empty-0">
                               </div>
                           </div>
-                          <div class="form-group row">
-                              <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                              <div class="col-10">
-                                  <input class="form-control" type="time" value="17:00" id="example-time-input">
-                              </div>
-                          </div>
+
                       </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input"  onclick="switch_day(1)" id="check_box-1" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -113,16 +107,11 @@
                                      <input onchange="update_empty(this,1)" class="form-control" type="time" value="08:00" id="time-empty-1">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input" onclick="switch_day(2)"  id="check_box-2" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -130,16 +119,11 @@
                                      <input onchange="update_empty(this,2)" class="form-control" type="time" value="08:00" id="time-empty-2">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input" onclick="switch_day(3)" id="check_box-3" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -147,16 +131,11 @@
                                      <input onchange="update_empty(this,3)" class="form-control" type="time" value="08:00" id="time-empty-3">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input" onclick="switch_day(4)" id="check_box-4" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -164,16 +143,11 @@
                                      <input onchange="update_empty(this,4)" class="form-control" type="time" value="08:00" id="time-empty-4">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input" onclick="switch_day(5)" id="check_box-5" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -181,16 +155,11 @@
                                      <input onchange="update_empty(this,5)" class="form-control" type="time" value="08:00" id="time-empty-5">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
                          <td>
                              <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" checked> Work day
+                                 <input class="form-check-input"  onclick="switch_day(6)" id="check_box-6" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row ">
                                  <label for="example-time-input" class="col-2 col-form-label">Start:</label>
@@ -198,20 +167,14 @@
                                      <input onchange="update_empty(this,6)" class="form-control" type="time" value="08:00" id="time-empty-6">
                                  </div>
                              </div>
-                             <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">End:</label>
-                                 <div class="col-10">
-                                     <input class="form-control" type="time" value="17:00" id="example-time-input">
-                                 </div>
-                             </div>
+
                          </td>
 
                          </div>
 
-              </tr>
-                  <tr></tr>
+                  </tr>
 
-              </div>
+
               <tr>
                   <th scope="col">Sunday</th>
                   <th scope="col">Monday</th>
@@ -224,53 +187,75 @@
               </thead>
               <tbody >
               <tr>
-                  <td >
+                  <td>
                     <div class="card bg-primary" id="empty-0" style="margin-bottom: 5px;"></div>
 
                       <div id="0"
-                            ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="width: 120px; height: 800px ;" >
+                            ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px" >
                       </div>
+                      <button id="gap-0" class="btn btn-outline-primary btn-sm" onclick="add_gaps(0)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
                   </td>
                   <td>
                     <div class="card bg-primary" id="empty-1" style="margin-bottom: 5px;"></div>
 
                       <div id="1"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                        </div></td>
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                        </div>
+                      <button id="gap-1" class="btn btn-outline-primary btn-sm" onclick="add_gaps(1)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button></td>
 
                   <td>
                     <div class="card bg-primary" id="empty-2" style="margin-bottom: 5px;"></div>
 
                       <div id="2"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 120px; height: 800px ;" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
+                      <button id="gap-2" class="btn btn-outline-primary btn-sm" onclick="add_gaps(2)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
                   </td>
                   <td>
                     <div class="card bg-primary" id="empty-3" style="margin-bottom: 5px;"></div>
 
                       <div id="3"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px">
                         </div>
+                      <button id="gap-3" class="btn btn-outline-primary btn-sm" onclick="add_gaps(3)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
                   </td>
                   <td>
                     <div class="card bg-primary" id="empty-4" style="margin-bottom: 5px;"></div>
 
                       <div id="4"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
-                        </div></td>
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                        </div>
+                      <button id="gap-4" class="btn btn-outline-primary btn-sm" onclick="add_gaps(4)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
+                  </td>
                   <td>
                     <div class="card bg-primary" id="empty-5" style="margin-bottom: 5px;"></div>
 
                       <div id="5"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
+                      <button id="gap-5" class="btn btn-outline-primary btn-sm" onclick="add_gaps(5)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
                   </td>
                   <td>
                     <div class="card bg-primary" id="empty-6" style="margin-bottom: 5px;"></div>
 
                       <div id="6"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 800px ;" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px">
                         </div>
+                      <button id="gap-6" class="btn btn-outline-primary btn-sm" onclick="add_gaps(6)" style="margin-bottom: 5px; height: 40px; width:100%">
+                          <i class="fa fa-plus"></i>
+                      </button>
                   </td>
               </tr>
               </tbody>
@@ -302,23 +287,20 @@
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var x = document.getElementById(data)
-        
         var sub_entity_id= x.id;
         var day_id= ev.target.id;
+        if( ev.target.id != "" ) {
         var card= get(sub_entity_id.substring(5, sub_entity_id.length));
         console.log(card)
         var height= ((card.hours*60)+card.min)*1.1;
         document.getElementById("card-"+sub_entity_id.substring(5, sub_entity_id.length)).style.height =height+"px";
-        
-        document.getElementById("duration-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display="none"      
-
+        document.getElementById("duration-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display="none"
         ev.target.appendChild(x);
         document.getElementById("restore-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
         document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
-
         affecte_day(sub_entity_id.substring(5, sub_entity_id.length),day_id)
         affecte_time(sub_entity_id.substring(5, sub_entity_id.length),day_id)
-
+    }
     }
       var times =
           [
@@ -336,6 +318,7 @@
             id: <%=sub_entities[i].id %>,
             name : "<%= sub_entities[i].name %>",
             entity_name: "<%= sub_entities[i].entity.name %>" ,
+            entity_id: "<%= sub_entities[i].entity.id %>" ,
             emp_number : <%= sub_entities[i].nb_emp %>,
             emp: [],
             start : {hour: 0 , min : 0},
@@ -346,8 +329,6 @@
           } ,
 
         <% }%>
-
-
 
 
       ]
@@ -368,8 +349,8 @@
     for (var i = 0; i < sub_entities.length ; i++) {
         x=x+"  <tr ><td>\n" +
             "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" margin-bottom:5px;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
-            "                                       <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
-            "                                           <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
+            "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
+            "                        <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
             "                                                <h5 class=\"card-title text-primary\" id='duration-"+sub_entities[i].id+"' style=\"font-size: 15px\">"+ sub_entities[i].hours+"h"+sub_entities[i].min+"min</h5>\n" +
             "                                                <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>"+
@@ -379,13 +360,18 @@
             "                                          " +
             " </div>\n" +
             "<div class=' justify-content-around middle'> " +
-            "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
-            " <button id='emp-"+sub_entities[i].id+"'  style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
-            "    </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>  " +
+            "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
+            " <div class=\"dropdown\"> " +
+            "<button id='emp-"+sub_entities[i].id+"' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible("+sub_entities[i].entity_id+","+sub_entities[i].emp_number+","+sub_entities[i].id+")' style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
+            "</div>   </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>  " +
             "   </div>\n" +
-            "                    </td>\n" +
+            "         </td>\n" +
             "                </tr>";
     }
+
+
+
+
     document.getElementById("entities").innerHTML=x;
 
 function affecte_day(id,day) {
@@ -454,8 +440,8 @@ function get(id) {
         }
       }
       for(let i=0;i<7;i++){
-          var card = document.getElementById("empty-"+i); //li beghyin nbdlo sa taille
-          var time = document.getElementById("time-empty-"+i).value; //input te3 lwkt
+          var card = document.getElementById("empty-"+i);
+          var time = document.getElementById("time-empty-"+i).value;
             
           card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
       }
@@ -463,6 +449,122 @@ function get(id) {
   function update_time_day(){
 
   }
-  
+    function get_responsible(id,emp_number,sub_entity_id) {
+        current_entity=id;
+        $.ajax({
+            url: '/client/get_responsible',
+            type: 'POST',
+            cache: false,
+            data: {
+                id_entity :id
+            },
+            success: function(data){
+                console.log("executed")
+                var x ="";
+                var empty = true;
+                for (var i = 0; i < data.users.length ; i++) {
+                    empty=false;
+                  x =x +"<option value='"+data.users[i].id+"'>"+data.users[i].firstName+" "+data.users[i].lastName+"</option>"
+                }
+                if(empty) {
+                document.getElementById("responsible_list").innerHTML ="<h5 class=\"text-primary\">This entity has no responsible</h5>";
+                }
+                else {
+                    document.getElementById("responsible_list").innerHTML ="";
+                    for(let i=0;i<emp_number;i++) {
+                        document.getElementById("responsible_list").innerHTML =  document.getElementById("responsible_list").innerHTML +
+                            "<div class=\"form-group\">\n" +
+                            "  <select class=\" form-control\" id=\"sel-"+sub_entity_id+"-"+i+"\">\n" +
+                                     x+
+                            "  </select>\n" +
+                            "</div>"
+                    }
+
+                }
+
+            }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+        })
+    }
+ function switch_day(day) {
+    var check= document.getElementById("check_box-"+day);
+    if(check.checked=== false ) {
+       document.getElementById(day).classList.add("bg-secondary");
+        document.getElementById(day).style.height="600px";
+        document.getElementById(day).classList.remove("bg-white");
+       document.getElementById("time-empty-"+day).disabled=true;
+       document.getElementById("gap-"+day).style.display="none";
+       document.getElementById(day).addEventListener("drop", null);
+       update_empty_after(day);
+       for(let i =0 ;i< sub_entities.length;i++) {
+           console.log(sub_entities[i].day===day)
+           if(sub_entities[i].day==day){
+               restore(sub_entities[i].id)
+           }
+       }
+    }
+    else {
+
+        document.getElementById(day).classList.remove("bg-secondary");
+        document.getElementById("time-empty-"+day).disabled=false;
+        document.getElementById(day).style.height="0px";
+        document.getElementById("gap-"+day).style.display="block";
+        document.getElementById(day).classList.add("bg-white");
+        update_empty(null,day);
+    }
+
+ }
+    function update_empty_after(id) {
+
+      var num = id % 6 +1;
+        var empty=document.getElementById("time-empty-"+num).value;
+        for(let i=1;i<7;i++){
+            if(i!== id) {
+            var temp=document.getElementById("time-empty-"+i).value;
+            if(temp.split(":")[0]<empty.split(":")[0]){
+                empty=temp;
+            }else if(temp.split(":")[0]==empty.split(":")[0]){
+                if(temp.split(":")[1]<empty.split(":")[1]){
+                    empty=temp;
+                }
+            }
+            }
+        }
+        for(let i=0;i<7;i++){
+
+            var card = document.getElementById("empty-"+i);
+            var time = document.getElementById("time-empty-"+i).value;
+                 if(i!== id) {  card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
+        } else {
+                     card.style.height=0+"px"
+                 }
+        }
+    }
 </script>
+<div class="modal fade" id="responsible">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Manage responsible</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="responsible_list"method="POST" action="">
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"  data-dismiss="modal" onclick="set_responsible()" >Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 </html>
