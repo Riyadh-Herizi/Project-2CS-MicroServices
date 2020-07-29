@@ -80,18 +80,21 @@
     </div>
       <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 display-inline-block" style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
+          <button class="btn btn-outline-success btn-sm float-right" style="margin-bottom: 5px" ><i class="fa fa-save"></i>&nbsp;&nbsp;Save </button>
         <div class="table-responsive">
           <table class="table text-center">
               <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
 
-                  <tr id="times" class="collapse">
+                  <tr id="times" class="collapse bg-primary" style="position: absolute;z-index: 3;">
                      <div>
+                         <td></td>
                          <td>
-                          <label class="form-check-label">
+                             <h4 class="text-white">Sunday</h4>
+                          <label class="form-check-label text-white">
                               <input class="form-check-input" id="check_box-0" onclick="switch_day(0)" type="checkbox" checked> Work day
                           </label>
                           <div class="form-group row">
-                              <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                              <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                               <div class="col-10">
                                   <input onchange="update_empty(this,0)" class="form-control" type="time" value="08:00" id="time-empty-0">
                               </div>
@@ -99,11 +102,12 @@
 
                       </td>
                          <td>
-                             <label class="form-check-label">
+                            <h4 class="text-white">Monday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input"  onclick="switch_day(1)" id="check_box-1" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,1)" class="form-control" type="time" value="08:00" id="time-empty-1">
                                  </div>
@@ -111,11 +115,12 @@
 
                          </td>
                          <td>
-                             <label class="form-check-label">
+                            <h4 class="text-white">Tuesday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input" onclick="switch_day(2)"  id="check_box-2" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,2)" class="form-control" type="time" value="08:00" id="time-empty-2">
                                  </div>
@@ -123,11 +128,12 @@
 
                          </td>
                          <td>
-                             <label class="form-check-label">
+                            <h4 class="text-white">Wednesday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input" onclick="switch_day(3)" id="check_box-3" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,3)" class="form-control" type="time" value="08:00" id="time-empty-3">
                                  </div>
@@ -135,11 +141,12 @@
 
                          </td>
                          <td>
-                             <label class="form-check-label">
+                            <h4 class="text-white">Thursday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input" onclick="switch_day(4)" id="check_box-4" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,4)" class="form-control" type="time" value="08:00" id="time-empty-4">
                                  </div>
@@ -147,23 +154,25 @@
 
                          </td>
                          <td>
-                             <label class="form-check-label">
+                            <h4 class="text-white">Friday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input" onclick="switch_day(5)" id="check_box-5" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,5)" class="form-control" type="time" value="08:00" id="time-empty-5">
                                  </div>
                              </div>
 
                          </td>
-                         <td>
-                             <label class="form-check-label">
+                         <td> 
+                            <h4 class="text-white">Saturday</h4>
+                             <label class="form-check-label text-white">
                                  <input class="form-check-input"  onclick="switch_day(6)" id="check_box-6" type="checkbox" checked> Work day
                              </label>
                              <div class="form-group row ">
-                                 <label for="example-time-input" class="col-2 col-form-label">Start:</label>
+                                 <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
                                  <div class="col-10">
                                      <input onchange="update_empty(this,6)" class="form-control" type="time" value="08:00" id="time-empty-6">
                                  </div>
@@ -176,7 +185,7 @@
                   </tr>
 
 
-              <tr>
+              <tr style="z-index: 1;">
                   <th scope="col">timeline</th>
                   <th scope="col">Sunday</th>
                   <th scope="col">Monday</th>
@@ -187,7 +196,7 @@
                   <th scope="col">Saturday</th>
               </tr>
               </thead>
-              <tbody >
+              <tbody style="z-index: 1;" >
               <tr>
                   <td class="vertical-time" id="vertical-time">
 
