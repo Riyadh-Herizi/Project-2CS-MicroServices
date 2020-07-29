@@ -478,6 +478,8 @@ function get(id) {
             }
         }
       }
+      
+      timeline(parseInt(empty.split(":")[0]))
       for(let i=0;i<7;i++){
           var card = document.getElementById("empty-"+i);
           var time = document.getElementById("time-empty-"+i).value;
@@ -590,7 +592,7 @@ function get(id) {
         gaps_id++;
     }
     function timeline(min) {
-      var content="<div class=\" border-primary time card bg-white  text-black  d-flex justify-content-center\" style='margin-top:5px;border-radius: 0px'  >"+(min)+":00 - "+(min+1)+":00</div>";
+      var content="<div class=\" border-primary time card bg-white  text-black  d-flex justify-content-center\" style='margin-top:5px;border-radius: 0px;'  >"+(min)+":00 - "+(min+1)+":00</div>";
 
         for(let i =min+1 ; i<23 ; i++){
           content = content +"  <div class=\" border-primary time card bg-white text-black d-flex justify-content-center \" style='border-radius: 0px' >"+(i)+":00 - "+(i+1)+":00</div>\n"
