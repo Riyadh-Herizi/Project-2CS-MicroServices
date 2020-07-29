@@ -560,7 +560,7 @@ function get(id) {
     function confirm_gap() {
         var hour_num = document.getElementById("hour_num").value;
         var min_num = document.getElementById("min_num").value;
-        document.getElementById(current_day).innerHTML= document.getElementById(current_day).innerHTML + "<div class=\"card bg-primary m-auto\" id=\"gap-"+current_day+"-"+gaps_id+"\" style=\" height:"+1.1*((parseInt(hour_num)*60)+parseInt(min_num))+"px;\"><button class='btn btn-light text-primary ' style='width:40%'><i class='fa fa-trash'></i></button></div>"
+        document.getElementById(current_day).innerHTML= document.getElementById(current_day).innerHTML + "<div class=\"card bg-primary \" id=\"gap-"+current_day+"-"+gaps_id+"\" style=\" height:"+1.1*((parseInt(hour_num)*60)+parseInt(min_num))+"px;\"><div class='card-body text-center d-flex justify-content-center' style='padding: 0px' > <button class='btn btn-light text-primary ' onclick='delete_gap(this)' style='align-self: center '><i class='fa fa-trash'></i></button></div></div>"
         gaps_id++;
     }
     function timeline(min) {
@@ -570,6 +570,9 @@ function get(id) {
           content = content +"  <div class=\" border-primary time card bg-white text-black d-flex justify-content-center \" style='border-radius: 0px' >"+(i)+":00 - "+(i+1)+":00</div>\n"
       }
         document.getElementById("vertical-time").innerHTML = content;
+    }
+    function delete_gap(e) {
+        e.parentElement.parentElement.remove();
     }
 </script>
 <div class="modal fade" id="responsible">
