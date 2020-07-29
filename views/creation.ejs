@@ -20,7 +20,9 @@
             position: relative;
             width: 100%;
             }
-
+.time {
+    height: 66px;
+}
             .card-over {
             opacity: 1;
             display: block;
@@ -50,7 +52,7 @@
             .cont:hover .middle {
             opacity: 1;
             }
-
+        .move:hover {cursor: move;}
     </style>
 </head>
 <body style="margin: 10px">
@@ -70,14 +72,13 @@
                 <td >
                  <div style="height:600px; overflow:scroll; padding: 10px"  id="entities"  class="bg-primary" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-
                  </div>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 display-inline-block" style="padding: 0px;">
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 display-inline-block" style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
         <div class="table-responsive">
           <table class="table text-center">
@@ -176,6 +177,7 @@
 
 
               <tr>
+                  <th scope="col">timeline</th>
                   <th scope="col">Sunday</th>
                   <th scope="col">Monday</th>
                   <th scope="col">Tuesday</th>
@@ -187,13 +189,17 @@
               </thead>
               <tbody >
               <tr>
+                  <td class="vertical-time" id="vertical-time">
+
+
+                  </td>
                   <td>
                     <div class="card bg-primary" id="empty-0" style="margin-bottom: 5px;"></div>
 
                       <div id="0"
                             ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px" >
                       </div>
-                      <button id="gap-0" class="btn btn-outline-primary btn-sm" onclick="add_gaps(0)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-0" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(0)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -201,9 +207,9 @@
                     <div class="card bg-primary" id="empty-1" style="margin-bottom: 5px;"></div>
 
                       <div id="1"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="margin:auto; width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
-                      <button id="gap-1" class="btn btn-outline-primary btn-sm" onclick="add_gaps(1)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-1"  data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(1)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button></td>
 
@@ -211,9 +217,9 @@
                     <div class="card bg-primary" id="empty-2" style="margin-bottom: 5px;"></div>
 
                       <div id="2"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
-                      <button id="gap-2" class="btn btn-outline-primary btn-sm" onclick="add_gaps(2)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-2" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(2)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -221,9 +227,9 @@
                     <div class="card bg-primary" id="empty-3" style="margin-bottom: 5px;"></div>
 
                       <div id="3"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px">
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px">
                         </div>
-                      <button id="gap-3" class="btn btn-outline-primary btn-sm" onclick="add_gaps(3)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-3" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(3)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -231,9 +237,9 @@
                     <div class="card bg-primary" id="empty-4" style="margin-bottom: 5px;"></div>
 
                       <div id="4"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
-                      <button id="gap-4" class="btn btn-outline-primary btn-sm" onclick="add_gaps(4)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-4" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(4)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -241,9 +247,9 @@
                     <div class="card bg-primary" id="empty-5" style="margin-bottom: 5px;"></div>
 
                       <div id="5"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px" >
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px" >
                         </div>
-                      <button id="gap-5" class="btn btn-outline-primary btn-sm" onclick="add_gaps(5)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-5" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(5)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -251,9 +257,9 @@
                     <div class="card bg-primary" id="empty-6" style="margin-bottom: 5px;"></div>
 
                       <div id="6"
-                           ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px ; height: auto;padding-bottom: 50px">
+                           ondrop="drop(event)" ondragover="allowDrop(event)" style="margin:auto;width: 120px ; height: auto;padding-bottom: 50px">
                         </div>
-                      <button id="gap-6" class="btn btn-outline-primary btn-sm" onclick="add_gaps(6)" style="margin-bottom: 5px; height: 40px; width:100%">
+                      <button id="gap-6" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(6)" style="margin-bottom: 5px; height: 40px; width:100%">
                           <i class="fa fa-plus"></i>
                       </button>
                   </td>
@@ -297,7 +303,9 @@
         document.getElementById("duration-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display="none"
         ev.target.appendChild(x);
         document.getElementById("restore-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
-        document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
+         document.getElementById("move-h-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
+
+            document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
         affecte_day(sub_entity_id.substring(5, sub_entity_id.length),day_id)
         affecte_time(sub_entity_id.substring(5, sub_entity_id.length),day_id)
     }
@@ -346,9 +354,10 @@
 </script>
 <script>
     var x ="";
+    timeline(8)
     for (var i = 0; i < sub_entities.length ; i++) {
         x=x+"  <tr ><td>\n" +
-            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" margin-bottom:5px;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
             "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
             "                        <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
@@ -359,8 +368,10 @@
 
             "                                          " +
             " </div>\n" +
-            "<div class=' justify-content-around middle'> " +
+            "<div class=' justify-content-around middle' > " +
             "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
+            "<button id='move-h-"+sub_entities[i].id+"' style='display: none'  class='move  btn btn-outline-primary btn-sm'><i class='fa fa-arrows-h'></i></button>" +
+
             " <div class=\"dropdown\"> " +
             "<button id='emp-"+sub_entities[i].id+"' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible("+sub_entities[i].entity_id+","+sub_entities[i].emp_number+","+sub_entities[i].id+")' style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
             "</div>   </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>  " +
@@ -415,6 +426,7 @@ function get(id) {
     var restore = document.getElementById("card-"+id)
       document.getElementById("time-"+id).innerText=""
       document.getElementById("restore-"+id).style.display="none"
+      document.getElementById("move-h-"+id).style.display="none"
       document.getElementById("emp-"+id).style.display="none"
       document.getElementById("entities").appendChild(restore)
       document.getElementById("card-"+id).style.height="auto"
@@ -447,8 +459,9 @@ function get(id) {
       }
   }
   function update_time_day(){
-
   }
+  var current_day =-1;
+  var gaps_id =0;
     function get_responsible(id,emp_number,sub_entity_id) {
         current_entity=id;
         $.ajax({
@@ -533,7 +546,6 @@ function get(id) {
             }
         }
         for(let i=0;i<7;i++){
-
             var card = document.getElementById("empty-"+i);
             var time = document.getElementById("time-empty-"+i).value;
                  if(i!== id) {  card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
@@ -541,6 +553,23 @@ function get(id) {
                      card.style.height=0+"px"
                  }
         }
+    }
+    function add_gaps(day) {
+     current_day = day;
+    }
+    function confirm_gap() {
+        var hour_num = document.getElementById("hour_num").value;
+        var min_num = document.getElementById("min_num").value;
+        document.getElementById(current_day).innerHTML= document.getElementById(current_day).innerHTML + "<div class=\"card bg-primary\" id=\"gap-"+current_day+"-"+gaps_id+"\" style=\" height:"+1.1*((parseInt(hour_num)*60)+parseInt(min_num))+"px;\"></div>"
+        gaps_id++;
+    }
+    function timeline(min) {
+      var content="<div class=\" border-primary time card bg-white  text-black  d-flex justify-content-center\" style='margin-top:5px;border-radius: 0px'  >"+(min)+":00 - "+(min+1)+":00</div>";
+
+        for(let i =min+1 ; i<23 ; i++){
+          content = content +"  <div class=\" border-primary time card bg-white text-black d-flex justify-content-center \" style='border-radius: 0px' >"+(i)+":00 - "+(i+1)+":00</div>\n"
+      }
+        document.getElementById("vertical-time").innerHTML = content;
     }
 </script>
 <div class="modal fade" id="responsible">
@@ -562,6 +591,35 @@ function get(id) {
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button class="btn btn-primary"  data-dismiss="modal" onclick="set_responsible()" >Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="new_gap">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">New gap :</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form  method="POST" action="">
+                    <label for="time">Duration</label>
+                    <div id="time" class=" d-flex">
+                        <input name="hour" min="0" value="00" max="12" type="number" class="form-control" id="hour_num" required>
+                        <p> &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; </p>
+                        <input name="min" min="1" value="00" max="59" type="number" class="form-control" id="min_num" required>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"  data-dismiss="modal" onclick="confirm_gap()" >Confirm</button>
             </div>
 
         </div>
