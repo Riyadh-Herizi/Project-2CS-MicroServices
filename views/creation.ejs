@@ -299,6 +299,7 @@
     }
 
     function drop(ev) {
+
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var x = document.getElementById(data)
@@ -310,25 +311,30 @@
         var height= ((card.hours*60)+card.min)*1.1;
         document.getElementById("card-"+sub_entity_id.substring(5, sub_entity_id.length)).style.height =height+"px";
         document.getElementById("duration-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display="none"
-        ev.target.appendChild(x);
+         var p_day = document.getElementById(ev.dataTransfer.getData("text")).parentElement.id;
+         ev.target.appendChild(x);
         document.getElementById("restore-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
          document.getElementById("move-h-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
-
             document.getElementById("emp-"+sub_entity_id.substring(5, sub_entity_id.length)).style.display ="block"
-        affecte_day(sub_entity_id.substring(5, sub_entity_id.length),day_id)
-        affecte_time(sub_entity_id.substring(5, sub_entity_id.length),day_id)
+        affecte_day(sub_entity_id.substring(5, sub_entity_id.length),day_id);
+        document.getElementById("card-"+sub_entity_id.substring(5, sub_entity_id.length)).setAttribute("data-day","day-"+day_id)
+        update_time(day_id)
+            console.log("p_day : "+p_day )
+            if (p_day!== "entities") 
+            update_time(p_day)
     }
     }
       var times =
           [
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},end:{hour:17, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
+              {start:{hour:8, min:0},current:{hour:8, min:0}},
       ];
+
       var sub_entities = [
           <% for (let i = 0; i < sub_entities.length ; i++) { %>
           {
@@ -351,13 +357,41 @@
       ]
 
     $(function() {
-        $( "#0" ).sortable(); 
-        $( "#1" ).sortable();
-        $( "#2" ).sortable();
-        $( "#3" ).sortable();
-        $( "#4" ).sortable(); 
-        $( "#6" ).sortable();
-        $( "#5" ).sortable();
+        $( "#0" ).sortable( {
+            update :()=>{
+               update_time(0)
+            }
+        });
+        $( "#1" ).sortable( {
+            update :()=>{
+                update_time(1)
+            }
+        });
+        $( "#2" ).sortable( {
+            update :()=>{
+                update_time(2)
+            }
+        });
+        $( "#3" ).sortable( {
+            update :()=>{
+                update_time(3)
+            }
+        });
+        $( "#4" ).sortable( {
+            update :()=>{
+                update_time(4)
+            }
+        });
+        $( "#6" ).sortable( {
+            update :()=>{
+                update_time(6)
+            }
+        });
+        $( "#5" ).sortable( {
+            update :()=>{
+                update_time(5)
+            }
+        });
     });
 
 </script>
@@ -366,7 +400,7 @@
     timeline(8)
     for (var i = 0; i < sub_entities.length ; i++) {
         x=x+"  <tr ><td>\n" +
-            "               <div id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+            "               <div data-day='' id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
             "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
             "                        <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
@@ -395,6 +429,7 @@
     document.getElementById("entities").innerHTML=x;
 
 function affecte_day(id,day) {
+
     for(var i=0; i<sub_entities.length; i++) {
         if(sub_entities[i].id==id) {
             sub_entities[i].day = day
@@ -409,46 +444,29 @@ function get(id) {
         }
     }
 
-    function affecte_time(id,day) {
-        for(var i=0; i<sub_entities.length; i++) {
-            if(sub_entities[i].id==id) {
-                var hour =  times[day].current.hour + sub_entities[i].hours;
-                var min =  times[day].current.min + sub_entities[i].min;
-                if(min>59){
-                    hour= hour+1;
-                    min=min-60;
-                }
-                sub_entities[i].start.hour =times[day].current.hour;
-                sub_entities[i].start.min = times[day].current.min;
-                sub_entities[i].end.hour = hour;
-                sub_entities[i].end.min = min;
-                times[day].current.hour=hour;
-                times[day].current.min=min;
-                document.getElementById("time-"+id).innerText=sub_entities[i].start.hour+":"+sub_entities[i].start.min+" - "+
-                    sub_entities[i].end.hour+":"+sub_entities[i].end.min;
-                console.log(times[day])
-                console.log(sub_entities[i])
-            }
-        }
-    }
+
   function restore(id) {
     var restore = document.getElementById("card-"+id)
+     var id_day = restore.getAttribute("data-day");
+    restore.setAttribute("data-day","-1");
       document.getElementById("time-"+id).innerText=""
       document.getElementById("restore-"+id).style.display="none"
       document.getElementById("move-h-"+id).style.display="none"
       document.getElementById("emp-"+id).style.display="none"
       document.getElementById("entities").appendChild(restore)
       document.getElementById("card-"+id).style.height="auto"
-      console.log(document.getElementById("duration-"+id).style.display)
-      document.getElementById("duration-"+id).style.display="block"   
-      console.log(document.getElementById("duration-"+id).style.display)
-         
+      document.getElementById("duration-"+id).style.display="block"
+      console.log(id_day.substring(4,id_day.length))
+      update_time(id_day.substring(4,id_day.length))
 
   }
   function update_empty(e,id) {
-    times[id].start.hour=document.getElementById("time-empty-"+id).value.split(":")[0];
-    times[id].start.min=document.getElementById("time-empty-"+id).value.split(":")[1];
-    console.log(times[id])
+
+    times[id].start.hour=parseInt(document.getElementById("time-empty-"+id).value.split(":")[0]);
+    times[id].start.min=parseInt(document.getElementById("time-empty-"+id).value.split(":")[1]);
+    times[id].current.hour=parseInt(document.getElementById("time-empty-"+id).value.split(":")[0]);
+    times[id].current.min=parseInt(document.getElementById("time-empty-"+id).value.split(":")[1]);
+      update_time(id)
     var empty=document.getElementById("time-empty-0").value;
       for(let i=1;i<7;i++){
           var temp=document.getElementById("time-empty-"+i).value;
@@ -467,8 +485,7 @@ function get(id) {
           card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
       }
   }
-  function update_time_day(){
-  }
+
   var current_day =-1;
   var gaps_id =0;
     function get_responsible(id,emp_number,sub_entity_id) {
@@ -569,7 +586,7 @@ function get(id) {
     function confirm_gap() {
         var hour_num = document.getElementById("hour_num").value;
         var min_num = document.getElementById("min_num").value;
-        document.getElementById(current_day).innerHTML= document.getElementById(current_day).innerHTML + "<div class=\"card bg-primary \" id=\"gap-"+current_day+"-"+gaps_id+"\" style=\" height:"+1.1*((parseInt(hour_num)*60)+parseInt(min_num))+"px;\"><div class='card-body text-center d-flex justify-content-center' style='padding: 0px' > <button class='btn btn-light text-primary ' onclick='delete_gap(this)' style='align-self: center '><i class='fa fa-trash'></i></button></div></div>"
+        document.getElementById(current_day).innerHTML= document.getElementById(current_day).innerHTML + "<div data-hours='"+hour_num+"' data-min='"+min_num+"' data-day='day-"+current_day+"' class=\"card bg-primary \" id=\"gap-"+current_day+"-"+gaps_id+"\" style=\" height:"+1.1*((parseInt(hour_num)*60)+parseInt(min_num))+"px;\"><div  class='gap card-body text-center d-flex justify-content-center' style='padding: 0px' > <button class='btn btn-light text-primary ' onclick='delete_gap(this)' style='align-self: center '><i class='fa fa-trash'></i></button></div></div>"
         gaps_id++;
     }
     function timeline(min) {
@@ -581,7 +598,43 @@ function get(id) {
         document.getElementById("vertical-time").innerHTML = content;
     }
     function delete_gap(e) {
+        var day = e.parentElement.parentElement.parentElement.id;
+
         e.parentElement.parentElement.remove();
+        update_time(day)
+    }
+
+    function update_time(id) {
+        times[id].current.hour =  times[id].start.hour;
+        times[id].current.min =  times[id].start.min;
+        var cards = document.querySelectorAll("[data-day=day-"+id+"]")
+     console.log(cards)
+        cards.forEach(card => {
+            if(card.id.toString().includes("card-")) {
+                var element = get(card.id.substring(5, card.id.length));
+                element.start.hour =  times[id].current.hour;
+                element.start.min =  times[id].current.min;
+                times[id].current.hour = times[id].current.hour + element.hours ;
+                times[id].current.min = times[id].current.min + element.min ;
+                if(times[id].current.min>59) {
+                    times[id].current.hour++;
+                    times[id].current.min = times[id].current.min - 60 ;
+                }
+                element.end.hour =  times[id].current.hour;
+                element.end.min =  times[id].current.min;
+                document.getElementById("time-"+element.id).innerText = element.start.hour+":"+element.start.min+" - " +
+                 element.end.hour+":"+element.end.min;
+
+            } else  {
+                times[id].current.hour =times[id].current.hour + parseInt(card.getAttribute("data-hours")) ;
+                times[id].current.min = times[id].current.min +parseInt(card.getAttribute("data-min")) ;
+                if(times[id].current.min>59) {
+                    times[id].current.hour++;
+                    times[id].current.min = times[id].current.min - 60 ;
+                }
+            }
+
+        })
     }
 </script>
 <div class="modal fade" id="responsible">
