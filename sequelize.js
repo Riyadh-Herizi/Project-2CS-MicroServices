@@ -55,6 +55,7 @@ Plannings.belongsTo(Groups);
 Groups.hasMany(Plannings);
 Positions.belongsTo(Plannings);
 Positions.belongsTo(SubEntities);
+SubEntities.hasMany(Positions)
 //Positions.hasMany(Users);
 
 

@@ -16,6 +16,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
+        #overlay {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
+        #overlay2 {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
         .cont {
             position: relative;
             width: 100%;
@@ -56,10 +82,20 @@
     </style>
 </head>
 <body style="margin: 10px">
-
+<div id="overlay"  class="bg-white  justify-content-center"  style="opacity: 0.7;">
+  <div   class="d-flex justify-content-center" style="align-self: center">
+   <div class="spinner-border text-primary"> </div><h5> &nbsp;&nbsp;&nbsp;&nbsp;Saving</h5></let>
+</div>
+</div>
+    <div id="overlay2" onclick="off2()" class="bg-white  justify-content-center"  style="opacity: 0.7;">
+        <div   class="d-flex justify-content-center" style="align-self: center">
+            <div ><i class="fa fa-trash"></i> </div><h5 class="text-danger"> &nbsp;&nbsp;&nbsp;&nbsp;Ops , Our servers are down</h5></let>
+        </div>
+    </div>
 <div class="container-fluid">
+    <input type="hidden" id="id_planning" value="<%=id%>">
   <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 display-inline-block " style="height: 100px;" >
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  " style="height: 100px;" >
         <table  class="table">
             <thead>
             <tr>
@@ -78,9 +114,9 @@
             </tbody>
         </table>
     </div>
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 display-inline-block" style="padding: 0px;">
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 " style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
-          <button class="btn btn-outline-success btn-sm float-right" style="margin-bottom: 5px" ><i class="fa fa-save"></i>&nbsp;&nbsp;Save </button>
+          <button onclick="save()" class="btn btn-outline-success btn-sm float-right" style="margin-bottom: 5px" ><i class="fa fa-save"></i>&nbsp;&nbsp;Save </button>
         <div class="table-responsive">
           <table class="table text-center">
               <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
@@ -279,8 +315,6 @@
 
       </div>
   </div>
-
-
 </div>
 
 
@@ -297,9 +331,7 @@
     function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
-
     function drop(ev) {
-
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var x = document.getElementById(data)
@@ -344,9 +376,9 @@
             entity_id: "<%= sub_entities[i].entity.id %>" ,
             emp_number : <%= sub_entities[i].nb_emp %>,
             emp: [],
-            start : {hour: 0 , min : 0},
-            end : {hour: 0, min : 0},
-            day: -1 ,
+            start : {hour: <%=sub_entities[i].positions[0].start.split(":")[0] %> , min : <%=sub_entities[i].positions[0].start.split(":")[1]%>},
+            end : {hour: <%=sub_entities[i].positions[0].end.split(":")[0]%>, min : <%=sub_entities[i].positions[0].end.split(":")[1]%>},
+            day: <%=sub_entities[i].positions[0].day%> ,
             hours: <%= sub_entities[i].hours %>,
             min: <%= sub_entities[i].min %>
           } ,
@@ -396,32 +428,100 @@
 
 </script>
 <script>
+    var compenents = {"day0":[],"day1":[],"day2":[],"day3":[],"day4":[],"day5":[],"day6":[]}
     var x ="";
     timeline(8)
-    for (var i = 0; i < sub_entities.length ; i++) {
-        x=x+"  <tr ><td>\n" +
-            "               <div data-day='' id=\"card-"+sub_entities[i].id +"\" class=\"card shadow text-center cont\" style=\" background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
-            "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
-            "                        <div class=\"card-title d-flex justify-content-between\" style=\"margin-bottom:0px\">\n" +
-            "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> "+sub_entities[i].name +"</h5>\n" +
-            "                                                <h5 class=\"card-title text-primary\" id='duration-"+sub_entities[i].id+"' style=\"font-size: 15px\">"+ sub_entities[i].hours+"h"+sub_entities[i].min+"min</h5>\n" +
-            "                                                <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>"+
-            "                                            </div>\n" +
-            "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px;\">"+ sub_entities[i].entity_name+" </h5>\n" +
+    for (let i = 0; i < sub_entities.length ; i++) {
+        if(sub_entities[i].day==-1) {
+            x = x + "  <tr ><td>\n" +
+                "               <div data-day='' id=\"card-" + sub_entities[i].id + "\" class=\"card shadow text-center cont\" style=\" background:#ffffff;border: 1px solid rgb(103, 128, 240)\" draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+                "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
+                "                        <div class=\"card-title d-flex justify-content-between\" style=\" align-self:center;margin-bottom:0px\">\n" +
+                "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> " + sub_entities[i].name + "</h5>\n" +
+                "                                                <h5 class=\"card-title text-primary\" id='duration-" + sub_entities[i].id + "' style=\"font-size: 15px\">" + sub_entities[i].hours + "h" + sub_entities[i].min + "min</h5>\n" +
+                "                                                <h6 id=\"time-" + sub_entities[i].id + "\" class='card-title' ></h6>" +
+                "                                            </div>\n" +
+                "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px;\">" + sub_entities[i].entity_name + " </h5>\n" +
 
-            "                                          " +
-            " </div>\n" +
-            "<div class=' justify-content-around middle' > " +
-            "<button id='restore-"+sub_entities[i].id+"' style='display: none' onclick='restore("+sub_entities[i].id+")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
-            "<button id='move-h-"+sub_entities[i].id+"' style='display: none'  class='move  btn btn-outline-primary btn-sm'><i class='fa fa-arrows-h'></i></button>" +
+                "                                          " +
+                " </div>\n" +
+                "<div class=' justify-content-around middle' > " +
+                "<button id='restore-" + sub_entities[i].id + "' style='display: none' onclick='restore(" + sub_entities[i].id + ")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
+                "<button id='move-h-" + sub_entities[i].id + "' style='display: none'  class='move  btn btn-outline-primary btn-sm'><i class='fa fa-arrows-h'></i></button>" +
 
-            " <div class=\"dropdown\"> " +
-            "<button id='emp-"+sub_entities[i].id+"' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible("+sub_entities[i].entity_id+","+sub_entities[i].emp_number+","+sub_entities[i].id+")' style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
-            "</div>   </div>                   <h6 id=\"time-"+sub_entities[i].id+"\" class='card-title' ></h6>  " +
-            "   </div>\n" +
-            "         </td>\n" +
-            "                </tr>";
+                " <div class=\"dropdown\"> " +
+                "<button id='emp-" + sub_entities[i].id + "' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible(" + sub_entities[i].entity_id + "," + sub_entities[i].emp_number + "," + sub_entities[i].id + ")' style='display: none'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
+                "</div>   </div>                   <h6 id=\"time-" + sub_entities[i].id + "\" class='card-title' ></h6>  " +
+                "   </div>\n" +
+                "         </td>\n" +
+                "                </tr>";
+        }
+        else {
+
+         compenents["day"+sub_entities[i].day].push( {
+              id: sub_entities[i].id ,
+             name : sub_entities[i].name,
+                entity_name: sub_entities[i].entity_name ,
+                entity_id: sub_entities[i].entity_id,
+                emp_number :  sub_entities[i].emp_number,
+            emp: [],
+                start : {hour: sub_entities[i].start.hour , min :sub_entities[i].start.min},
+            end : {hour: sub_entities[i].end.hour, min :sub_entities[i].end.min},
+            day: sub_entities[i].day ,
+            hours: sub_entities[i].hours ,
+            min: sub_entities[i].min }
+          )
+        }
     }
+     var mins =0;
+    for(let i=0;i<7;i++) {
+        compenents["day"+i]
+        var day_cards =""
+        for(let j =0 ;j< compenents["day"+i].length;j++) {
+
+           if (j < compenents["day"+i].length-1 ) {
+                 mins = compenents["day"+i][j+1].start.hour*60+compenents["day"+i][j+1].start.min;
+            }
+           else {
+              mins  = compenents["day"+i][j].end.hour*60+compenents["day"+i][j].end.min;
+
+           }
+            let diff = mins - (compenents["day"+i][j].end.hour*60+compenents["day"+i][j].end.min);
+           if (i===1) console.log(diff)
+             let height = (compenents["day"+i][j].hours*60+compenents["day"+i][j].min)*1.1
+             day_cards =day_cards +"  <tr ><td>\n" +
+                 "               <div data-day='day-"+compenents["day"+i][j].day+"' id=\"card-" + compenents["day"+i][j].id + "\" class=\"card shadow text-center cont\" style=\" height:"+height+"px ;background:#ffffff;border: 1px solid rgb(103, 128, 240)\"  draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+                 "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
+                 "                        <div class=\"card-title d-flex justify-content-between\" style=\" align-self:center;margin-bottom:0px\">\n" +
+                 "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> " + compenents["day"+i][j].name + "</h5>\n" +
+                 "                                                <h5 class=\"card-title text-primary\" id='duration-" + compenents["day"+i][j].id + "' style=\"display:none;font-size: 15px\">" +compenents["day"+i][j].hours + "h" +compenents["day"+i][j].min + "min</h5>\n" +
+                 "                                                <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' >"+ compenents["day"+i][j].start.hour +":"+compenents["day"+i][j].start.min+" - "+compenents["day"+i][j].end.hour+":"+compenents["day"+i][j].end.min +"  </h6>" +
+                 "                                            </div>\n" +
+                 "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px;\">" + compenents["day"+i][j].entity_name + " </h5>\n" +
+
+                 "                                          " +
+                 " </div>\n" +
+                 "<div class=' justify-content-around middle' > " +
+                 "<button id='restore-" + compenents["day"+i][j].id + "'  onclick='restore(" + compenents["day"+i][j].id + ")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
+                 "<button id='move-h-" +compenents["day"+i][j].id + "'  class='move  btn btn-outline-primary btn-sm'><i class='fa fa-arrows-h'></i></button>" +
+
+                 " <div class=\"dropdown\"> " +
+                 "<button id='emp-" + compenents["day"+i][j].id + "' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible(" + compenents["day"+i][j].entity_id + "," + compenents["day"+i][j].emp_number + "," + compenents["day"+i][j].id + ")'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
+                 "</div>   </div>                   <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' ></h6>  " +
+                 "   </div>\n" +
+                 "         </td>\n" +
+                 "                </tr>";
+
+             if(diff>0) {day_cards = day_cards+
+                 "<div data-hours="+diff / 60 +" data-min="+(diff%60)+"' data-day='day-"+ compenents["day"+i][j].day+"' class=\"card bg-primary \" id=\"gap-"+ compenents["day"+i][j].day+"-"+gaps_id+"\" style=\" height:"+(diff*1.1)+"px;\"><div  class='gap card-body text-center d-flex justify-content-center' style='padding: 0px' > <button class='btn btn-light text-primary ' onclick='delete_gap(this)' style='align-self: center '><i class='fa fa-trash'></i></button></div></div>"
+            gaps_id++;
+             }
+        }
+
+        document.getElementById(i+"").innerHTML=day_cards;
+    }
+
+
 
 
 
@@ -448,7 +548,8 @@ function get(id) {
   function restore(id) {
     var restore = document.getElementById("card-"+id)
      var id_day = restore.getAttribute("data-day");
-    restore.setAttribute("data-day","-1");
+     restore.setAttribute("data-day","-1");
+      get(id).day=-1;
       document.getElementById("time-"+id).innerText=""
       document.getElementById("restore-"+id).style.display="none"
       document.getElementById("move-h-"+id).style.display="none"
@@ -456,7 +557,6 @@ function get(id) {
       document.getElementById("entities").appendChild(restore)
       document.getElementById("card-"+id).style.height="auto"
       document.getElementById("duration-"+id).style.display="block"
-      console.log(id_day.substring(4,id_day.length))
       update_time(id_day.substring(4,id_day.length))
 
   }
@@ -472,7 +572,8 @@ function get(id) {
           var temp=document.getElementById("time-empty-"+i).value;
         if(temp.split(":")[0]<empty.split(":")[0]){
             empty=temp;
-        }else if(temp.split(":")[0]==empty.split(":")[0]){
+        }else
+            if(temp.split(":")[0]==empty.split(":")[0]){
             if(temp.split(":")[1]<empty.split(":")[1]){
                 empty=temp;
             }
@@ -557,6 +658,24 @@ function get(id) {
     }
 
  }
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("overlay").classList.add("d-flex")
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("overlay").classList.remove("d-flex")
+    }
+    function off2() {
+        document.getElementById("overlay2").style.display = "none";
+        document.getElementById("overlay2").classList.remove("d-flex")
+    }
+    function on2() {
+        document.getElementById("overlay2").style.display = "block";
+        document.getElementById("overlay2").classList.add("d-flex")
+    }
+   off()
     function update_empty_after(id) {
 
       var num = id % 6 +1;
@@ -610,7 +729,6 @@ function get(id) {
         times[id].current.hour =  times[id].start.hour;
         times[id].current.min =  times[id].start.min;
         var cards = document.querySelectorAll("[data-day=day-"+id+"]")
-     console.log(cards)
         cards.forEach(card => {
             if(card.id.toString().includes("card-")) {
                 var element = get(card.id.substring(5, card.id.length));
@@ -638,6 +756,63 @@ function get(id) {
 
         })
     }
+   function save() {
+        on()
+        var data ={ data :sub_entities ,id_planning:document.getElementById("id_planning").value}
+       $.ajax({
+           url: '/planning_control/save',
+           type: 'POST',
+           cache: false,
+           data: {
+               positions : JSON.stringify(data)
+           },
+           success: function(data){
+               if(data.final === true) {
+                   setTimeout(off, 2000);
+               } else {
+                   setTimeout(function () {
+                      off() ; on2()
+                   }, 2000);
+               }
+
+           }
+           , error: function(jqXHR, textStatus, err){
+
+           }
+       })
+   }
+   function init_start_days(id) {
+      if (compenents["day"+id].length>=1 ) {
+          var minimum = {hour:compenents["day"+id][0].start.hour,min:compenents["day"+id][0].start.min};
+          for (let i =1; i < compenents["day"+id].length; i++) {
+            if (minimum.hour>compenents["day"+id][i].start.hour) {
+                minimum.hour=compenents["day"+id][i].start.hour;
+                minimum.min =compenents["day"+id][i].start.min;
+            }
+            else if(minimum.hour===compenents["day"+id][i].start.hour && minimum.min>compenents["day"+id][i].start.min){
+                minimum.min =compenents["day"+id][i].start.min;
+            }
+          }
+
+      console.log("hello"+ time_format(minimum.hour,minimum.min))
+          document.getElementById("time-empty-"+id).value =time_format(minimum.hour,minimum.min);
+      }
+       update_empty(null,id)
+   }
+   for (let i=0 ; i<7;i++) {
+        init_start_days(i)
+   }
+   function time_format(hour,min) {
+      var new_hour = hour+"";
+      var new_min = min+"";
+       if (new_hour.length===1 ){
+            new_hour ="0"+new_hour;
+       }
+       if (new_min.length===1 ){
+           new_min ="0"+new_min;
+       }
+       return new_hour+":"+new_min
+   }
 </script>
 <div class="modal fade" id="responsible">
     <div class="modal-dialog modal-md">

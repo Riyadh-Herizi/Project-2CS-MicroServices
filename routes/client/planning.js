@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { Clients,Users,Groups ,Entities,SubEntities,Plannings,Positions} = require('../../sequelize');
 const { response } = require('express');
+const request = require('request');
 
 
 
@@ -24,14 +25,39 @@ router.post('/create_planning',async function(req, res, next) {
   })
 });
 router.get('/:id_planning',async function(req, res, next) {
-    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     await Plannings.findOne({where :{id:req.params.id_planning}}).then(async (planning)=>{
-       const sub_entities =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}}] } );
-      console.log(sub_entities[0].entity.name)
-       res.render('creation',{sub_entities :sub_entities });
+       const sub_entities =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } );
+       res.render('creation',{sub_entities :sub_entities ,id:req.params.id_planning});
 
     });
 
+});
+
+router.post("/save",async function(req,response,next) {
+
+    request.post({
+        json:true,
+        headers: {'content-type': 'application/json'},
+        url: `http://127.0.0.1:3001/save`,
+        body:{
+            positions: req.body.positions
+        }
+    }, (err, res, body) => {
+        console.log("executed")
+        if (err) {
+         // error
+            console.log("error")
+            console.log(err)
+            response.send({final:false})
+        } else {
+         if(res.statusCode===200) {
+             response.send({final:true})
+         }
+         else {
+             response.send({final:false})
+         }
+        }
+    });
 });
 
 
