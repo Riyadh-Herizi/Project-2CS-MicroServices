@@ -26,10 +26,19 @@ router.post('/create_planning',async function(req, res, next) {
 });
 router.get('/:id_planning',async function(req, res, next) {
     await Plannings.findOne({where :{id:req.params.id_planning}}).then(async (planning)=>{
-       const sub_entities =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } );
-       res.render('creation',{sub_entities :sub_entities ,id:req.params.id_planning});
+       await SubEntities.count( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } ).then(
+        async count=>{
+               if (count>0){
+                var sub_entities = await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } );
+                res.render('creation',{sub_entities :sub_entities ,id:req.params.id_planning,check : true});
 
-    });
+               }else{
+                    const sub_entities2 =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}}] } );
+                    res.render('creation',{sub_entities :sub_entities2 ,id:req.params.id_planning,check : false});
+                    }
+                 });
+                }
+    );
 
 });
 
