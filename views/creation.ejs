@@ -82,6 +82,19 @@
     </style>
 </head>
 <body style="margin: 10px">
+    <div  aria-live="polite" aria-atomic="true" style="position: relative;">
+        <div class="toast bg-white" style=" z-index:100;position: absolute; top: 0; left: 0;" data-delay="30000">
+          <div class="toast-header">
+            <strong class="mr-auto">Hint</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body" id="toast_body">
+            
+          </div>
+        </div>
+    </div>
 <div id="overlay"  class="bg-white  justify-content-center"  style="opacity: 0.7;">
   <div   class="d-flex justify-content-center" style="align-self: center">
    <div class="spinner-border text-primary"> </div><h5> &nbsp;&nbsp;&nbsp;&nbsp;Saving</h5></let>
@@ -114,6 +127,7 @@
             </tbody>
         </table>
     </div>
+    
       <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 " style="padding: 0px;">
           <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
           <button onclick="save()" class="btn btn-outline-success btn-sm float-right" style="margin-bottom: 5px" ><i class="fa fa-save"></i>&nbsp;&nbsp;Save </button>
@@ -368,6 +382,10 @@
       ];
 
       var sub_entities = [
+
+    <% if(check){
+
+     %>
           <% for (let i = 0; i < sub_entities.length ; i++) { %>
           {
             id: <%=sub_entities[i].id %>,
@@ -386,7 +404,26 @@
         <% }%>
 
 
-      ]
+      
+      <% } else { %>
+        <% for (let i = 0; i < sub_entities.length ; i++) { %>
+          {
+            id: <%=sub_entities[i].id %>,
+            name : "<%= sub_entities[i].name %>",
+            entity_name: "<%= sub_entities[i].entity.name %>" ,
+            entity_id: "<%= sub_entities[i].entity.id %>" ,
+            emp_number : <%= sub_entities[i].nb_emp %>,
+            emp: [],
+            start : {hour: 0 , min : 0},
+            end : {hour: 0, min : 0},
+            day: -1 ,
+            hours: <%= sub_entities[i].hours %>,
+            min: <%= sub_entities[i].min %>
+          } ,
+
+        <% }%>
+        <% } %>
+        ]
 
     $(function() {
         $( "#0" ).sortable( {
@@ -812,6 +849,11 @@ function get(id) {
            new_min ="0"+new_min;
        }
        return new_hour+":"+new_min
+   }
+
+   function show_toast(type,text){
+       document.getElementById("toast_body").innerText=text;
+        $('.toast').toast('show');
    }
 </script>
 <div class="modal fade" id="responsible">
