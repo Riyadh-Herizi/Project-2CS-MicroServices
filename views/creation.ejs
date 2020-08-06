@@ -8,11 +8,12 @@
     <title>planning</title>
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
           rel = "stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -82,19 +83,7 @@
     </style>
 </head>
 <body style="margin: 10px">
-    <div  aria-live="polite" aria-atomic="true" style="position: relative;">
-        <div class="toast bg-white" style=" z-index:100;position: absolute; top: 0; left: 0;" data-delay="30000">
-          <div class="toast-header">
-            <strong class="mr-auto">Hint</strong>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="toast-body" id="toast_body">
-            
-          </div>
-        </div>
-    </div>
+
 <div id="overlay"  class="bg-white  justify-content-center"  style="opacity: 0.7;">
   <div   class="d-flex justify-content-center" style="align-self: center">
    <div class="spinner-border text-primary"> </div><h5> &nbsp;&nbsp;&nbsp;&nbsp;Saving</h5></let>
@@ -336,7 +325,7 @@
 
 </body>
 <script>
-
+    var notyf = new Notyf();
     function allowDrop(ev,e) {
         ev.preventDefault();
 
@@ -398,7 +387,9 @@
             end : {hour: <%=sub_entities[i].positions[0].end.split(":")[0]%>, min : <%=sub_entities[i].positions[0].end.split(":")[1]%>},
             day: <%=sub_entities[i].positions[0].day%> ,
             hours: <%= sub_entities[i].hours %>,
-            min: <%= sub_entities[i].min %>
+            min: <%= sub_entities[i].min %>,
+            complex : <%= sub_entities[i].complex %>,
+              entity_complex : <%= sub_entities[i].entity.complex %>,
           } ,
 
         <% }%>
@@ -418,7 +409,9 @@
             end : {hour: 0, min : 0},
             day: -1 ,
             hours: <%= sub_entities[i].hours %>,
-            min: <%= sub_entities[i].min %>
+            min: <%= sub_entities[i].min %>,
+            complex : <%= sub_entities[i].complex %>,
+              entity_complex : <%= sub_entities[i].entity.complex %>,
           } ,
 
         <% }%>
@@ -465,6 +458,7 @@
 
 </script>
 <script>
+
     var compenents = {"day0":[],"day1":[],"day2":[],"day3":[],"day4":[],"day5":[],"day6":[]}
     var x ="";
     timeline(8)
@@ -521,7 +515,6 @@
             }
            else {
               mins  = compenents["day"+i][j].end.hour*60+compenents["day"+i][j].end.min;
-
            }
             let diff = mins - (compenents["day"+i][j].end.hour*60+compenents["day"+i][j].end.min);
            if (i===1) console.log(diff)
@@ -621,8 +614,7 @@ function get(id) {
       for(let i=0;i<7;i++){
           var card = document.getElementById("empty-"+i);
           var time = document.getElementById("time-empty-"+i).value;
-            
-          card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
+          card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)+Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
       }
   }
 
@@ -668,6 +660,7 @@ function get(id) {
         })
     }
  function switch_day(day) {
+
     var check= document.getElementById("check_box-"+day);
     if(check.checked=== false ) {
        document.getElementById(day).classList.add("bg-secondary");
@@ -703,6 +696,7 @@ function get(id) {
     function off() {
         document.getElementById("overlay").style.display = "none";
         document.getElementById("overlay").classList.remove("d-flex")
+        notyf.success('Your planning have been successfully saved!');
     }
     function off2() {
         document.getElementById("overlay2").style.display = "none";
@@ -712,7 +706,7 @@ function get(id) {
         document.getElementById("overlay2").style.display = "block";
         document.getElementById("overlay2").classList.add("d-flex")
     }
-   off()
+
     function update_empty_after(id) {
 
       var num = id % 6 +1;
@@ -806,6 +800,7 @@ function get(id) {
            success: function(data){
                if(data.final === true) {
                    setTimeout(off, 2000);
+
                } else {
                    setTimeout(function () {
                       off() ; on2()
@@ -851,11 +846,25 @@ function get(id) {
        return new_hour+":"+new_min
    }
 
-   function show_toast(type,text){
-       document.getElementById("toast_body").innerText=text;
-        $('.toast').toast('show');
+
+   function check_complex_day(id) {
+       var complex = 0;
+       for (let i=0 ; i<sub_entities.length;i++){
+            if(sub_entities[i].day=== id ){
+                 complex =complex+ sub_entities[i].complex*sub_entities[i].entity_complex
+            }
+        }
+     if(complex>15) {
+         notyf.success({
+             message :'limit exceeded',
+             duration:5000,
+         });
+
+     }
+
    }
 </script>
+
 <div class="modal fade" id="responsible">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
