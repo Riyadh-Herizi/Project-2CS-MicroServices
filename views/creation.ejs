@@ -370,6 +370,7 @@
               {start:{hour:8, min:0},current:{hour:8, min:0}},
       ];
 
+
       var sub_entities = [
 
     <% if(check){
@@ -392,6 +393,7 @@
               entity_complex : <%= sub_entities[i].entity.complex %>,
           } ,
 
+
         <% }%>
 
 
@@ -412,6 +414,8 @@
             min: <%= sub_entities[i].min %>,
             complex : <%= sub_entities[i].complex %>,
               entity_complex : <%= sub_entities[i].entity.complex %>,
+
+
           } ,
 
         <% }%>
@@ -504,7 +508,16 @@
           )
         }
     }
-     var mins =0;
+    var work_days=[
+        <%= days.charAt(0) %>,
+        <%= days.charAt(1) %>,
+        <%= days.charAt(2) %>,
+        <%= days.charAt(3) %>,
+        <%= days.charAt(4) %>,
+        <%= days.charAt(5) %>,
+        <%= days.charAt(6) %>,
+    ];
+    var mins =0;
     for(let i=0;i<7;i++) {
         compenents["day"+i]
         var day_cards =""
@@ -547,18 +560,10 @@
             gaps_id++;
              }
         }
-
         document.getElementById(i+"").innerHTML=day_cards;
     }
-
-
-
-
-
-
     document.getElementById("entities").innerHTML=x;
-
-function affecte_day(id,day) {
+    function affecte_day(id,day) {
 
     for(var i=0; i<sub_entities.length; i++) {
         if(sub_entities[i].id==id) {
@@ -566,16 +571,14 @@ function affecte_day(id,day) {
         }
     }
 }
-function get(id) {
+    function get(id) {
         for(var i=0; i<sub_entities.length; i++) {
             if(sub_entities[i].id==id) {
                 return sub_entities[i]
             }
         }
     }
-
-
-  function restore(id) {
+    function restore(id) {
     var restore = document.getElementById("card-"+id)
      var id_day = restore.getAttribute("data-day");
      restore.setAttribute("data-day","-1");
@@ -590,7 +593,7 @@ function get(id) {
       update_time(id_day.substring(4,id_day.length))
 
   }
-  function update_empty(e,id) {
+    function update_empty(e,id) {
 
     times[id].start.hour=parseInt(document.getElementById("time-empty-"+id).value.split(":")[0]);
     times[id].start.min=parseInt(document.getElementById("time-empty-"+id).value.split(":")[1]);
@@ -617,9 +620,8 @@ function get(id) {
           card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)+Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
       }
   }
-
-  var current_day =-1;
-  var gaps_id =0;
+    var current_day =-1;
+    var gaps_id =0;
     function get_responsible(id,emp_number,sub_entity_id) {
         current_entity=id;
         $.ajax({
@@ -659,10 +661,11 @@ function get(id) {
             }
         })
     }
- function switch_day(day) {
+    function switch_day(day) {
 
     var check= document.getElementById("check_box-"+day);
     if(check.checked=== false ) {
+        work_days[day] = 0;
        document.getElementById(day).classList.add("bg-secondary");
         document.getElementById(day).style.height="600px";
         document.getElementById(day).classList.remove("bg-white");
@@ -678,7 +681,7 @@ function get(id) {
        }
     }
     else {
-
+        work_days[day] = 1;
         document.getElementById(day).classList.remove("bg-secondary");
         document.getElementById("time-empty-"+day).disabled=false;
         document.getElementById(day).style.height="auto";
@@ -686,13 +689,11 @@ function get(id) {
         document.getElementById(day).classList.add("bg-white");
         update_empty(null,day);
     }
-
  }
     function on() {
         document.getElementById("overlay").style.display = "block";
         document.getElementById("overlay").classList.add("d-flex")
     }
-
     function off() {
         document.getElementById("overlay").style.display = "none";
         document.getElementById("overlay").classList.remove("d-flex")
@@ -706,7 +707,6 @@ function get(id) {
         document.getElementById("overlay2").style.display = "block";
         document.getElementById("overlay2").classList.add("d-flex")
     }
-
     function update_empty_after(id) {
 
       var num = id % 6 +1;
@@ -726,7 +726,7 @@ function get(id) {
         for(let i=0;i<7;i++){
             var card = document.getElementById("empty-"+i);
             var time = document.getElementById("time-empty-"+i).value;
-                 if(i!== id) {  card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)-Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
+                 if(i!== id) {  card.style.height=Math.abs(1.1*(((time.split(":")[0]-empty.split(":")[0])*60)+Math.abs(time.split(":")[1]-empty.split(":")[1])))+"px"
         } else {
                      card.style.height=0+"px"
                  }
@@ -755,7 +755,6 @@ function get(id) {
         e.parentElement.parentElement.remove();
         update_time(day)
     }
-
     function update_time(id) {
         times[id].current.hour =  times[id].start.hour;
         times[id].current.min =  times[id].start.min;
@@ -787,9 +786,13 @@ function get(id) {
 
         })
     }
-   function save() {
+    function save() {
         on()
-        var data ={ data :sub_entities ,id_planning:document.getElementById("id_planning").value}
+        var days ="";
+        for (let i=0 ;i<7;i++){
+            days=days+work_days[i];
+        }
+        var data ={ data :sub_entities ,id_planning:document.getElementById("id_planning").value,days:days}
        $.ajax({
            url: '/planning_control/save',
            type: 'POST',
@@ -813,7 +816,7 @@ function get(id) {
            }
        })
    }
-   function init_start_days(id) {
+    function init_start_days(id) {
       if (compenents["day"+id].length>=1 ) {
           var minimum = {hour:compenents["day"+id][0].start.hour,min:compenents["day"+id][0].start.min};
           for (let i =1; i < compenents["day"+id].length; i++) {
@@ -831,10 +834,10 @@ function get(id) {
       }
        update_empty(null,id)
    }
-   for (let i=0 ; i<7;i++) {
+    for (let i=0 ; i<7;i++) {
         init_start_days(i)
    }
-   function time_format(hour,min) {
+    function time_format(hour,min) {
       var new_hour = hour+"";
       var new_min = min+"";
        if (new_hour.length===1 ){
@@ -845,16 +848,15 @@ function get(id) {
        }
        return new_hour+":"+new_min
    }
-
-
-   function check_complex_day(id) {
+    function check_complex_day(id) {
        var complex = 0;
        for (let i=0 ; i<sub_entities.length;i++){
             if(sub_entities[i].day=== id ){
                  complex =complex+ sub_entities[i].complex*sub_entities[i].entity_complex
             }
         }
-     if(complex>15) {
+       var somme= get_complex();
+       if(complex>(somme/7)) {
          notyf.success({
              message :'limit exceeded',
              duration:5000,
@@ -863,6 +865,13 @@ function get(id) {
      }
 
    }
+    function get_complex() {
+       let somme=0;
+        for (let i=0 ; i<sub_entities.length;i++){
+                somme =somme+ sub_entities[i].complex*sub_entities[i].entity_complex
+        }
+        return somme;
+    }
 </script>
 
 <div class="modal fade" id="responsible">

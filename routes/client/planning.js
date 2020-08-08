@@ -19,8 +19,8 @@ router.post('/create_planning',async function(req, res, next) {
   const client_id = await Clients.findOne( { where:{email :req.user.username} } );
   await Plannings.create({planning_name: req.body.name,groupId:req.body.id_group, clientId: client_id.id,start:req.body.start
     ,end:req.body.end,
-  date:utc}).then((planning)=> {
-
+  date:utc,days:"1111111"}).then((planning)=> {
+  console.log(planning)
       res.send({id:planning.id})
   })
 });
@@ -29,12 +29,15 @@ router.get('/:id_planning',async function(req, res, next) {
        await SubEntities.count( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } ).then(
         async count=>{
                if (count>0){
+
                 var sub_entities = await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } );
-                res.render('creation',{sub_entities :sub_entities ,id:req.params.id_planning,check : true});
+                   console.log(sub_entities)  ;
+                res.render('creation',{sub_entities :sub_entities ,id:req.params.id_planning,check : true,days:planning.days});
 
                }else{
-                    const sub_entities2 =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}}] } );
-                    res.render('creation',{sub_entities :sub_entities2 ,id:req.params.id_planning,check : false});
+                    const sub_entities2 =await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},] } );
+
+                   res.render('creation',{sub_entities :sub_entities2 ,id:req.params.id_planning,check : false,days:planning.days});
                     }
                  });
                 }
