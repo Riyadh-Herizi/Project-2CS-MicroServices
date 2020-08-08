@@ -462,8 +462,27 @@
 
 </script>
 <script>
-
+    function switch_day_auto(day) {
+        var check= document.getElementById("check_box-"+day);
+        if(work_days[day]=== 0 ) {
+            check.checked =false
+            document.getElementById(day).classList.add("bg-secondary");
+            document.getElementById(day).style.height="500px";
+            document.getElementById(day).classList.remove("bg-white");
+            document.getElementById("time-empty-"+day).disabled=true;
+            document.getElementById("gap-"+day).style.display="none";
+            // document.getElementById(day).addEventListener("drop", null);
+            update_empty_after(day);
+            for(let i =0 ;i< sub_entities.length;i++) {
+                console.log(sub_entities[i].day===day)
+                if(sub_entities[i].day==day){
+                    restore(sub_entities[i].id)
+                }
+            }
+        }
+    }
     var compenents = {"day0":[],"day1":[],"day2":[],"day3":[],"day4":[],"day5":[],"day6":[]}
+
     var x ="";
     timeline(8)
     for (let i = 0; i < sub_entities.length ; i++) {
@@ -519,6 +538,7 @@
     ];
     var mins =0;
     for(let i=0;i<7;i++) {
+
         compenents["day"+i]
         var day_cards =""
         for(let j =0 ;j< compenents["day"+i].length;j++) {
@@ -561,6 +581,7 @@
              }
         }
         document.getElementById(i+"").innerHTML=day_cards;
+        switch_day_auto(i)
     }
     document.getElementById("entities").innerHTML=x;
     function affecte_day(id,day) {
@@ -662,7 +683,6 @@
         })
     }
     function switch_day(day) {
-
     var check= document.getElementById("check_box-"+day);
     if(check.checked=== false ) {
         work_days[day] = 0;
@@ -690,6 +710,7 @@
         update_empty(null,day);
     }
  }
+
     function on() {
         document.getElementById("overlay").style.display = "block";
         document.getElementById("overlay").classList.add("d-flex")
