@@ -55,14 +55,14 @@ router.post("/save",async function(req,response,next) {
             positions: req.body.positions
         }
     }, (err, res, body) => {
-        console.log("executed")
         if (err) {
          // error
-            console.log("error")
+
             console.log(err)
             response.send({final:false})
         } else {
          if(res.statusCode===200) {
+             console.log(body.planning)
              response.send({final:true})
          }
          else {
