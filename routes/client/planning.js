@@ -44,6 +44,26 @@ router.get('/:id_planning',async function(req, res, next) {
     );
 
 });
+router.post('/show_planning',async function(req, res, next) {
+    await Plannings.findOne({where :{id:req.body.id_planning}}).then(async (planning)=>{
+       await SubEntities.count( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } ).then(
+        async count=>{
+               if (count>0){
+
+                var sub_entities = await SubEntities.findAll( { include:[{model:Entities,required:true,where: {groupId : planning.groupId}},{model:Positions,required:true,where:{planningId : planning.id}}] } );
+                   console.log(sub_entities)  ;
+                res.send({sub_entities :sub_entities ,check : true,days:planning.days});
+
+               }else{
+                    res.send({check : false});
+
+                    }
+                 });
+                }
+    );
+
+});
+
 
 router.post("/save",async function(req,response,next) {
 
@@ -62,7 +82,6 @@ router.post("/save",async function(req,response,next) {
             response.send({final:false})
         } else {
          if(res.statusCode===200) {
-             console.log(body.planning)
              response.send({final:true})
          }
          else {
