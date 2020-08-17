@@ -41,14 +41,14 @@ router.get('/login', async function(req, res, next) {
 router.get('/',loggedin, async function (req,res,next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const users = await  Users.findAll( { where:{clientId :client_id.id} } );
-    res.render('client_home',{users :users});
+    res.render('Client_dash/index',{users :users});
 });
 router.get('/planning_service',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
     const plannings = await  Plannings.findAll( { where:{clientId :client_id.id} } );
     const users = await  Users.findAll( { where:{clientId :client_id.id} } );
-    res.render('planning',{groups :groups,plannings:plannings,users:users });
+    res.render('Client_dash/index',{groups :groups,plannings:plannings,users:users });
 });
 
 

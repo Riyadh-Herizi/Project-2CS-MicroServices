@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Client Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="Codedthemes" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap/css/bootstrap.min.css">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="/assets/icon/themify-icons/themify-icons.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome-n.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <!-- scrollbar.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <style>
+        * {
+            font-family: Bahnschrift ;
+        }
+        #overlay {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
+        #overlay2 {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
+        .cont {
+            position: relative;
+            width: 100%;
+            }
+.time {
+    height: 66px;
+}
+            .card-over {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+            }
+
+            .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display:flex;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+            
+            }
+
+            .cont:hover .card-over {
+            opacity: 0.3;
+            }
+
+            .cont:hover .middle {
+            opacity: 1;
+            }
+        .move:hover {cursor: move;}
+    </style>
+    <style>
+
+    .group {
+        height: 50px;
+        width: 250px;
+    }
+    .content {
+        margin-top: 50px;
+        height: 465px;
+        overflow: scroll;
+
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+   
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+                    <div class="navbar-logo">
+                        <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
+                            <i class="ti-menu"></i>
+                        </a>
+                        <div class="mobile-search waves-effect waves-light">
+                            <div class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend search-close"><i class="ti-close input-group-text"></i></span>
+                                        <input type="text" class="form-control" placeholder="Enter Keyword">
+                                        <span class="input-group-append search-btn"><i class="ti-search input-group-text"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="index.html">
+                            <img class="img-fluid" src="/assets/images/logo.png" alt="Theme-Logo" />
+                        </a>
+                        <a class="mobile-options waves-effect waves-light">
+                            <i class="ti-more"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li>
+                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                            </li>
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                                    <i class="ti-fullscreen"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="user-profile header-notification">
+                                <a href="#!" class="waves-effect waves-light">
+                                    <img src="/assets/images/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <span>John Doe</span>
+                                    <i class="ti-angle-down"></i>
+                                </a>
+                                <ul class="show-notification profile-notification">
+                                    <li class="waves-effect waves-light">
+                                        <a href="#!">
+                                            <i class="ti-settings"></i> Settings
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="user-profile.html">
+                                            <i class="ti-user"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="email-inbox.html">
+                                            <i class="ti-email"></i> My Messages
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="auth-lock-screen.html">
+                                            <i class="ti-lock"></i> Lock Screen
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="auth-normal-sign-in.html">
+                                            <i class="ti-layout-sidebar-left"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                        <div class="pcoded-inner-navbar main-menu">
+                            
+                            <div class="pcoded-navigation-label">Navigation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="active">
+                                    <a href="index.html" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                        <span class="pcoded-mtext"><a class="nav-link active" data-toggle="tab" href="#Dashboard">Dashboard</a></span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigation-label">Plannings</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="#plannings" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>P</b></span>
+                                        <span class="pcoded-mtext"><a class="nav-link" data-toggle="tab" href="#plannings">All plannings</a></span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Planning generator</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="button.html" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Manual planning</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="button.html" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Automatique planning</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigation-label">Entities</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="form-elements-component.html" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                        <span class="pcoded-mtext">Define entities</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigation-label">Employees</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="chart-morris.html" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-bar-chart-alt"></i><b>C</b></span>
+                                        <span class="pcoded-mtext">New employee</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="map-google.html" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-map-alt"></i><b>M</b></span>
+                                        <span class="pcoded-mtext">List employees</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="container-fluid ">
+                            <h2 style="padding-top: 30px">Planning manager</h2>
+                        
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#Dashboard">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#entities">Define entities</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#plannings">All plannings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#statistics">Statistics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#planning_generator">Planning generator</a>
+                                </li>
+                        
+                        
+                            </ul>
+                        
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div id="Dashboard" class="container-fluid tab-pane  active"><br>
+                                    <p></p>
+                                </div>
+                                <div id="entities" class="container-fluid tab-pane fade"><br>
+                        
+                        
+                                    <div class="container-fluid" >
+                                      <div class="row">
+                                        <div class="col-md-3 p-2 shadow">
+                                         <table class="table text-center">
+                                             <thead>
+                                             <tr><th class="bg-primary text-white font-weight-bold">Groups</th></tr>
+                                             </thead>
+                                             <tbody id="groups">
+                                             <% for (var i = 0; i < groups.length ; i++) { %>
+                                                 <tr>
+                                                     <td class="text-center"> <button class="btn btn-sm btn-light text-primary bg-white" onclick="show_group(<%= groups[i].id %>)">
+                                                         <%= groups[i].group_name %>
+                                                         </button>  </td>
+                                                 </tr>
+                                             <% } %>
+                        
+                        
+                                             </tbody>
+                                         </table>
+                                            <button class="btn btn-primary btn-sm text-center text-white" data-toggle="modal" data-target="#add_group" >Add group</button>
+                        
+                                        </div>
+                                          <div id="view" class="col-md-8 shadow p-1 m-4">
+                                              <div class="container-fluid text-center " style="height: 500px ;display: flex;
+                          justify-content: center;
+                          align-items: center;">
+                        
+                                                  <h3 class="text-primary">Select a group to see entities</h3>
+                        
+                                              </div>
+                        
+                        
+                        
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div id="planning_generator" class="container-fluid tab-pane fade"><br>
+                                    <div class="container-fluid">
+                                        <div class="row " style="">
+                                            <div class="col-md-4 ">
+                                                <div class="row "> <h4 class="text-white"> Progress </h4></div>
+                                                <br>
+                                                <ul style=" list-style-type:none" class="p-4">
+                                                    <li>
+                                                        <h5 class="text-primary"> <i class="fa fa-fw fa-cog"></i> &nbsp;&nbsp;Planning global parameters</h5> <br>
+                                                    </li>
+                                                    <li>
+                                                        <h5 class="text-primary">  <i class="fa fa-fw fa-sign-in-alt"></i> &nbsp;&nbsp;Include employees</h5><br>
+                                                    </li>
+                                                    <li>
+                                                        <h5 class="text-primary">  <i class="fa fa-fw fa-sign-in-alt"></i> &nbsp;&nbsp;Include entities</h5><br>
+                                                    </li>
+                                                    <li>
+                                                        <h5 class="text-primary"><i class="fa fa-fw fa-clock"></i> &nbsp;&nbsp;Define the time domain</h5><br>
+                                                    </li>
+                                                    <li>
+                                                        <h5 class="text-primary"><i class="fa fa-fw fa-random"></i> &nbsp;&nbsp;Define the constraints</h5><br>
+                                                    </li>
+                                                    <li>
+                                                        <h5 class="text-primary"><i class="fa fa-fw fa-check-circle"></i> &nbsp;&nbsp;Automatic generation</h5><br>
+                                                    </li>
+                                                </ul>
+                        
+                                            </div>
+                        
+                                            <div id="content_global" class="col-md-7 " >
+                                                <div id="panel">
+                                                    <div class="row content bg-white ">
+                                                        <div class="col">
+                                                            <form  class="was-validated">
+                                                                <br>
+                                                                <div class="form-group">
+                                                                    <input  type="text" class="form-control" id="planning_name" placeholder="Planning name" name="planning_name" required>
+                                                                    <div class="valid-feedback">Valid</div>
+                                                                    <div class="invalid-feedback">Please provide the planning name</div>
+                                                                </div>
+                                                                <hr>
+                                                                <div>Planning type : </div>
+                                                                <div class="form-check-inline">
+                                                                    <label class="form-check-label">
+                                                                        <input id="ed" type="radio" class="form-check-input" name="planning_type" checked>Educational institutions
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check-inline">
+                                                                    <label class="form-check-label">
+                                                                        <input id="mp" type="radio" class="form-check-input" name="planning_type">Multiple Planning ( Multiple services )
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check-inline disabled">
+                                                                    <label class="form-check-label">
+                                                                        <input id="sp" type="radio" class="form-check-input" name="planning_type">Simple Planning ( position / person )
+                                                                    </label>
+                                                                </div>
+                                                                <hr>
+                        
+                                                                <div class="form-group form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input id="use_accounts" class="form-check-input" type="checkbox" name="use_accounts" > Use the employee's wish form ( if exists )
+                                                                    </label>
+                                                                </div>
+                        
+                                                                <hr>
+                                                                <div class="form-group form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input id="allow_change" class="form-check-input" type="checkbox" name="allow_change" > Allow position changes
+                                                                    </label>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="form-group form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input id="employees_other" class="form-check-input" type="checkbox" name="employees_other" checked> Consider employee time on other plannings
+                                                                    </label>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="form-group form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input class="form-check-input" type="checkbox" name="remember" required> I agree on this service terms and conditions
+                                                                        <div class="valid-feedback">Valid.</div>
+                                                                        <div class="invalid-feedback">Check this checkbox to continue.</div>
+                                                                    </label>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                        
+                        
+                                                    </div>
+                        
+                                                    <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                                        <button type="button" class="btn btn-secondary">Back</button>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                        
+                        
+                                                    </div>
+                        
+                                                </div>
+                        
+                                            </div>
+                        
+                                            <div id="content_employees" class="col-md-7 d-none" >
+                                                <div id="panel">
+                                                    <div class="row content bg-white ">
+                                                        <div class="col">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Full name</th>
+                                                                    <th>Email</th>
+                                                                    <th>Grade</th>
+                                                                    <th>Include in planning</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="emp_list">
+                        
+                        
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                        
+                        
+                                                    </div>
+                        
+                                                    <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                                        <button type="button" class="btn btn-secondary">Back</button>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div id="content_entities" class="col-md-7 d-none" >
+                                                <div id="panel">
+                                                    <div class="row content bg-white ">
+                                                        <div class="col">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Firstname</th>
+                                                                    <th>Lastname</th>
+                                                                    <th>Email</th>
+                                                                    <th>Grade</th>
+                                                                    <th>Include in planning</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>John</td>
+                                                                    <td>Doe</td>
+                                                                    <td>john@example.com</td>
+                                                                    <td>Doe</td>   <td>Doe</td>
+                                                                </tr>
+                        
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                        
+                        
+                                                    </div>
+                        
+                                                    <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                                        <button type="button" class="btn btn-secondary">Back</button>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div id="content_time" class="col-md-7 d-none" >
+                                                <div id="panel">
+                                                    <div class="row content bg-white ">
+                                                        <div class="col">
+                        
+                        
+                                                        </div>
+                                                    </div>
+                        
+                                                    <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                                        <button type="button" class="btn btn-secondary">Back</button>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                        
+                        
+                                                    </div>
+                        
+                                                </div>
+                        
+                                            </div>
+                        
+                                            <div id="content_constraints" class="col-md-7 d-none" >
+                                                <div id="panel">
+                                                    <div class="row content bg-white ">
+                                                        <div class="col">
+                        
+                                                        </div>
+                        
+                        
+                                                    </div>
+                        
+                                                    <div class="row sub justify-content-center" style="margin-top: 20px; padding:2px">
+                                                        <button type="button" class="btn btn-secondary">Back</button>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-light" onclick="next_step()">Next</button>
+                        
+                        
+                                                    </div>
+                        
+                                                </div>
+                        
+                                            </div>
+                        
+                        
+                                            <div id="wait" class="col-md-7 d-none" >
+                                                <div class="row content justify-content-center  bg-white">
+                                                    <div style="margin: 200px">
+                                                        <div class="spinner-border text-primary" style="margin-right: 30px"></div> Validating information, Please wait
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="plannings" class="container-fluid tab-pane fade"><br>
+                        
+                        
+                                              <div class="container-fluid" >
+                                                <div class="row">
+                                                  <div class="col-md-2 shadow text-center">
+                                                   <table class="table text-center">
+                                                       <thead>
+                                                       <tr><th class="bg-primary text-white font-weight-bold">Plannings</th></tr>
+                                                       </thead>
+                                                       <tbody id="plannings">
+                                                       <% for (var i = 0; i < plannings.length ; i++) { %>
+                                                           <tr>
+                                                               <td class="text-center"> <a class="btn btn-sm btn-light text-primary bg-white col-7" onclick="show_planning(<%=plannings[i].id %>)" >
+                                                                   <%= plannings[i].planning_name %>
+                                                                   </a>
+                                                                   <a class="btn btn-info btn-sm col-2 text-white" href="/planning_control/<%=plannings[i].id%>"><i class="fa fa-edit"></i></a>
+                                                                   <button class="btn btn-danger btn-sm col-2"><i class="fa fa-trash"></i></button>
+                                                                </td>
+                                                                
+                                                           </tr>
+                                                       <% } %>
+                        
+                        
+                                                       </tbody>
+                                                   </table>
+                                                      <button class="btn btn-primary btn-sm text-center text-white" data-toggle="modal" data-target="#add_planning" >Create planning</button>
+                        
+                                                  </div>
+                                                    
+                        
+                        
+                            
+                              <div class="col-xs-auto col-sm-auto col-md-auto col-lg-auto " style="padding: 0px;">
+                                <div class="table-responsive">
+                                  <table class="table text-center">
+                                      <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
+                        
+                                          <tr id="times" class="collapse bg-primary" style="position: absolute;z-index: 3;display: hidden;">
+                                             <div>
+                                                 <td></td>
+                                                 <td>
+                                                     <h4 class="text-white">Sunday</h4>
+                                                  <label class="form-check-label text-white">
+                                                      <input class="form-check-input" id="check_box-0" onclick="switch_day(0)" type="checkbox" checked> Work day
+                                                  </label>
+                                                  <div class="form-group row">
+                                                      <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                      <div class="col-10">
+                                                          <input onchange="update_empty(this,0)" class="form-control" type="time" value="08:00" id="time-empty-0">
+                                                      </div>
+                                                  </div>
+                        
+                                              </td>
+                                                 <td>
+                                                    <h4 class="text-white">Monday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input"  onclick="switch_day(1)" id="check_box-1" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,1)" class="form-control" type="time" value="08:00" id="time-empty-1">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                                                 <td>
+                                                    <h4 class="text-white">Tuesday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input" onclick="switch_day(2)"  id="check_box-2" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,2)" class="form-control" type="time" value="08:00" id="time-empty-2">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                                                 <td>
+                                                    <h4 class="text-white">Wednesday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input" onclick="switch_day(3)" id="check_box-3" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,3)" class="form-control" type="time" value="08:00" id="time-empty-3">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                                                 <td>
+                                                    <h4 class="text-white">Thursday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input" onclick="switch_day(4)" id="check_box-4" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,4)" class="form-control" type="time" value="08:00" id="time-empty-4">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                                                 <td>
+                                                    <h4 class="text-white">Friday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input" onclick="switch_day(5)" id="check_box-5" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,5)" class="form-control" type="time" value="08:00" id="time-empty-5">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                                                 <td> 
+                                                    <h4 class="text-white">Saturday</h4>
+                                                     <label class="form-check-label text-white">
+                                                         <input class="form-check-input"  onclick="switch_day(6)" id="check_box-6" type="checkbox" checked> Work day
+                                                     </label>
+                                                     <div class="form-group row ">
+                                                         <label for="example-time-input" class="col-2 col-form-label text-white">Start:</label>
+                                                         <div class="col-10">
+                                                             <input onchange="update_empty(this,6)" class="form-control" type="time" value="08:00" id="time-empty-6">
+                                                         </div>
+                                                     </div>
+                        
+                                                 </td>
+                        
+                                                 </div>
+                        
+                                          </tr>
+                        
+                        
+                                      <tr style="z-index: 1;">
+                                          <th scope="col">timeline</th>
+                                          <th scope="col">Sunday</th>
+                                          <th scope="col">Monday</th>
+                                          <th scope="col">Tuesday</th>
+                                          <th scope="col">Wednesday</th>
+                                          <th scope="col">Thursday</th>
+                                          <th scope="col">Friday</th>
+                                          <th scope="col">Saturday</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody style="z-index: 1;" >
+                                      <tr>
+                                          <td class="vertical-time" id="vertical-time">
+                        
+                        
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-0" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="0"
+                                                    ondrop="drop(event)" ondragover="allowDrop(event,this)"  style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px" >
+                                              </div>
+                                              <button id="gap-0" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(0)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-1" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="1"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px" >
+                                                </div>
+                                              <button id="gap-1"  data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(1)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button></td>
+                        
+                                          <td>
+                                            <div class="card bg-primary" id="empty-2" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="2"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px" >
+                                                </div>
+                                              <button id="gap-2" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(2)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-3" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="3"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px">
+                                                </div>
+                                              <button id="gap-3" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(3)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-4" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="4"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px" >
+                                                </div>
+                                              <button id="gap-4" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(4)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-5" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="5"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px" >
+                                                </div>
+                                              <button id="gap-5" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(5)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                          <td>
+                                            <div class="card bg-primary" id="empty-6" style="margin-bottom: 5px;"></div>
+                        
+                                              <div id="6"
+                                                   ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100% ;min-width:120px; height: auto;padding-bottom: 50px">
+                                                </div>
+                                              <button id="gap-6" data-toggle="modal" data-target="#new_gap" class="btn btn-outline-primary btn-sm" onclick="add_gaps(6)" style="margin-bottom: 5px; height: 40px; width:100%">
+                                                  <i class="fa fa-plus"></i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                                </div>
+                        
+                              </div>
+                          
+                        
+                        <script>
+                            
+                            var work_days=[
+                                
+                            ];
+                        
+                              var times =
+                                  [
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                                      {start:{hour:8, min:0},current:{hour:8, min:0}},
+                              ];
+                        
+                        
+                              var sub_entities = [
+                        
+                                ]
+                        
+                        
+                        
+                        </script>
+                        <script src="/planning_view.js"></script>
+                        
+                                                </div>
+                                              </div>
+                                </div>
+                                <div id="statistics" class="container-fluid tab-pane fade"><br>
+                                    <h3>statistics</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="/assets/js/jquery/jquery.min.js "></script>
+    <script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js "></script>
+    <script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js "></script>
+    <!-- waves js -->
+    <script src="/assets/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="/assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- slimscroll js -->
+    <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
+
+    <!-- menu js -->
+    <script src="/assets/js/pcoded.min.js"></script>
+    <script src="/assets/js/vertical/vertical-layout.min.js "></script>
+
+    <script type="text/javascript" src="/assets/js/script.js "></script>
+    <script src="/javascripts/riyadh_main.js">
+    </script>
+    <script>
+        var current_group;
+        var current_entity;
+        function create_sub_entity(){
+    
+          var hour=document.getElementById("hour").value;
+          var min=document.getElementById("min").value;
+          console.log(time);
+    
+          $.ajax({
+              url: '/client/add_sub_entity',
+              type: 'POST',
+              cache: false,
+              data: {
+                  id_entity:current_entity,
+                  sub_entity_name:document.getElementById("sub_entity_name").value,
+                  hours:hour,
+                  min:min,
+                  complexity:document.getElementById("complexity_sub").value,
+                  repetetion:document.getElementById("repetition").value,
+                  nb_emp:document.getElementById("nb_emp").value,
+                  },
+              success: function(data){
+                  get_sub_entities(current_entity);
+              }
+              , error: function(jqXHR, textStatus, err){
+                  alert('status '+textStatus+', err '+err)
+              }
+          })
+        }
+    
+        function create_group() {
+            $.ajax({
+                url: '/client/add_group',
+                type: 'POST',
+                cache: false,
+                data: {
+                    group_name:document.getElementById("group_name").value,
+                    },
+                success: function(data){
+                    update_groups();
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function create_entity() {
+            $.ajax({
+                url: '/client/add_entity',
+                type: 'POST',
+                cache: false,
+                data: {
+                    group : current_group,
+                    entity_name:document.getElementById("entity_name").value,
+                    complexity:document.getElementById("complexity").value,
+                },
+                success: function(data){
+                    update_entities(current_group);
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function update_groups() {
+            $.ajax({
+                url: '/client/get_group',
+                type: 'POST',
+                cache: false,
+                data: {
+                },
+                success: function(data){
+                    var x ="";
+                   for (var i = 0; i < data.groups.length ; i++) {
+                    x = x + "<tr>\n" +
+                        "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"show_group("+data.groups[i].id+")\">\n" +
+                        "                    "+  data.groups[i].group_name+ "\n" +
+                        "                    </button>  </td>\n" +
+                        "                </tr>"
+    
+                     }
+    
+                   document.getElementById("groups").innerHTML = x;
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function update_users() {
+            $.ajax({
+                url: '/client/get_emp',
+                type: 'POST',
+                cache: false,
+                data: {
+                },
+                success: function(data){
+                    var x ="";
+                   for (var i = 0; i < data.users.length ; i++) {
+                    x = x + "<tr>\n" +
+                        "                <td class=\"text-center\"> <button class=\"btn btn-sm btn-light text-primary bg-white\" onclick=\"\">\n" +
+                        "                    "+  data.users[i].firstName+ "\n" +
+                        "                    </button>  </td>\n" +
+                        "                </tr>"
+    
+                     }
+    
+                   document.getElementById("users").innerHTML = x;
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function update_entities(id) {
+            $.ajax({
+                url: '/client/get_entities',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_group: id
+                },
+                success: function(data){
+                    var x ="";
+                    var empty = true;
+                    for (var i = 0; i < data.entities.length ; i++) {
+                        empty=false;
+                        x = x +" <tr>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\">\n"+
+                            "                         <button data-toggle=\"modal\" data-target=\"#sub_entity\" onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-info btn-sm text-center text-white\" >Sub-Entities</button>" +
+                            "                         <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-danger btn-sm text-center text-white\" ><i class=\"fa fa-trash\"></i></button>\n" +
+                            "                        <button onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-warning btn-sm text-center text-white\" ><i class=\"fa fa-pen\"></i></button>\n" +
+                            "                    </td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\">\n"+
+                            "                         <button data-toggle=\"modal\" data-target=\"#responsibles\" onclick=\"get_responsible("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Show</button>" +
+                            "                    </td>\n" +
+                            "                </tr>";
+                    }
+    
+                    if(!empty)
+                    document.getElementById("view").innerHTML = "\n" +
+                        "            <table class=\"table text-center\">\n" +
+                        "                <thead>\n" +
+                        "                <tr>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Entity name</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Complexity</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Responsibles</th></tr>\n" +
+                        "                </thead>\n" +
+                        "                <tbody>\n" +x+"\n" +
+                        "                </tbody>\n" +
+                        "            </table>\n"+"  <button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>";
+                else
+                        document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 500px ;" +
+                            "  justify-content: center;\n" +
+                            "  align-items: center;\">\n" +
+                            "\n" +
+                            "                <br><br><br><br><br><br>   <br>          <h4 class=\"text-primary\">This group is empty add new entities</h4>\n" +
+                            "\n" +"<button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>"+
+                            "                      </div>";
+                    }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function delete_entity(id){
+          $.ajax({
+            url: '/client/delete_entity',
+            type: 'POST',
+            cache: false,
+            data: {
+                id_entity:id,
+            },
+            success: function(data){
+              show_group(current_group);
+                }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+          })
+        }
+        function delete_sub_entity(id){
+          $.ajax({
+            url: '/client/delete_sub_entity',
+            type: 'POST',
+            cache: false,
+            data: {
+                id_sub_entity:id,
+            },
+            success: function(data){
+              get_sub_entities(current_entity);
+                }
+            , error: function(jqXHR, textStatus, err){
+                alert('status '+textStatus+', err '+err)
+            }
+          })
+        }
+        function show_group(id) {
+           current_group = id;
+            $.ajax({
+                url: '/client/show_group',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_group:id,
+                },
+                success: function(data){
+                    var x ="";
+                    var empty = true;
+                    for (var i = 0; i < data.entities.length ; i++) {
+                        empty=false;
+                        x = x +" <tr>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].name+"</td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\"> "+data.entities[i].complex+"</td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\">\n"+
+                            "                         <button data-toggle=\"modal\" data-target=\"#sub_entity\" onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-info btn-sm text-center text-white\" >Sub-Entities</button>" +
+                            "                         <button onclick=\"delete_entity("+data.entities[i].id+")\" class=\"btn btn-danger btn-sm text-center text-white\" ><i class=\"fa fa-trash\"></i></button>\n" +
+                            "                        <button onclick=\"get_sub_entities("+data.entities[i].id+")\" class=\"btn btn-warning btn-sm text-center text-white\" ><i class=\"fa fa-pen\"></i></button>\n" +
+                            "                    </td>\n" +
+                            "                    <td class=\"group text-black font-weight-bold\">\n"+
+                            "                         <button data-toggle=\"modal\" data-target=\"#responsibles\" onclick=\"get_responsible("+data.entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Show</button>" +
+                            "                    </td>\n" +
+                            "                </tr>";
+                    }
+    
+                    if(!empty)
+                    document.getElementById("view").innerHTML = "\n" +
+                        "            <table class=\"table text-center\">\n" +
+                        "                <thead>\n" +
+                        "                <tr>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Entity name</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Complexity</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Options</th>\n" +
+                        "                    <th class=\"bg-primary text-white font-weight-bold\">Responsibles</th></tr>\n" +
+                        "                </thead>\n" +
+                        "                <tbody>\n" +x+"\n" +
+                        "                </tbody>\n" +
+                        "            </table>\n"+"  <button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>";
+                else
+                        document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 500px ;" +
+                            "  justify-content: center;\n" +
+                            "  align-items: center;\">\n" +
+                            "\n" +
+                            "                <br><br><br><br><br><br>   <br>          <h4 class=\"text-primary\">This group is empty add new entities</h4>\n" +
+                            "\n" +"<button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>"+
+                            "                      </div>";
+                    }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function show_planning(id) {
+            $.ajax({
+                url: '/planning_control/show_planning',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_planning:id,
+                },
+                success: function(data){
+                    if(data.check){
+                        for(let i=0;i<7;i++){
+                            work_days.push(
+                                data.days.charAt(i)                       
+                                )
+                        }
+    
+    
+          for (let i = 0; i < data.sub_entities.length ; i++) { 
+              sub_entities.push(
+         {
+           id: data.sub_entities[i].id ,
+           name : data.sub_entities[i].name ,
+           entity_name: data.sub_entities[i].entity.name  ,
+           entity_id:  data.sub_entities[i].entity.id  ,
+           emp_number :  data.sub_entities[i].nb_emp ,
+           emp: [],
+           start : {hour: data.sub_entities[i].positions[0].start.split(":")[0] , min : data.sub_entities[i].positions[0].start.split(":")[1]},
+           end : {hour: data.sub_entities[i].positions[0].end.split(":")[0], min : data.sub_entities[i].positions[0].end.split(":")[1]},
+           day: data.sub_entities[i].positions[0].day ,
+           hours:  data.sub_entities[i].hours ,
+           min:  data.sub_entities[i].min ,
+           complex :  data.sub_entities[i].complex ,
+             entity_complex : data.sub_entities[i].entity.complex ,
+         } );
+    
+    
+        }
+    
+    
+     
+    }
+    
+                    init();
+                    }})
+        }
+        function get_sub_entities(id) {
+          current_entity=id;
+            $.ajax({
+                url: '/client/get_sub_entities',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_entity :id
+                },
+                success: function(data){
+                    console.log("executed")
+                    var x ="";
+                    var empty = true;
+    
+                    for (var i = 0; i < data.sub_entities.length ; i++) {
+                        empty=false;
+                        x = x + "   <tr>\n" +
+                            "                                <td class=\"font-weight-bold\">"+ data.sub_entities[i].name+"</td>\n" +
+                            "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].hours+":"+data.sub_entities[i].min+"</td>\n" +
+                            "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].complex+"</td>\n" +
+                            "                                <td  class=\"font-weight-bold\">"+data.sub_entities[i].nb_emp+"</td>\n" +
+                            "                                <td> <button onclick=\"delete_sub_entity("+data.sub_entities[i].id+")\" class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button></td>"+
+                            "                            </tr>\n"
+    
+                    }
+                    if(empty) {
+                        document.getElementById("table").style.display = "none";
+                        document.getElementById("model_body").innerHTML= "<div id= \"empty\" class=\"container-fluid text-center \" >" +
+    
+                            "                  <h5 class=\"text-primary\">This entity is empty add new sub-entities</h5>\n" +
+                            "                      </div>";
+                    }
+                    else {
+                        document.getElementById("sub_entities_table").innerHTML=x;
+                        document.getElementById("table").style.display = "table";
+                        document.getElementById("empty").style.display = "none";
+                    }
+    
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function get_responsible(id) {
+            current_entity=id;
+            $.ajax({
+                url: '/client/get_responsible',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_entity :id
+                },
+                success: function(data){
+                    console.log("executed")
+                    var x ="";
+                    var empty1 = true;
+                    document.getElementById("users_table").innerHTML="";
+    
+                    for (var i = 0; i < data.users.length ; i++) {
+                        empty1=false;
+                        x = x + "   <tr>\n" +
+                            "                                <td class=\"font-weight-bold\">"+ data.users[i].firstName+"</td>\n" +
+                            "                                <td  class=\"font-weight-bold\">"+data.users[i].lastName+"</td>\n" +
+                            "                                <td> <button class=\"btn btn-primary btn-sm text-center text-white\" >Delete</button></td>"+
+                            "                            </tr>\n"
+    
+                    }
+                    if(empty1) {
+                        document.getElementById("table").style.display = "none";
+                        document.getElementById("model_body").innerHTML= "<div id= \"empty2\" class=\"container-fluid text-center \" >" +
+    
+                            "                  <h5 class=\"text-primary\">This entity has no responsible</h5>\n" +
+                            "                      </div>";
+                    }
+                    else {
+                        document.getElementById("users_table").innerHTML=x;
+                        document.getElementById("table2").style.display = "table";
+                        document.getElementById("empty2").style.display = "none";
+                    }
+    
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function create_respo(){
+    
+            var id_emp=document.getElementById("select_emp").options[document.getElementById("select_emp").selectedIndex].value;
+    
+            $.ajax({
+                url: '/client/create_respo',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id_entity:current_entity,
+                    id_emp:id_emp
+                },
+                success: function(data){
+                   get_responsible(current_entity);
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+        function create_planning(){
+            
+            var id_group=document.getElementById("groups_select").options[document.getElementById("groups_select").selectedIndex].value;
+    
+            $.ajax({
+                url: '/planning_control/create_planning',
+                type: 'POST',
+                cache: false,
+                data: {
+                    name: document.getElementById("planning_name2").value,
+                    id_group: id_group,
+                    start:document.getElementById("start").value,
+                    end:document.getElementById("end").value
+                },
+                success: function(data){
+                       window.location.replace("/planning_control/"+data.id)
+                }
+                , error: function(jqXHR, textStatus, err){
+                    alert('status '+textStatus+', err '+err)
+                }
+            })
+        }
+    
+    </script>
+</body>
+<div class="modal fade" id="add_group">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Create new group</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="group_name">Group Name</label>
+                        <input name="group_name" type="text" class="form-control" id="group_name" required>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_group()" >Create</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="add_entity">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Create new entity</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="group_name">Entity Name</label>
+                        <input name="entity_name" type="text" class="form-control" id="entity_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="group_name">Complexity</label>
+                        <input name="complexity" type="number" class="form-control" id="complexity" required>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_entity(current_group)" >Create</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="sub_entity">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Sub entities</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="model_body"></div>
+                <table id="table" class="table text-center">
+                    <thead>
+                    <tr>
+                        <th class="bg-primary text-white font-weight-bold">Sub-Entity name</th>
+                        <th class="bg-primary text-white font-weight-bold">Duration</th>
+                        <th class="bg-primary text-white font-weight-bold">Complexity</th>
+                        <th class="bg-primary text-white font-weight-bold">Number of employees</th>
+                        <th class="bg-primary text-white font-weight-bold">Options</th></tr>
+                    </thead>
+                    <tbody id="sub_entities_table">
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add Sub-Entity</button>
+
+               <br> <div id="add_new_sub" class="collapse">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="entity_name">Sub-Entity Name</label>
+                            <input name="entity_name" type="text" class="form-control" id="sub_entity_name" required>
+                        </div>
+                        <label for="time">Duration</label>
+                        <div id="time" class=" d-flex">
+                            <input name="hour" min="0" value="00" max="12" type="number" class="form-control" id="hour" required>
+                            <p> &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; </p>
+                            <input name="min" min="1" value="00" max="59" type="number" class="form-control" id="min" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complexity">Complexity</label>
+                            <input name="complexity" min="1" type="number" class="form-control" id="complexity_sub" required>
+                            <label for="repetition">Repetition</label>
+                            <input name="repetition" min="1" type="number" class="form-control" id="repetition" required>
+                            <label for="nb_emp">Number of employees</label>
+                            <input name="nb_emp" min="1" type="number" class="form-control" id="nb_emp" required>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_sub_entity()">Confirm</button>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" >Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="responsibles">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Responsible</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="model_body"></div>
+                <table id="table2" class="table text-center">
+                    <thead>
+                    <tr>
+                        <th class="bg-primary text-white font-weight-bold">FirstName</th>
+                        <th class="bg-primary text-white font-weight-bold">LastName</th>
+                        <th class="bg-primary text-white font-weight-bold">Options</th></tr>
+                    </thead>
+                    <tbody id="users_table">
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub">Add responsible</button>
+
+               <br> <div id="add_new_sub" class="collapse">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="select">Choose a employee</label>
+                            <select class="custom-select" name="" id="select_emp">
+                                <option value="0" selected>Select one</option>
+                                <% for (let i = 0; i < users.length ; i++) { %>
+                                    <option value="<%=users[i].id%>"  ><%=users[i].firstName%>&nbsp;<%=users[i].lastName%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_respo()">Confirm</button>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" >Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="add_planning">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Create new planning</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="planning_name2">Planning Name</label>
+                        <input name="planning_name2" type="text" class="form-control" id="planning_name2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="groups_select">Select group</label>
+                        <select class="form-control" id="groups_select">
+                           <option value="0"> Select group </option>
+                          <% for (var i = 0; i < groups.length ; i++) { %>
+                               <option value="<%= groups[i].id %>">
+                                      <%= groups[i].group_name %>
+                                </option>
+                          <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="start" class="col-2 col-form-label">Start :</label>
+                        <div class="col-10">
+                            <input class="form-control" type="date" id="start">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="end" class="col-2 col-form-label">End :</label>
+                        <div class="col-10">
+                            <input class="form-control" type="date"  id="end">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"  data-dismiss="modal" onclick="create_planning()" >Create</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</html>
