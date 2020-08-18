@@ -8,7 +8,7 @@ var indexRouter = require('./routes/admin/admin');
 var usersRouter = require('./routes/user/users');
 var clientRouter = require('./routes/client/clients');
 var generalRouter = require('./routes/general');
-var PlanningRouter = require('./routes/Client/planning');
+var PlanningRouter = require('./routes/client/planning');
 
 
 var Passport = require('passport').Passport,

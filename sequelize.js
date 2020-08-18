@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 
 const AdminModel = require('./models/Admin');
 const UserModel  = require('./models/User');
-const PlanningModel  = require('./models/plannings');
-const PositionModel  = require('./models/position');
+const PlanningModel  = require('./models/Plannings');
+const PositionModel = require('./models/Position');
 const ClientModel  = require('./models/Client');
 const EntityModel  = require('./models/Entities');
 const ResponsibleModel  = require('./models/Responsible');
@@ -82,7 +82,7 @@ async function check() {
     const  user = await Users.findOne( { where:{email :"moh@als.com"} } );
     if (!user) {
         const hashedPassword =getHashedPassword("12345678");
-        Users.create({ firstName :"hadjame", lastName :"moh", email : "moh@als.com", password: hashedPassword} ).then(()=> {
+        Users.create({ firstName :"hadjame", lastName :"mohamed", email : "moh@als.com", password: hashedPassword,clientId:1} ).then(()=> {
             console.log(`User inserted `)
         });
     }

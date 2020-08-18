@@ -1,133 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <style>
-
-    </style>
-    <meta charset="UTF-8">
-    <title>planning</title>
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-          rel = "stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>    <title>All Plannings</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+   <style>
+       body {
 
-    <style>
-        * {
-            font-family: Bahnschrift ;
-        }
-        #overlay {
-            position: fixed; /* Sit on top of the page content */
-            display: none; /* Hidden by default */
-            width: 100%; /* Full width (cover the whole page) */
-            height: 100%; /* Full height (cover the whole page) */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-            cursor: pointer; /* Add a pointer on hover */
-        }
-        #overlay2 {
-            position: fixed; /* Sit on top of the page content */
-            display: none; /* Hidden by default */
-            width: 100%; /* Full width (cover the whole page) */
-            height: 100%; /* Full height (cover the whole page) */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-            cursor: pointer; /* Add a pointer on hover */
-        }
-        .cont {
-            position: relative;
-            width: 100%;
-            }
-.time {
-    height: 66px;
+font-family: 'Alef';
+background: #fafafaea;
 }
-            .card-over {
-            opacity: 1;
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: .5s ease;
-            backface-visibility: hidden;
-            }
 
-            .middle {
-            transition: .5s ease;
-            opacity: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display:flex;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
+   </style>
+  </head>
+
+<body>
+ 
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="" >
+        <div class="sidebar-header d-flex justify-content-center">
+            <div class="text-white font-weight-bold" style="align-self: center; font-size: 25px;">Pro Planner</div>
+        </div>
+        
+        <ul class="list-unstyled components ">
+            <li class="item"> Home</li>
+            <li >
+                <a href="/client/" > <i class="fas fa-chart-line"></i> Dashboard</a>
+              </li>
+            <li class="item"> Employees</li>
+            <li >
+               <a href="/client/employees" > <i class="fas fa-users"></i> Manage employees</a>
+             </li>
+             <li class="line"></li>
+             <li class="item"> Plannings</li>
+             <li class="active">
+                <a href="#"><i class="fas fa-table"></i> All plannings</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#drop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-calendar-plus"></i> New planning</a>
+                <ul class="collapse list-unstyled" id="drop">
+                  
+                    <li>
+                       <a href="/client/new_manuel_planning"><i class="fas fa-puzzle-piece"></i> Manuel generation</a>
+                    </li>
+                    <li class="line"></li>
+                    <li>
+                      <a href="/client/new_auto_planning"><i class="fas fa-bolt"></i> Auto generation</a>
+                  </li>
+                </ul>
+            </li>
+            <li class="item"> Entities</li>
+            <li>
+                <a href="/client/entities"><i class="fas fa-pen-square"></i> Define entities</a>
+            </li>
             
-            }
+        </ul>
 
-            .cont:hover .card-over {
-            opacity: 0.3;
-            }
+    </nav>
 
-            .cont:hover .middle {
-            opacity: 1;
-            }
-        .move:hover {cursor: move;}
-    </style>
-</head>
-<body style="margin: 10px">
-<div id="overlay"  class="bg-white  justify-content-center"  style="opacity: 0.7;">
-  <div   class="d-flex justify-content-center" style="align-self: center">
-   <div class="spinner-border text-primary"> </div><h5> &nbsp;&nbsp;&nbsp;&nbsp;Saving</h5></let>
-</div>
-</div>
-    <div id="overlay2" onclick="off2()" class="bg-white  justify-content-center"  style="opacity: 0.7;">
-        <div   class="d-flex justify-content-center" style="align-self: center">
-            <div ><i class="fa fa-trash"></i> </div><h5 class="text-danger"> &nbsp;&nbsp;&nbsp;&nbsp;Ops , Our servers are down</h5></let>
+
+    <div id="content" >
+ <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+
+        <a type="button" id="toggle_sidebar" class=" text-white ">
+            <i class="fas fa-align-left"></i>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <div class="user d-flex justify-content-center">
+                      <img class="rounded-circle" src="/user.png" style="height: 35px; width: 35px;align-self: center;">
+                    <div style="padding-left: 10px">
+                      <p class="text-white font-weight-bold"> Riyadh Herizi</p>
+                      <a class="text-white font-weight-bold" href="#">Logout</a>
+                    </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-<div class="container-fluid">
-    <input type="hidden" id="id_planning" value="<%=id%>">
+</nav>
+<div class="container-fluid bg-custom" style="padding-left: 40px; ">
+  <div class="jumbotron p-2 bg-custom">
+    <h1>Plannings</h1>
+    <p>Here you see and edit created plannings.</p>
+  </div>
+
   <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  " style="height: 100px;" >
-        <table  class="table">
-            <thead>
+    <div class="col-md-2 p-2 shadow text-center">
+     <table class="table text-center">
+         <thead>
+         <tr><th class="bg-primary text-white font-weight-bold">Plannings</th></tr>
+         </thead>
+         <tbody id="plannings">
+          <% for (var i = 0; i < plannings.length ; i++) { %>
             <tr>
-                <th scope="col" class="text-center text-primary "><h4 class="font-weight-normal">Sub-entities</h4></th>
+                <td class="text-center"> <a class="btn btn-sm btn-light text-primary bg-white col-7" onclick="show_planning(<%=plannings[i].id %>)" >
+                    <%= plannings[i].planning_name %>
+                    </a>
+                    <a class="btn btn-info btn-sm col-2 text-white" href="/planning_control/<%=plannings[i].id%>"><i class="fa fa-edit"></i></a>
+                    <button class="btn btn-danger btn-sm col-2"><i class="fa fa-trash"></i></button>
+                 </td>
+                 
             </tr>
-            </thead>
-            <tbody >
+        <% } %>
 
-            <tr >
-                <td >
-                 <div style="height:650px; overflow:scroll; padding: 10px"  id="entities"  class="bg-primary" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-                 </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+         </tbody>
+     </table>
+
     </div>
-    
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 " style="padding: 0px;">
-          <a href="#times" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px" data-toggle="collapse"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Manage time for days :</a>
-          <button onclick="save()" class="btn btn-outline-success btn-sm float-right" style="margin-bottom: 5px" ><i class="fa fa-save"></i>&nbsp;&nbsp;Save </button>
+      <div id="view" class="col-md-9 shadow p-1 m-4">
         <div class="table-responsive">
           <table class="table text-center">
               <thead class="text-primary"style="background:#ffffff;border: 1px solid rgb(103, 128, 240)">
 
-                  <tr id="times" class="collapse bg-primary" style="position: absolute;z-index: 3;">
+                  <tr id="times" class="collapse bg-primary" style="position: absolute;z-index: 3;display: hidden;">
                      <div>
                          <td></td>
                          <td>
@@ -318,153 +319,60 @@
               </tbody>
           </table>
         </div>
-
       </div>
   </div>
+    </div>
+    </div>
 </div>
+ <script >
+     var work_days=[
+        
+        ];
+          var times =
+              [
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+                  {start:{hour:8, min:0},current:{hour:8, min:0}},
+          ];
+          var sub_entities = [
+            ]
+    
+ </script>
+   <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+      $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+     theme: "minimal"
+       });
+    });
+      $(document).ready(function () {
+
+$("#sidebar").mCustomScrollbar({
+     theme: "minimal"
+});
+
+$('#toggle_sidebar').on('click', function () {
+  document.getElementById("content").classList.toggle("active");
+  document.getElementById("sidebar").classList.toggle("active");
+    
+    $('.collapse.in').toggleClass('in');
+    // and also adjust aria-expanded attributes we use for the open/closed arrows
+    // in our CSS
+    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+});
+
+});
+    </script>
+    <script src="/js/planning_view.js"></script>
 </body>
-<script>
-    var notyf = new Notyf({
-        types: [
-            {
-                type: 'warning',
-                background: 'orange',
-                icon: {
-                    className: 'material-icons',
-                    tagName: 'i',
-                    text: 'warning'
-                }
-            }
-        ]});
-    var work_days=[
-        <%= days.charAt(0) %>,
-        <%= days.charAt(1) %>,
-        <%= days.charAt(2) %>,
-        <%= days.charAt(3) %>,
-        <%= days.charAt(4) %>,
-        <%= days.charAt(5) %>,
-        <%= days.charAt(6) %>,
-    ];
 
-      var times =
-          [
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-              {start:{hour:8, min:0},current:{hour:8, min:0}},
-      ];
-
-
-      var sub_entities = [
-
-    <% if(check){
-
-     %>
-          <% for (let i = 0; i < sub_entities.length ; i++) { %>
-          {
-            id: <%=sub_entities[i].id %>,
-            name : "<%= sub_entities[i].name %>",
-            entity_name: "<%= sub_entities[i].entity.name %>" ,
-            entity_id: "<%= sub_entities[i].entity.id %>" ,
-            emp_number : <%= sub_entities[i].nb_emp %>,
-            emp: [],
-            start : {hour: <%=sub_entities[i].positions[0].start.split(":")[0] %> , min : <%=sub_entities[i].positions[0].start.split(":")[1]%>},
-            end : {hour: <%=sub_entities[i].positions[0].end.split(":")[0]%>, min : <%=sub_entities[i].positions[0].end.split(":")[1]%>},
-            day: <%=sub_entities[i].positions[0].day%> ,
-            hours: <%= sub_entities[i].hours %>,
-            min: <%= sub_entities[i].min %>,
-            complex : <%= sub_entities[i].complex %>,
-              entity_complex : <%= sub_entities[i].entity.complex %>,
-          } ,
-
-
-        <% }%>
-
-
-      
-      <% } else { %>
-        <% for (let i = 0; i < sub_entities.length ; i++) { %>
-          {
-            id: <%=sub_entities[i].id %>,
-            name : "<%= sub_entities[i].name %>",
-            entity_name: "<%= sub_entities[i].entity.name %>" ,
-            entity_id: "<%= sub_entities[i].entity.id %>" ,
-            emp_number : <%= sub_entities[i].nb_emp %>,
-            emp: [],
-            start : {hour: 0 , min : 0},
-            end : {hour: 0, min : 0},
-            day: -1 ,
-            hours: <%= sub_entities[i].hours %>,
-            min: <%= sub_entities[i].min %>,
-            complex : <%= sub_entities[i].complex %>,
-              entity_complex : <%= sub_entities[i].entity.complex %>,
-
-
-          } ,
-
-        <% }%>
-        <% } %>
-        ]
-
-
-
-</script>
-<script src="/planning.js"></script>
-
-<div class="modal fade" id="responsible">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">Manage responsible</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form id="responsible_list"method="POST" action="">
-
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"  data-dismiss="modal" onclick="set_responsible()" >Ok</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="new_gap">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">New gap :</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form  method="POST" action="">
-                    <label for="time">Duration</label>
-                    <div id="time" class=" d-flex">
-                        <input name="hour" min="0" value="00" max="12" type="number" class="form-control" id="hour_num" required>
-                        <p> &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; </p>
-                        <input name="min" min="1" value="00" max="59" type="number" class="form-control" id="min_num" required>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"  data-dismiss="modal" onclick="confirm_gap()" >Confirm</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 </html>

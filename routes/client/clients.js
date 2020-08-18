@@ -39,9 +39,30 @@ router.get('/login', async function(req, res, next) {
     res.render('client_login',{check:check});
 });
 router.get('/',loggedin, async function (req,res,next) {
+    res.render('client/dashboard');
+});
+router.get('/employees',loggedin, async function (req,res,next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const users = await  Users.findAll( { where:{clientId :client_id.id} } );
-    res.render('Client_dash/index',{users :users});
+    res.render('client/employees',{users});
+});
+router.get('/all_plannings',loggedin, async function (req,res,next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const plannings = await  Plannings.findAll( { where:{clientId :client_id.id} } );
+    res.render('client/plannings',{plannings});
+});
+router.get('/new_manuel_planning',loggedin, async function (req,res,next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
+    res.render('client/manuel_generation',{groups});
+});
+router.get('/new_auto_planning',loggedin, async function (req,res,next) {
+    res.render('client/auto_generation');
+});
+router.get('/entities',loggedin, async function (req,res,next) {
+    const client_id = await Clients.findOne( { where:{email :req.user.username} } );
+    const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
+    res.render('client/entities',{groups});
 });
 router.get('/planning_service',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
