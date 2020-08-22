@@ -1,5 +1,5 @@
 function create_planning(){
-        
+      ev.preventDefault()  
     var id_group=document.getElementById("groups_select").options[document.getElementById("groups_select").selectedIndex].value;
 
     $.ajax({

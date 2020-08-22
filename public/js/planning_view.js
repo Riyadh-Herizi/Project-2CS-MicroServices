@@ -236,9 +236,9 @@ for(let i=0;i<7;i++) {
         }
         let diff = mins - (parseInt(compenents["day"+i][j].end.hour)*60+parseInt(compenents["day"+i][j].end.min));
         let height = (parseInt(compenents["day"+i][j].hours)*60+parseInt(compenents["day"+i][j].min))*1.1
-        console.log(height)
+        
         day_cards =day_cards +"  <tr ><td>\n" +
-            "               <div data-day='day-"+compenents["day"+i][j].day+"' id=\"card-" + compenents["day"+i][j].id + "\" class=\"card shadow text-center cont rounded-0\" style=\" height:"+height+"px ;background:#ffffff;border: 1px solid rgb(103, 128, 240)\"  draggable=\"true\" ondragstart=\"drag(event)\" >\n" +
+            "               <div data-day='day-"+compenents["day"+i][j].day+"' id=\"card-" + compenents["day"+i][j].id + "\" class=\"card shadow text-center cont rounded-0\" style=\" height:"+height+"px ;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" >\n" +
             "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
             "                        <div class=\"card-title d-flex justify-content-between\" style=\" align-self:center;margin-bottom:0px\">\n" +
             "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> " + compenents["day"+i][j].name + "</h5>\n" +
@@ -249,13 +249,7 @@ for(let i=0;i<7;i++) {
 
             "                                          " +
             " </div>\n" +
-            "<div class=' justify-content-around middle' > " +
-            "<button id='restore-" + compenents["day"+i][j].id + "'  onclick='restore(" + compenents["day"+i][j].id + ")' class='  btn btn-outline-primary btn-sm'><i class='fa fa-trash'></i></button>" +
-            "<button id='move-h-" +compenents["day"+i][j].id + "'  class='move  btn btn-outline-primary btn-sm'><i class='fa fa-arrows-h'></i></button>" +
-
-            " <div class=\"dropdown\"> " +
-            "<button id='emp-" + compenents["day"+i][j].id + "' data-toggle=\"modal\" data-target=\"#responsible\" onclick='get_responsible(" + compenents["day"+i][j].entity_id + "," + compenents["day"+i][j].emp_number + "," + compenents["day"+i][j].id + ")'  class='btn btn-outline-primary btn-sm'><i class='fa fa-users'></i></button>" +
-            "</div>   </div>                   <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' ></h6>  " +
+            "                 <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' ></h6>  " +
             "   </div>\n" +
             "         </td>\n" +
             "                </tr>";

@@ -108,7 +108,7 @@ background: #fafafaea;
     </div>
     <div class="form-group">
         <label for="groups_select">Select group</label>
-        <select class="form-control" id="groups_select">
+        <select class="form-control" id="groups_select" required>
            <option value="0"> Select group </option>
           <% for (var i = 0; i < groups.length ; i++) { %>
                <option value="<%= groups[i].id %>">
@@ -120,19 +120,19 @@ background: #fafafaea;
     <div class="form-group row">
         <label for="start" class="col-2 col-form-label">Start :</label>
         <div class="col-10">
-            <input class="form-control" type="date" id="start">
+            <input class="form-control" type="date" id="start" required>
         </div>
     </div>
     <div class="form-group row">
         <label for="end" class="col-2 col-form-label">End :</label>
         <div class="col-10">
-            <input class="form-control" type="date"  id="end">
+            <input class="form-control" type="date"  id="end" required>
         </div>
     </div>
 
-
+<button class="btn btn-primary"  type="submit" data-dismiss="modal" onclick="create_planning()" >Create</button>
 </form>
-<button class="btn btn-primary"  data-dismiss="modal" onclick="create_planning()" >Create</button>
+
 </div>
 
     </div>
