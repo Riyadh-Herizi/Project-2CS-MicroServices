@@ -624,6 +624,6 @@ function KeyPress(e) {
     }
     }
 }
-
+for(let i =0 ;i<7 ;i++) init_start_days_loading(i)
 document.onkeydown = KeyPress;
 //ondrop="drop(event)" ondragover="allowDrop(event,this)"

@@ -109,7 +109,6 @@ background: #fafafaea;
     <div class="form-group">
         <label for="groups_select">Select group</label>
         <select class="form-control" id="groups_select" required>
-           <option value="0"> Select group </option>
           <% for (var i = 0; i < groups.length ; i++) { %>
                <option value="<%= groups[i].id %>">
                       <%= groups[i].group_name %>

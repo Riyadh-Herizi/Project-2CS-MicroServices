@@ -14,6 +14,15 @@
     <script  src="/js/fontawesome.js" ></script>
     <link rel="stylesheet" href="/css/style.css">
    <style>
+   .title-item {
+        font-size :13px;
+       font-weight:bolder;
+   }
+   .time-item {
+       display:inline-block;
+       font-size :13px;
+       font-weight:bolder;
+   }
      @font-face {
           font-family: Alef;
          src:  url('/css/Alef-Regular.ttf') format('truetype');
@@ -114,9 +123,9 @@ background: #fafafaea;
                 <td class="text-center"> <a class="btn btn-sm btn-light  font-weight-bolder " data-toggle="modal" data-target="#view_planning" onclick="show_planning(<%=plannings[i].id %>,this)" >
                     <%= plannings[i].planning_name %>
                     </a>     </td>
-                    <td>                    <a class="btn btn-info btn-sm col-2 text-white" href="/planning_control/<%=plannings[i].id%>"><i class="fa fa-edit"></i></a>
+                    <td>                    <a class="btn btn-info btn-sm col-2 text-white d-inline" href="/planning_control/<%=plannings[i].id%>"><i class="fa fa-edit"></i>Edit</a>
 </td>
-                    <td>                    <button class="btn btn-danger btn-sm col-2"><i class="fa fa-trash"></i></button>
+                    <td>                    <a class="btn btn-danger btn-sm col-2 d-inline text-white"><i class="fa fa-trash"></i>Delete</a>
 </td>
             
                  

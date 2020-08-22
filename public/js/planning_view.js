@@ -55,7 +55,13 @@ function get_responsible(id,emp_number,sub_entity_id) {
         }
     })
 }
-
+function get(id) {
+    for(var i=0; i<sub_entities.length; i++) {
+        if(sub_entities[i].id==id) {
+            return sub_entities[i]
+        }
+    }
+}
 function on() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("overlay").classList.add("d-flex")
@@ -81,10 +87,10 @@ function on2() {
 
 
 function timeline(min) {
-    var content="<div class=\" border-primary time card bg-white  text-black  d-flex justify-content-center\" style='margin-top:5px;border-radius: 0px;'  >"+(min)+":00 - "+(min+1)+":00</div>";
+    var content="<div class=\" border-primary time card bg-white  text-black  d-flex justify-content-center\" style='margin-top:5px;border-radius: 0px;'  >"+(min)+":00 <br> "+(min+1)+":00</div>";
 
     for(let i =min+1 ; i<23 ; i++){
-        content = content +"  <div class=\" border-primary time card bg-white text-black d-flex justify-content-center \" style='border-radius: 0px' >"+(i)+":00 - "+(i+1)+":00</div>\n"
+        content = content +"  <div class=\" border-primary time card bg-white text-black d-flex justify-content-center \" style='border-radius: 0px' >"+(i)+":00 <br> "+(i+1)+":00</div>\n"
     }
     document.getElementById("vertical-time").innerHTML = content;
 }
@@ -92,7 +98,9 @@ function timeline(min) {
 
 
 function init_start_days_loading(id) {
+
     if (compenents["day"+id].length>=1 ) {
+      
         var minimum = {hour:compenents["day"+id][0].start.hour,min:compenents["day"+id][0].start.min};
         for (let i =1; i < compenents["day"+id].length; i++) {
             if (minimum.hour>compenents["day"+id][i].start.hour) {
@@ -103,7 +111,8 @@ function init_start_days_loading(id) {
                 minimum.min =compenents["day"+id][i].start.min;
             }
         }
-        document.getElementById("time-empty-"+id).value =time_format(minimum.hour,minimum.min);
+        document.getElementById("time-empty-"+id).value =time_format(minimum.hour,minimum.min); 
+        
     }
     update_empty(null,id)
 
@@ -129,6 +138,7 @@ function init_start_days(id) {
 function time_format(hour,min) {
     var new_hour = hour+"";
     var new_min = min+"";
+   
     if (new_hour.length===1 ){
         new_hour ="0"+new_hour;
     }
@@ -146,8 +156,8 @@ function update_time(id) {
             var element = get(card.id.substring(5, card.id.length));
             element.start.hour =  times[id].current.hour;
             element.start.min =  times[id].current.min;
-            times[id].current.hour = times[id].current.hour + element.hours ;
-            times[id].current.min = times[id].current.min + element.min ;
+            times[id].current.hour = parseInt(times[id].current.hour) + parseInt(element.hours) ;
+            times[id].current.min = parseInt(times[id].current.min) + parseInt(element.min) ;
             if(times[id].current.min>59) {
                 times[id].current.hour++;
                 times[id].current.min = times[id].current.min - 60 ;
@@ -156,6 +166,7 @@ function update_time(id) {
             element.end.min =  times[id].current.min;
             document.getElementById("time-"+element.id).innerText = time_format(element.start.hour,element.start.min)+" - " +
                 time_format(element.end.hour,element.end.min);
+               
 
         } else  {
             times[id].current.hour =times[id].current.hour + parseInt(card.getAttribute("data-hours")) ;
@@ -201,9 +212,7 @@ function update_empty(e,id) {
 
 function init(){
     var x ="";
-    for (let i=0 ; i<7;i++) {
-        init_start_days_loading(i)
-    }
+   
 timeline(8)
 for (let i = 0; i < sub_entities.length ; i++) {
     if(sub_entities[i].day!=-1) {
@@ -237,25 +246,25 @@ for(let i=0;i<7;i++) {
         let diff = mins - (parseInt(compenents["day"+i][j].end.hour)*60+parseInt(compenents["day"+i][j].end.min));
         let height = (parseInt(compenents["day"+i][j].hours)*60+parseInt(compenents["day"+i][j].min))*1.1
         
-        day_cards =day_cards +"  <tr ><td>\n" +
+       day_cards =day_cards +"  <tr ><td>\n" +
             "               <div data-day='day-"+compenents["day"+i][j].day+"' id=\"card-" + compenents["day"+i][j].id + "\" class=\"card shadow text-center cont rounded-0\" style=\" height:"+height+"px ;background:#ffffff;border: 1px solid rgb(103, 128, 240)\" >\n" +
             "                        <div class=\"card-body card-over\" style=\"padding: 3px 3px 0px 3px; \">\n" +
-            "                        <div class=\"card-title d-flex justify-content-between\" style=\" align-self:center;margin-bottom:0px\">\n" +
-            "                                               <h5 class=\"card-title\" style=\"font-size: 15px\"> " + compenents["day"+i][j].name + "</h5>\n" +
+            "                        <div class=\"card-title     justify-content-between\" style=\" align-self:center;margin-bottom:0px\">\n" +
+            "                                               <h5 class=\"card-title title-item\" > " + compenents["day"+i][j].name + "</h5>\n" +
             "                                                <h5 class=\"card-title text-primary\" id='duration-" + compenents["day"+i][j].id + "' style=\"display:none;font-size: 15px\">" +compenents["day"+i][j].hours + "h" +compenents["day"+i][j].min + "min</h5>\n" +
-            "                                                <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' >"+  time_format(compenents["day"+i][j].start.hour,compenents["day"+i][j].start.min)+" - "+ time_format(compenents["day"+i][j].end.hour,compenents["day"+i][j].end.min) +"  </h6>" +
+            "                                                <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title time-item' > "+  time_format(compenents["day"+i][j].start.hour,compenents["day"+i][j].start.min)+" - "+ time_format(compenents["day"+i][j].end.hour,compenents["day"+i][j].end.min) +"  </h6>" +
             "                                            </div>\n" +
             "                                           <h5 class=\"card-title text-primary\" style=\"font-size: 15px;\">" + compenents["day"+i][j].entity_name + " </h5>\n" +
 
             "                                          " +
-            " </div>\n" +
+            " </div>\n" +   
             "                 <h6 id=\"time-" + compenents["day"+i][j].id + "\" class='card-title' ></h6>  " +
             "   </div>\n" +
             "         </td>\n" +
             "                </tr>";
 
         if(diff>0) {day_cards = day_cards+
-            "<div data-hours="+diff / 60 +" data-min="+(diff%60)+"' data-day='day-"+ compenents["day"+i][j].day+"' class=\"card bg-primary rounded-0\" id=\"gap-"+ compenents["day"+i][j].day+"-"+gaps_id+"\" style=\" height:"+(diff*1.1)+"px;\"><div  class='gap card-body text-center d-flex justify-content-center' style='padding: 0px' > <button class='btn btn-light text-primary ' onclick='delete_gap(this)' style='align-self: center '><i class='fa fa-trash'></i></button></div></div>"
+            "<div data-hours="+diff / 60 +" data-min="+(diff%60)+"' data-day='day-"+ compenents["day"+i][j].day+"' class=\"card bg-primary rounded-0\" id=\"gap-"+ compenents["day"+i][j].day+"-"+gaps_id+"\" style=\" height:"+(diff*1.1)+"px;\"><div  class='gap card-body text-center d-flex justify-content-center' style='padding: 0px' > </div></div>"
             gaps_id++;
 
         }
@@ -263,7 +272,9 @@ for(let i=0;i<7;i++) {
     document.getElementById(i+"").innerHTML=day_cards;
     switch_day_auto(i)
 }
-
+for (let i=0 ; i<7;i++) {
+    init_start_days_loading(i)
+}
 }
 
 
