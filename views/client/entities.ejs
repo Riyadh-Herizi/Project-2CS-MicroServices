@@ -6,24 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="#" /> 
-       <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'> 
        <title>Entities</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/style.css">
-    
-   <style>
-       body {
-
-font-family: 'Alef';
-background: #fafafaea;
-}
-
-   </style>
+       <link rel="stylesheet" href="/css/fontawesome.min.css">
+       <link rel="shortcut icon" href="#" />
+       <link rel="stylesheet" href="/css/bootstrap.min.css" >
+       <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+       <script  src="/js/solid.js" ></script>
+       <script  src="/js/fontawesome.js" ></script>
+       <link rel="stylesheet" href="/css/style.css">
+      <style>
+        @font-face {
+             font-family: Alef;
+            src:  url('/css/Alef-Regular.ttf') format('truetype');
+   }
+          body {
+   
+   font-family: 'Alef';
+   background: #fafafaea;
+   }
+   
+      </style>
   </head>
 
 <body>
@@ -138,12 +140,14 @@ align-items: center;">
     </div>
 </div>
    
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="/js/jquery-3.2.1.min.js" ></script>
     <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="/js/popper.min.js" ></script>
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" ></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script>
       $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
@@ -296,4 +300,57 @@ $('#toggle_sidebar').on('click', function () {
 
       </div>
   </div>
+</div>
+<div class="modal fade" id="responsibles">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Responsible</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div id="model_body"></div>
+                <table id="table2" class="table text-center">
+                    <thead>
+                    <tr>
+                        <th class="bg-primary text-white font-weight-bold">FirstName</th>
+                        <th class="bg-primary text-white font-weight-bold">LastName</th>
+                        <th class="bg-primary text-white font-weight-bold">Options</th></tr>
+                    </thead>
+                    <tbody id="users_table">
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#new_respo">Add responsible</button>
+
+               <br> <div id="new_respo" class="collapse">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="select">Choose a employee</label>
+                            <select class="custom-select" name="" id="select_emp">
+                                <option value="0" selected>Select one</option>
+                                <% for (let i = 0; i < users.length ; i++) { %>
+                                    <option value="<%=users[i].id%>"  ><%=users[i].firstName%>&nbsp;<%=users[i].lastName%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_respo()">Confirm</button>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" >Ok</button>
+            </div>
+
+        </div>
+    </div>
 </div>

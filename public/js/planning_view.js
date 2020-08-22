@@ -275,7 +275,7 @@ for(let i=0;i<7;i++) {
 
 var current_day =-1;
 var gaps_id =0;
-function show_planning(id) {
+function show_planning(id,e) {
     $.ajax({
         url: '/planning_control/show_planning',
         type: 'POST',
@@ -308,6 +308,7 @@ function show_planning(id) {
      entity_complex : data.sub_entities[i].entity.complex ,
  } );
 }
+document.getElementById("name_planning").innerText ="View Planning : "+e.innerText;
 
 }
             init();

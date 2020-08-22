@@ -62,7 +62,8 @@ router.get('/new_auto_planning',loggedin, async function (req,res,next) {
 router.get('/entities',loggedin, async function (req,res,next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
     const groups = await  Groups.findAll( { where:{clientId :client_id.id} } );
-    res.render('client/entities',{groups});
+    const users = await  Users.findAll( { where:{clientId :client_id.id} } );
+    res.render('client/entities',{groups,users});
 });
 router.get('/planning_service',loggedin ,async function(req, res, next) {
     const client_id = await Clients.findOne( { where:{email :req.user.username} } );
