@@ -1,7 +1,8 @@
 function create_planning(){
-      ev.preventDefault()  
+     
     var id_group=document.getElementById("groups_select").options[document.getElementById("groups_select").selectedIndex].value;
-
+    if(document.getElementById("planning_name2").checkValidity() && document.getElementById("start").checkValidity()
+    && document.getElementById("end").checkValidity()  && document.getElementById("groups_select").checkValidity())
     $.ajax({
         url: '/planning_control/create_planning',
         type: 'POST',
@@ -19,4 +20,7 @@ function create_planning(){
             alert('status '+textStatus+', err '+err)
         }
     })
+    else {
+        document.getElementById("gen_error").classList.remove("d-none") 
+    }
 }

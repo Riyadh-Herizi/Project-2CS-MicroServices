@@ -123,16 +123,9 @@
 
     </div>
       <div id="view" class="col-md-8 shadow p-1 m-4">
-          <div class="container-fluid text-center " style="height: 500px ;display: flex;
-justify-content: center;
-align-items: center;">
-
+          <div class="container-fluid text-center " style="height: 400px ;display: flex;justify-content: center;align-items: center;">
               <h3 class="text-primary">Select a group to see entities</h3>
-
           </div>
-
-
-
       </div>
   </div>
 
@@ -187,19 +180,22 @@ $('#toggle_sidebar').on('click', function () {
           <!-- Modal body -->
           <div class="modal-body">
               <form method="POST" action="">
+                
                   <div class="form-group">
                       <label for="group_name">Group Name</label>
                       <input name="group_name" type="text" class="form-control" id="group_name" required>
                   </div>
-
-              </form>
-          </div>
-
-          <!-- Modal footer -->
+            <h6 id="group_error" class="text-danger d-none">you need to feel out all fields</h6>
+             
+              <!-- Modal footer -->
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_group()" >Create</button>
+              <button type="button" class="btn btn-primary"  onclick="create_group()">Create</button>
           </div>
+           </form> 
+          </div>
+
+         
 
       </div>
   </div>
@@ -225,14 +221,17 @@ $('#toggle_sidebar').on('click', function () {
                       <label for="group_name">Complexity</label>
                       <input name="complexity" type="number" class="form-control" id="complexity" required>
                   </div>
+                  <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="create_entity(current_group)" >Create</button>
+          </div>
+                      <h6 id="entity_error" class="text-danger d-none">you need to feel out all fields</h6>
+
               </form>
           </div>
 
           <!-- Modal footer -->
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="create_entity(current_group)" >Create</button>
-          </div>
+          
 
       </div>
   </div>
@@ -275,20 +274,21 @@ $('#toggle_sidebar').on('click', function () {
                       </div>
                       <label for="time">Duration</label>
                       <div id="time" class=" d-flex">
-                          <input name="hour" min="0" value="00" max="12" type="number" class="form-control" id="hour" required>
+                          <input name="hour" min="0" value="00" max="12"  value="1" type="number" class="form-control" id="hour" required>
                           <p> &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; </p>
-                          <input name="min" min="1" value="00" max="59" type="number" class="form-control" id="min" required>
+                          <input name="min" min="0" value="00" max="59" type="number" class="form-control" id="min" required>
                       </div>
                       <div class="form-group">
                           <label for="complexity">Complexity</label>
-                          <input name="complexity" min="1" type="number" class="form-control" id="complexity_sub" required>
+                          <input name="complexity" min="1" type="number" value="1" class="form-control" id="complexity_sub" required>
                           <label for="repetition">Repetition</label>
-                          <input name="repetition" min="1" type="number" class="form-control" id="repetition" required>
+                          <input name="repetition" min="1" type="number"  value="1" class="form-control" id="repetition" required>
                           <label for="nb_emp">Number of employees</label>
-                          <input name="nb_emp" min="1" type="number" class="form-control" id="nb_emp" required>
+                          <input name="nb_emp" min="1" type="number"  value="1"  class="form-control" id="nb_emp" required>
                       </div>
+                       <h6 id="sub_entity_error" class="text-danger d-none">you need to feel out all fields</h6>
                   </form>
-                  <button class="btn btn-primary btn-sm text-center text-white m-2" data-toggle="collapse" data-target="#add_new_sub" onclick="create_sub_entity()">Confirm</button>
+                  <button class="btn btn-primary btn-sm text-center text-white m-2"  data-target="#add_new_sub" onclick="create_sub_entity()">Confirm</button>
               </div>
 
           </div>

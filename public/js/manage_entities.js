@@ -5,7 +5,8 @@ function create_sub_entity(){
   var hour=document.getElementById("hour").value;
   var min=document.getElementById("min").value;
   console.log(time);
-
+  if(document.getElementById("sub_entity_name").checkValidity() && document.getElementById("complexity_sub").checkValidity()
+  && document.getElementById("repetition").checkValidity()  && document.getElementById("nb_emp").checkValidity())
   $.ajax({
       url: '/client/add_sub_entity',
       type: 'POST',
@@ -21,14 +22,24 @@ function create_sub_entity(){
           },
       success: function(data){
           get_sub_entities(current_entity);
+          document.getElementById("sub_entity_error").classList.add("d-none") 
+          document.getElementById("complexity_sub").value=""
+          document.getElementById("complexity_sub").value="1"
+          document.getElementById("repetition").value="1"
+          document.getElementById("nb_emp").value="1"
+         
       }
       , error: function(jqXHR, textStatus, err){
           alert('status '+textStatus+', err '+err)
       }
   })
+  else {
+    document.getElementById("sub_entity_error").classList.remove("d-none") 
+  }
 }
 
-function create_group() {
+function create_group(ev) {
+    if(document.getElementById("group_name").checkValidity())
     $.ajax({
         url: '/client/add_group',
         type: 'POST',
@@ -38,13 +49,20 @@ function create_group() {
             },
         success: function(data){
             update_groups();
+            $('#add_group').modal('hide'); 
+            document.getElementById("group_error").classList.add("d-none") 
+            document.getElementById("group_name").value=""
         }
         , error: function(jqXHR, textStatus, err){
             alert('status '+textStatus+', err '+err)
         }
-    })
+    }) 
+    else {
+        document.getElementById("group_error").classList.remove("d-none") 
+    }
 }
 function create_entity() {
+    if(document.getElementById("entity_name").checkValidity() && document.getElementById("complexity").checkValidity())
     $.ajax({
         url: '/client/add_entity',
         type: 'POST',
@@ -56,11 +74,18 @@ function create_entity() {
         },
         success: function(data){
             update_entities(current_group);
+            $('#add_entity').modal('hide'); 
+            document.getElementById("entity_error").classList.add("d-none") 
+            document.getElementById("entity_name").value=""
+            document.getElementById("complexity").value=""
         }
         , error: function(jqXHR, textStatus, err){
             alert('status '+textStatus+', err '+err)
         }
-    })
+    }) 
+    else {
+        document.getElementById("entity_error").classList.remove("d-none") 
+    }
 }
 function update_groups() {
     $.ajax({
@@ -240,7 +265,7 @@ function show_group(id) {
                 "                </tbody>\n" +
                 "            </table>\n"+"  <button data-toggle=\"modal\" data-target=\"#add_entity\" class=\"btn btn-primary btn-sm text-center text-white\" >Add entity</button>";
         else
-                document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 500px ;" +
+                document.getElementById("view").innerHTML ="   <div class=\"container-fluid text-center \" style=\"height: 400px ;" +
                     "  justify-content: center;\n" +
                     "  align-items: center;\">\n" +
                     "\n" +
@@ -255,6 +280,7 @@ function show_group(id) {
 }
 
 function get_sub_entities(id) {
+    var empty_exist = true;
   current_entity=id;
     $.ajax({
         url: '/client/get_sub_entities',
@@ -285,11 +311,16 @@ function get_sub_entities(id) {
 
                     "                  <h5 class=\"text-primary\">This entity is empty add new sub-entities</h5>\n" +
                     "                      </div>";
+                    empty_exist = true;
             }
             else {
                 document.getElementById("sub_entities_table").innerHTML=x;
                 document.getElementById("table").style.display = "table";
-                document.getElementById("empty").style.display = "none";
+                if(empty_exist) {
+                    document.getElementById("empty").style.display = "none";
+                   empty_exist =false;
+                }
+                
             }
 
         }
