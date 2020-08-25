@@ -46,7 +46,19 @@ router.get('/login', async function(req, res, next) {
 });
 
 router.get('/home',loggedin, function (req,res,next) {
-  res.send("you are logged in");
+  res.render('user/home');
+});
+router.get('/all_plannings',loggedin, function (req,res,next) {
+  res.render('user/all_plannings');
+});
+router.get('/general_planning',loggedin, function (req,res,next) {
+  res.render('user/general_planning');
+});
+router.get('/profil',loggedin, function (req,res,next) {
+  res.render('user/profil');
+});
+router.get('/wish_form',loggedin, function (req,res,next) {
+  res.render('user/wish_form');
 });
 
 router.post('/android_login', async  function (req,res)  {

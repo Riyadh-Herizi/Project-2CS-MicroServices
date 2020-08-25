@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <script  src="/js/solid.js" ></script>
+    <script  src="/js/fontawesome.js" ></script>
+    <link rel="stylesheet" href="/css/style.css">
+   <style>
+     @font-face {
+          font-family: Alef;
+         src:  url('/css/Alef-Regular.ttf') format('truetype');
+}
+       body {
+
+font-family: 'Alef';
+background: #fafafaea;
+}
+
+   </style>
+  </head>
+
+<body>
+ 
+  <div class="wrapper">
+    <nav id="sidebar" class="" >
+        <div class="sidebar-header d-flex justify-content-center">
+            <div class="text-white font-weight-bold" style="align-self: center; font-size: 25px;">Pro Planner</div>
+        </div>
+        
+        <ul class="list-unstyled components ">
+            <li class="item"> Home</li>
+            <li class="active">
+                <a href="#" > <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="">
+                <a href="/user/profil" > <i class="fas fa-user"></i> Profil</a>
+            </li>
+            
+             <li class="line"></li>
+             <li class="item"> Plannings</li>
+             
+             <li class="">
+                <a href="/user/general_planning" > <i class="fas fa-calendar"></i> General planning</a>
+            </li>
+            <li class="">
+                <a href="/user/all_plannings" > <i class="fas fa-calendar-alt"></i> All plannings</a>
+            </li>
+            <li class="item"> Wishes</li>
+            <li>
+                <a href="/user/wish_form"><i class="fas fa-list"></i> Wish form</a>
+            </li>
+            
+        </ul>
+
+    </nav>
+
+
+    <div id="content" >
+ <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+
+        <a type="button" id="toggle_sidebar" class=" text-white ">
+            <i class="fas fa-align-left"></i>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <div class="user d-flex justify-content-center">
+                      <img class="rounded-circle" src="/user.png" style="height: 35px; width: 35px;align-self: center;">
+                    <div style="padding-left: 10px">
+                      <p class="text-white font-weight-bold"> Abdellatif Beldjelti</p>
+                      <a class="text-white font-weight-bold" href="#">Logout</a>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container-fluid bg-custom">
+        <div class="jumbotron p-2 bg-custom">
+            <h1>Welcome</h1>
+            <p>Welcome to Pro Planner, we are here to make your work easier.</p>
+        </div>
+        <div class="row d-flex justify-content-around">
+        <div class="card border-primary col-5">
+          <img class="card-img-top" src="" alt="">
+          <div class="card-body">
+            <h4 class="card-title">cherak tkhdm</h4>
+            <p class="card-text">Text</p>
+          </div>
+        </div>
+        <div class="card border-primary col-5">
+          <img class="card-img-top" src="" alt="">
+          <div class="card-body">
+            <h4 class="card-title">cheghadi tkhdm</h4>
+            <p class="card-text">Text</p>
+          </div>
+        </div>
+        </div>
+        
+
+    </div>
+    </div>
+</div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="/js/jquery-3.2.1.min.js" ></script>
+    <!-- Popper.JS -->
+    <script src="/js/popper.min.js" ></script>
+    <!-- Bootstrap JS -->
+    <script src="/js/bootstrap.min.js" ></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+      $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+     theme: "minimal"
+       });
+    });
+      $(document).ready(function () {
+
+$("#sidebar").mCustomScrollbar({
+     theme: "minimal"
+});
+
+$('#toggle_sidebar').on('click', function () {
+  document.getElementById("content").classList.toggle("active");
+  document.getElementById("sidebar").classList.toggle("active");
+    
+    $('.collapse.in').toggleClass('in');
+    // and also adjust aria-expanded attributes we use for the open/closed arrows
+    // in our CSS
+    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+});
+
+});
+    </script>
+</body>
+
+</html>
