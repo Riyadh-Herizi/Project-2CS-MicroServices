@@ -9,6 +9,7 @@ const EntityModel  = require('./models/Entities');
 const ResponsibleModel  = require('./models/Responsible');
 const GroupsModel  = require('./models/Group');
 const SubEntityModel  = require('./models/Sub_Entities');
+const WishModel  = require('./models/Wish');
 const crypto = require('crypto');
 const sequelize = new Sequelize('project', 'root', '', {
     host: 'localhost',
@@ -36,6 +37,7 @@ const Entities = EntityModel(sequelize,Sequelize);
 const Responsible = ResponsibleModel(sequelize,Sequelize);
 const SubEntities = SubEntityModel(sequelize,Sequelize) ;
 const Groups = GroupsModel(sequelize,Sequelize) ;
+const Wishes = WishModel(sequelize,Sequelize) ;
 Responsible.belongsTo(Entities);
 Users.hasMany(Responsible)
 Responsible.belongsTo(Users);
@@ -55,8 +57,10 @@ Plannings.belongsTo(Groups);
 Groups.hasMany(Plannings);
 Positions.belongsTo(Plannings);
 Positions.belongsTo(SubEntities);
-SubEntities.hasMany(Positions)
+SubEntities.hasMany(Positions);
 //Positions.hasMany(Users);
+//Wishes.belongsTo(Plannings);
+Wishes.belongsTo(Users);
 
 
 sequelize.sync({ force: false })
@@ -89,5 +93,5 @@ async function check() {
 }
 
 module.exports = {
- Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions,Responsible
+ Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions,Responsible,Wishes
 };

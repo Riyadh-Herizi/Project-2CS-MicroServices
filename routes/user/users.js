@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
-const { Users } = require('../../sequelize');
+const { Users, Wishes } = require('../../sequelize');
 const bodyParser = require('body-parser')
 router.use(bodyParser.json());
 router.use(express.urlencoded({ extended: true }));
@@ -57,8 +57,15 @@ router.get('/general_planning',loggedin, function (req,res,next) {
 router.get('/profil',loggedin, function (req,res,next) {
   res.render('user/profil');
 });
-router.get('/wish_form',loggedin, function (req,res,next) {
-  res.render('user/wish_form');
+router.get('/wish_form',loggedin,async function (req,res,next) {
+  const user_id = await Users.findOne( { where:{email :req.user.username} } );
+  const wish= await Wishes.findOne({where : {userId:user_id.id}});
+  if(wish){
+     res.render('user/wish_form',{day1:wish.day1,day2:wish.day2});
+  }
+  else
+  res.render('user/wish_form',{day1:-1,day2:-1});
+ 
 });
 
 router.post('/android_login', async  function (req,res)  {
@@ -90,7 +97,17 @@ router.post('/android_login', async  function (req,res)  {
   }
 
 });
-
+router.post('/add_wish',async  function (req,res)  {
+  const { day1,day2 } = req.body;console.log(req.body);
+  const user_id = await Users.findOne( { where:{email :req.user.username} } );
+  const wish= await Wishes.findOne({where : {userId:user_id.id}})
+  if(wish){
+    await wish.update({day1 :day1, day2 :day2});
+  }
+  else
+  await Wishes.create({ day1 :day1, day2 :day2,userId :user_id.id} )
+    res.redirect('/user/wish_form');
+});
 
 router.get('/logout',function (req,res) {
   req.logout();
