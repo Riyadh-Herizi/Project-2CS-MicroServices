@@ -3,7 +3,8 @@
 var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
-const { Users, Wishes } = require('../../sequelize');
+const {Wishes ,Clients,Users,Groups ,Entities,SubEntities,Plannings,Positions,Responsible,EmpPositions} = require('../../sequelize');
+
 const bodyParser = require('body-parser')
 router.use(bodyParser.json());
 router.use(express.urlencoded({ extended: true }));
@@ -114,5 +115,22 @@ router.get('/logout',function (req,res) {
   res.redirect('/');
 
 });
+router.post('/show_general_planning',async function(req, res, next) {
+  const user_id = await Users.findOne( { where:{email :req.user.username} } );
 
+  var sub_entities =
+      await SubEntities.findAll( { include:[{model:Entities,required:true},
+          {model:Positions,required:true,include : [
+              {model:EmpPositions,required:true ,where : {userId: user_id.id}}
+            ]},
+
+         ] }
+          ).catch((err)=> {
+            console.log(err)
+      });
+  console.log(sub_entities)  ;
+  res.send({sub_entities :sub_entities});
+
+
+});
 module.exports = router;

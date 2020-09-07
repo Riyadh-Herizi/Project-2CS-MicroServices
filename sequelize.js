@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 
 const AdminModel = require('./models/Admin');
 const UserModel  = require('./models/User');
+const EmpPositionsModel  = require('./models/Emp_positions');
 const PlanningModel  = require('./models/Plannings');
 const PositionModel = require('./models/Position');
 const ClientModel  = require('./models/Client');
@@ -32,6 +33,7 @@ const Admins = AdminModel(sequelize, Sequelize);
 const Users = UserModel(sequelize,Sequelize);
 const Plannings = PlanningModel(sequelize,Sequelize);
 const Positions = PositionModel(sequelize,Sequelize);
+const EmpPositions = EmpPositionsModel(sequelize,Sequelize);
 const Clients = ClientModel(sequelize,Sequelize);
 const Entities = EntityModel(sequelize,Sequelize);
 const Responsible = ResponsibleModel(sequelize,Sequelize);
@@ -58,11 +60,11 @@ Groups.hasMany(Plannings);
 Positions.belongsTo(Plannings);
 Positions.belongsTo(SubEntities);
 SubEntities.hasMany(Positions);
-//Positions.hasMany(Users);
-//Wishes.belongsTo(Plannings);
 Wishes.belongsTo(Users);
-
-
+EmpPositions.belongsTo(Users);
+EmpPositions.belongsTo(Positions);
+Users.hasMany(EmpPositions);
+Positions.hasMany(EmpPositions);
 sequelize.sync({ force: false })
     .then(() => {
         check();
@@ -93,5 +95,5 @@ async function check() {
 }
 
 module.exports = {
- Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions,Responsible,Wishes
+ Admins,Users,Clients,Entities,SubEntities,Groups,Plannings,Positions,Responsible,Wishes,EmpPositions
 };
