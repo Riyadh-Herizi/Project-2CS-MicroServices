@@ -49,9 +49,17 @@ router.get('/login', async function(req, res, next) {
 router.get('/home',loggedin, function (req,res,next) {
   res.render('user/home');
 });
-router.get('/all_plannings',loggedin, function (req,res,next) {
-  res.render('user/all_plannings');
-});
+router.get('/all_plannings',loggedin,async function (req,res,next) {
+  const user_id = await Users.findOne( { where:{email :req.user.username} } );
+
+  var plannings =
+      await Plannings.findAll( { include:[{model:Positions,required:true,
+        include:[{model:EmpPositions,required:true ,where : {userId: user_id.id}}]},
+            ]},
+          )
+     
+  res.render('user/all_plannings',{plannings});
+ });  
 router.get('/general_planning',loggedin, function (req,res,next) {
   res.render('user/general_planning');
 });

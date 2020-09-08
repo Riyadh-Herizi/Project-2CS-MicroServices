@@ -65,6 +65,8 @@ EmpPositions.belongsTo(Users);
 EmpPositions.belongsTo(Positions);
 Users.hasMany(EmpPositions);
 Positions.hasMany(EmpPositions);
+Plannings.hasMany(Positions);
+
 sequelize.sync({ force: false })
     .then(() => {
         check();
