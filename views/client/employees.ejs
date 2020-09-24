@@ -102,7 +102,9 @@ background: #fafafaea;
       </div>
     
       <div style="overflow: scroll; height: 500px">
-        <table class="table table-striped">
+          <button type="button" title="Edit account" style="float: right" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus"></i>Add new </button>
+
+          <table class="table table-striped">
             <thead class="">
             <tr>
                 <th scope="col" class="text-primary">Picture</th>
@@ -124,8 +126,8 @@ background: #fafafaea;
                     <td> <%= users[i].lastName %></td>
                     <td> <%= users[i].email %></td>
                     <td>
-                        <button type="button" title="Edit account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i></button>
-                        <button type="button" title="Delete account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                        <button type="button" title="Edit account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-edit"></i>Edit</button>
+                        <button type="button" title="Delete account" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-trash"></i>Delete</button>
                     </td>
                 </tr>
 
