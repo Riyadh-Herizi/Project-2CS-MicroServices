@@ -14,7 +14,7 @@
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-jwt": "^5.3.3",
     "express-jwt-authz": "^2.3.1",
     "express-mysql-session": "^2.1.3",
